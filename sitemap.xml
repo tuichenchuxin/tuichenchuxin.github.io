@@ -5,10 +5,10 @@
     <loc>https://example.com/posts/docker/</loc>
     <lastmod>2023-02-06T14:51:42+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/</loc>
+    <loc>https://example.com/posts/</loc>
     <lastmod>2023-02-06T14:52:10+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/posts/</loc>
+    <loc>https://example.com/</loc>
     <lastmod>2023-02-06T14:52:10+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/add-yat-test-for-shardingsphere/</loc>
