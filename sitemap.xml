@@ -2,44 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/posts/add-yat-test-for-shardingsphere/</loc>
-    <lastmod>2023-02-06T14:16:02+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/</loc>
-    <lastmod>2023-02-06T14:16:02+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/</loc>
-    <lastmod>2023-02-06T14:16:02+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/polar-db/</loc>
-    <lastmod>2023-02-06T14:15:11+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/modifypr/</loc>
-    <lastmod>2023-02-06T14:15:21+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/installoracle11g/</loc>
-    <lastmod>2023-02-06T14:15:30+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/use_free_marker/</loc>
-    <lastmod>2023-02-06T14:15:01+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/howtodebugpgadmin4/</loc>
-    <lastmod>2023-02-06T14:15:36+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/analysispgamdin4ddl/</loc>
-    <lastmod>2023-02-06T14:15:57+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/get_postgres_create_table_sql/</loc>
-    <lastmod>2023-02-06T14:15:44+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/second/</loc>
-    <lastmod>2023-02-06T14:15:06+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/my-first-post/</loc>
-    <lastmod>2023-02-06T14:15:17+08:00</lastmod>
-  </url><url>
     <loc>https://example.com/categories/</loc>
   </url><url>
     <loc>https://example.com/tags/</loc>
+  </url><url>
+    <loc>https://example.com/</loc>
   </url>
 </urlset>
