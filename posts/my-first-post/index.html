@@ -57,7 +57,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2022-04-01T19:33:02+08:00",
-        "dateModified": "2023-02-06T14:15:17+08:00",
+        "dateModified": "2023-02-06T14:51:52+08:00",
         "url": "https://example.com/posts/my-first-post/",
         "headline": "ShardingSphere Hint 实用指南",
         "description": "背景 Apache ShardingSphere 基于用户的实际使用场景，为用户打造了多种实用功能，包括数据分片、读写分离等。在数据分片功能中，Apache ShardingSphere 提供了标准分片、复合分片等多种实用的分片策略，在各种分片策略中，用户又可以配置相关分片算法，从而解决数据分片的问题。在读写分离功能中，ShardingSphere 为用户提供了静态和动态的两种读写分离类型以及丰富的负载均衡算法以满足用户实际需求。 可以看到 ShardingSphere 的分片和读写分离功能已经非常丰富，不过用户的真实使用场景是千变万化的。以多租户场景为例，用户期望按照登录账号所属租户进行分片，但是租户信息却并不是存在于每条业务 SQL 中，这时从 SQL 中提取分片字段的算法将无法发挥作用。再以读写分离为例，大部分场景下用户都希望能够将查询操作路由到从库上执行，但是在某些实时性要求很高的场景下，用户希望将 SQL 强制路由到主库执行，这时读写分离就无法满足业务要求。 基于以上痛点 Apache ShardingSphere 为用户提供了 Hint 功能，用户可以结合实际业务场景，利用 SQL 外部的逻辑进行强制路由或者分片。目前 ShardingSphere 为用户提供了两种 Hint 方式，一种通过 Java API 手动编程，利用 HintManager 进行强制路由和分片，这种方式对采用 JDBC 编程的应用非常友好，只需要少量的代码编写，就能够轻松实现不依赖 SQL 的分片或者强制路由功能。另外一种方式对于不懂开发的 DBA 而言更加友好，ShardingSphere 基于分布式 SQL 提供的使用方式，利用 SQL HINT 和 DistSQL HINT， 为用户提供了无需编码就能实现的分片和强制路由功能。接下来，让我们一起了解下这两种使用方式。",
@@ -108,7 +108,7 @@
 <meta property="og:locale" content="en" /><meta property="og:image" content="https://example.com/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2022-04-01T19:33:02&#43;08:00" />
-    <meta property="article:modified_time" content="2023-02-06T14:15:17&#43;08:00" />
+    <meta property="article:modified_time" content="2023-02-06T14:51:52&#43;08:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -243,7 +243,7 @@
     
     
         
-        <time datetime="2023-02-06T14:15:17&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.6</time>
+        <time datetime="2023-02-06T14:51:52&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.6</time>
     
     
     
@@ -775,7 +775,7 @@ SELECT * FROM t_order;</p>
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-02-06 14:15:17 CST" style="cursor:help">
+        <span title="Updated @ 2023-02-06 14:51:52 CST" style="cursor:help">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-06</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-06</text></g></svg>
         </span></div>
