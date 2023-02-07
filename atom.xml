@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2023-02-06T14:54:15&#43;08:00</updated>
+    <updated>2023-02-07T15:01:11&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -17,24 +17,126 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
         <entry>
-            <title type="text">Docker</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/docker/" />
-            <id>https://example.com/posts/docker/</id>
-            <updated>2023-02-06T14:51:42&#43;08:00</updated>
-            <published>2022-06-22T18:12:49&#43;08:00</published>
+            <title type="text">DataTTL 相关调研</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/datattl/" />
+            <id>https://example.com/posts/datattl/</id>
+            <updated>2023-02-07T14:58:27&#43;08:00</updated>
+            <published>2023-02-06T11:46:34&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
                     <uri>https://io-oi.me/</uri>
                     <email>reuixiy@gmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">https://yeasy.gitbook.io/docker_practice/
-使用 dockerFile 创建镜像 FROM nginx RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &amp;gt; /usr/share/nginx/html/index.html 容器的使用 </summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">TiDB 使用 创建表时可以设置数据过期时间，然后后台定时任务删除相关数据
+产品文档：https://docs.pingcap.com/zh/tidb/dev/time-to-live
+功能列表 功能 备注 create 语句中增加 TTL 属性，指定表中数据的过期时间 create 语句中增加注释信息(兼容 MySQL)，包含 TTL 属性 alter 语句修改 TTL 属性 TTL 可以配合表中其它列的属性来使用 可以指定 TTL 任务时间间隔 PolarDB-X 创建 TTL 表，按照时间分区，定期删除和创建相关分区表
+产品文档： https://help.aliyun.com/document_detail/403528.html
+功能列表 功能 备注 对按照时间进行 range 分区的表，定时失效过期分区，定时提前创建分区 仅用在自动模式下的分区表上 支持通过 DDL 语句来定义相关分区的 TTL TTL表支持的时间分区列类型为：date、datetime； 所有的唯一键（包括主键）必须包含TTL表的local partition by range时间分区列；所有的唯一键（包括主键）必须包含TTL表的local partition by range时间分区列 支持查看分区信息以及过期时间等 information_schema.</summary>
             
-                <content type="html">&lt;p&gt;&lt;a href=&#34;https://yeasy.gitbook.io/docker_practice/&#34;&gt;https://yeasy.gitbook.io/docker_practice/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;使用-dockerfile-创建镜像&#34;&gt;使用 dockerFile 创建镜像&lt;/h1&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;FROM nginx
-RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &amp;gt; /usr/share/nginx/html/index.html
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;容器的使用&#34;&gt;容器的使用&lt;/h1&gt;
+                <content type="html">&lt;h1 id=&#34;tidb&#34;&gt;TiDB&lt;/h1&gt;
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+&lt;p&gt;创建表时可以设置数据过期时间，然后后台定时任务删除相关数据&lt;/p&gt;
+&lt;p&gt;产品文档：https://docs.pingcap.com/zh/tidb/dev/time-to-live&lt;/p&gt;
+&lt;h2 id=&#34;功能列表&#34;&gt;功能列表&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;create 语句中增加 TTL 属性，指定表中数据的过期时间&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;create 语句中增加注释信息(兼容 MySQL)，包含 TTL 属性&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;alter 语句修改 TTL 属性&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TTL 可以配合表中其它列的属性来使用&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;可以指定 TTL 任务时间间隔&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;polardb-x&#34;&gt;PolarDB-X&lt;/h1&gt;
+&lt;p&gt;创建 TTL 表，按照时间分区，定期删除和创建相关分区表&lt;/p&gt;
+&lt;p&gt;产品文档：
+&lt;a href=&#34;https://help.aliyun.com/document_detail/403528.html&#34;&gt;https://help.aliyun.com/document_detail/403528.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;功能列表-1&#34;&gt;功能列表&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;对按照时间进行 range 分区的表，定时失效过期分区，定时提前创建分区&lt;/td&gt;
+&lt;td&gt;仅用在自动模式下的分区表上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;支持通过 DDL 语句来定义相关分区的 TTL&lt;/td&gt;
+&lt;td&gt;TTL表支持的时间分区列类型为：date、datetime； 所有的唯一键（包括主键）必须包含TTL表的local partition by range时间分区列；所有的唯一键（包括主键）必须包含TTL表的local partition by range时间分区列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;支持查看分区信息以及过期时间等 information_schema.local_partitions&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;支持校验物理表的物理分区的完整性&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;支持 Alter 语句手动创建新分区表/删除过期分区表&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;支持普通表和 TTL 表互相转换&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;支持创建、查看、删除 TTL 定时任务&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;google-spanner&#34;&gt;Google Spanner&lt;/h1&gt;
+&lt;p&gt;创建表时可以设置行删除策略，后台任务扫描表并删除相关行&lt;/p&gt;
+&lt;p&gt;产品文档：https://cloud.google.com/spanner/docs/ttl?hl=zh-cn&lt;/p&gt;
+&lt;h2 id=&#34;功能列表-2&#34;&gt;功能列表&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;create 语句中增加行删除策略&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;alter 语句修改行删除策略&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;查看表的 TTL 删除情况&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </content>
             
             
@@ -53,7 +155,7 @@ RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &
             <title type="text">Add Yat Test for ShardingSphere</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/add-yat-test-for-shardingsphere/" />
             <id>https://example.com/posts/add-yat-test-for-shardingsphere/</id>
-            <updated>2023-02-06T14:51:31&#43;08:00</updated>
+            <updated>2023-02-07T15:00:15&#43;08:00</updated>
             <published>2022-06-22T17:44:41&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -270,10 +372,10 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
         </entry>
     
         <entry>
-            <title type="text">ModifyPr</title>
+            <title type="text">How to Modify Pr</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/modifypr/" />
             <id>https://example.com/posts/modifypr/</id>
-            <updated>2023-02-06T14:51:27&#43;08:00</updated>
+            <updated>2023-02-07T14:59:29&#43;08:00</updated>
             <published>2022-05-12T17:56:24&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -512,10 +614,10 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
         </entry>
     
         <entry>
-            <title type="text">HowToDebugPgAdmin4</title>
+            <title type="text">How To Debug PgAdmin4</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/howtodebugpgadmin4/" />
             <id>https://example.com/posts/howtodebugpgadmin4/</id>
-            <updated>2023-02-06T14:51:48&#43;08:00</updated>
+            <updated>2023-02-07T14:59:18&#43;08:00</updated>
             <published>2022-04-14T11:37:36&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -1326,10 +1428,10 @@ ORDER BY
         </entry>
     
         <entry>
-            <title type="text">Get_postgres_create_table_sql</title>
+            <title type="text">How to get postgres create table sql</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/get_postgres_create_table_sql/" />
             <id>https://example.com/posts/get_postgres_create_table_sql/</id>
-            <updated>2023-02-06T14:51:45&#43;08:00</updated>
+            <updated>2023-02-07T15:00:04&#43;08:00</updated>
             <published>2022-04-08T14:09:16&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
