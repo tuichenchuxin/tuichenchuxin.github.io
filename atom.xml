@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2023-02-20T19:09:51&#43;08:00</updated>
+    <updated>2023-02-21T18:17:12&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -1084,6 +1084,247 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
 &lt;li&gt;add schedule thread or zk watch to trigger collect data&lt;/li&gt;
 &lt;li&gt;support to use federation to query shardingsphere data&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">ShardingSphere PostgreSQL openGauss \d 支持方案</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/shardingsphere_sys_data_d/" />
+            <id>https://example.com/posts/shardingsphere_sys_data_d/</id>
+            <updated>2023-02-21T18:16:42&#43;08:00</updated>
+            <published>2022-11-04T18:09:40&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">PG \d 支持 \d 的现状 \d 实际执行的语句如下
+SELECT n.nspname as &amp;#34;Schema&amp;#34;, c.relname as &amp;#34;Name&amp;#34;, CASE c.relkind WHEN &amp;#39;r&amp;#39; THEN &amp;#39;table&amp;#39; WHEN &amp;#39;v&amp;#39; THEN &amp;#39;view&amp;#39; WHEN &amp;#39;i&amp;#39; THEN &amp;#39;index&amp;#39; WHEN &amp;#39;I&amp;#39; THEN &amp;#39;global partition index&amp;#39; WHEN &amp;#39;S&amp;#39; THEN &amp;#39;sequence&amp;#39; WHEN &amp;#39;L&amp;#39; THEN &amp;#39;large sequence&amp;#39; WHEN &amp;#39;f&amp;#39; THEN &amp;#39;foreign table&amp;#39; WHEN &amp;#39;m&amp;#39; THEN &amp;#39;materialized view&amp;#39; WHEN &amp;#39;e&amp;#39; THEN &amp;#39;stream&amp;#39; WHEN &amp;#39;o&amp;#39; THEN &amp;#39;contview&amp;#39; END as &amp;#34;Type&amp;#34;, pg_catalog.</summary>
+            
+                <content type="html">&lt;h1 id=&#34;pg-d-支持&#34;&gt;PG \d 支持&lt;/h1&gt;
+&lt;h1 id=&#34;d-的现状&#34;&gt;\d 的现状&lt;/h1&gt;
+&lt;p&gt;\d 实际执行的语句如下&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SELECT n.nspname as &amp;#34;Schema&amp;#34;,
+  c.relname as &amp;#34;Name&amp;#34;,
+  CASE c.relkind WHEN &amp;#39;r&amp;#39; THEN &amp;#39;table&amp;#39; WHEN &amp;#39;v&amp;#39; THEN &amp;#39;view&amp;#39; WHEN &amp;#39;i&amp;#39; THEN &amp;#39;index&amp;#39; WHEN &amp;#39;I&amp;#39; THEN &amp;#39;global partition index&amp;#39; WHEN &amp;#39;S&amp;#39; THEN &amp;#39;sequence&amp;#39; WHEN &amp;#39;L&amp;#39; THEN &amp;#39;large sequence&amp;#39; WHEN &amp;#39;f&amp;#39; THEN &amp;#39;foreign table&amp;#39; WHEN &amp;#39;m&amp;#39; THEN &amp;#39;materialized view&amp;#39;  WHEN &amp;#39;e&amp;#39; THEN &amp;#39;stream&amp;#39; WHEN &amp;#39;o&amp;#39; THEN &amp;#39;contview&amp;#39; END as &amp;#34;Type&amp;#34;,
+  pg_catalog.pg_get_userbyid(c.relowner) as &amp;#34;Owner&amp;#34;,
+  c.reloptions as &amp;#34;Storage&amp;#34;
+FROM pg_catalog.pg_class c
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relkind IN (&amp;#39;r&amp;#39;,&amp;#39;v&amp;#39;,&amp;#39;m&amp;#39;,&amp;#39;S&amp;#39;,&amp;#39;L&amp;#39;,&amp;#39;f&amp;#39;,&amp;#39;e&amp;#39;,&amp;#39;o&amp;#39;,&amp;#39;&amp;#39;)
+      AND n.nspname &amp;lt;&amp;gt; &amp;#39;pg_catalog&amp;#39;
+      AND n.nspname &amp;lt;&amp;gt; &amp;#39;db4ai&amp;#39;
+      AND n.nspname &amp;lt;&amp;gt; &amp;#39;information_schema&amp;#39;
+      AND n.nspname !~ &amp;#39;^pg_toast&amp;#39;
+      AND c.relname not like &amp;#39;matviewmap\_%&amp;#39;
+      AND c.relname not like &amp;#39;mlog\_%&amp;#39;
+  AND pg_catalog.pg_table_is_visible(c.oid)
+ORDER BY 1,2;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查询结果如下&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Schema |         Name         | Type  |  Owner  |             Storage
+--------+----------------------+-------+---------+----------------------------------
+ public | new_t_single_view    | view  | gaussdb |
+ public | student10w           | table | gaussdb | {orientation=row,compression=no}
+ public | t_broadcast_table    | table | gaussdb | {orientation=row,compression=no}
+ public | t_broadcast_view_new | view  | gaussdb |
+ public | t_encrypt            | table | gaussdb | {orientation=row,compression=no}
+ public | t_order_0            | table | gaussdb | {orientation=row,compression=no}
+ public | t_order_1            | table | gaussdb | {orientation=row,compression=no}
+ public | t_order_view_new_0   | view  | gaussdb |
+ public | t_order_view_new_1   | view  | gaussdb |
+ public | t_single             | table | gaussdb | {orientation=row,compression=no}
+(10 rows)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;涉及的系统表有&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pg_catalog.pg_class&lt;/code&gt;  &lt;code&gt;pg_catalog.pg_namespace&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;涉及的函数有&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pg_catalog.pg_get_userbyid(c.relowner)&lt;/code&gt;  &lt;code&gt;pg_catalog.pg_table_is_visible(c.oid)&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;方案设计&#34;&gt;方案设计&lt;/h1&gt;
+&lt;h2 id=&#34;方案概述&#34;&gt;方案概述&lt;/h2&gt;
+&lt;p&gt;利用之前的&lt;a href=&#34;https://tuichenchuxin.github.io/posts/shardingspheresysdatabase/&#34;&gt;ShardingSphere 内置数据库设计&lt;/a&gt;
+在系统库中增加对应的表，表结构和字段类型同原生的数据库一致，并做&lt;strong&gt;数据收集并装饰&lt;/strong&gt;，通过 federation 执行&lt;strong&gt;内存查询&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;治理中心结构&#34;&gt;治理中心结构&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/img/pgdzk.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;表的数据收集&#34;&gt;表的数据收集&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SELECT 
+  -- 数据库收集值
+  n.nspname as &amp;#34;Schema&amp;#34;,
+  -- 数据库收集值
+  c.relname as &amp;#34;Name&amp;#34;,
+  -- 数据库收集值
+  CASE c.relkind WHEN &amp;#39;r&amp;#39; THEN &amp;#39;table&amp;#39; WHEN &amp;#39;v&amp;#39; THEN &amp;#39;view&amp;#39; WHEN &amp;#39;i&amp;#39; THEN &amp;#39;index&amp;#39; WHEN &amp;#39;I&amp;#39; THEN &amp;#39;global partition index&amp;#39; WHEN &amp;#39;S&amp;#39; THEN &amp;#39;sequence&amp;#39; WHEN &amp;#39;L&amp;#39; THEN &amp;#39;large sequence&amp;#39; WHEN &amp;#39;f&amp;#39; THEN &amp;#39;foreign table&amp;#39; WHEN &amp;#39;m&amp;#39; THEN &amp;#39;materialized view&amp;#39;  WHEN &amp;#39;e&amp;#39; THEN &amp;#39;stream&amp;#39; WHEN &amp;#39;o&amp;#39; THEN &amp;#39;contview&amp;#39; END as &amp;#34;Type&amp;#34;,
+  -- 通过 calcite 注册函数，返回 ss 中的用户信息
+  pg_catalog.pg_get_userbyid(c.relowner) as &amp;#34;Owner&amp;#34;,
+  -- 数据库收集值
+  c.reloptions as &amp;#34;Storage&amp;#34;
+FROM pg_catalog.pg_class c
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relkind IN (&amp;#39;r&amp;#39;,&amp;#39;v&amp;#39;,&amp;#39;m&amp;#39;,&amp;#39;S&amp;#39;,&amp;#39;L&amp;#39;,&amp;#39;f&amp;#39;,&amp;#39;e&amp;#39;,&amp;#39;o&amp;#39;,&amp;#39;&amp;#39;)
+      AND n.nspname &amp;lt;&amp;gt; &amp;#39;pg_catalog&amp;#39;
+      AND n.nspname &amp;lt;&amp;gt; &amp;#39;db4ai&amp;#39;
+      AND n.nspname &amp;lt;&amp;gt; &amp;#39;information_schema&amp;#39;
+      AND n.nspname !~ &amp;#39;^pg_toast&amp;#39;
+      AND c.relname not like &amp;#39;matviewmap\_%&amp;#39;
+      AND c.relname not like &amp;#39;mlog\_%&amp;#39;
+      -- 通过 calcite 注册函数，mock 返回 true
+  AND pg_catalog.pg_table_is_visible(c.oid)
+ORDER BY 1,2;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;需要收集 &lt;code&gt;pg_class&lt;/code&gt; 和 &lt;code&gt;pg_namespace&lt;/code&gt; 的信息，并做一些值的装饰，例如 分片表需要替换表名。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pg_class&lt;/code&gt; 表&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://opengauss.org/zh/docs/3.1.0/docs/Developerguide/PG_CLASS.html&#34;&gt;https://opengauss.org/zh/docs/3.1.0/docs/Developerguide/PG_CLASS.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;黄色表示 \d 使用到的字段&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pg_namespace&lt;/code&gt; 表&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://opengauss.org/zh/docs/3.1.0/docs/Developerguide/PG_NAMESPACE.html&#34;&gt;https://opengauss.org/zh/docs/3.1.0/docs/Developerguide/PG_NAMESPACE.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关键问题及解决方法&#34;&gt;关键问题及解决方法&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;查询语句中的函数无法下推，如何使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通过 federation 注册函数解决 &lt;code&gt;pg_table_is_visible(c.oid)&lt;/code&gt; mock 返回 true，收集数据时就只收集 true 的部分；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pg_get_userbyid&lt;/code&gt; mock 返回 ss 中配置的用户；&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;pg_class 数据量比较大，只收集 \d 使用到的数据行内容。&lt;/li&gt;
+&lt;li&gt;查询中需要根据 pg_class 的 relnamespace 关联到 pg_namespace 中的 oid， 但是由于分布式系统，因此可能存在 pg_namespace oid 相同但是 nspname 却不同。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;需要新建一张系统 oid 映射关系表，通过 ss 生成 id 映射不同实例的 oid，在表存储时，需要存储 ss 生成的 oid。（需要进一步设计）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;针对 \d+ 是否能够支持&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SELECT n.nspname as &amp;#34;Schema&amp;#34;,
+  c.relname as &amp;#34;Name&amp;#34;,
+  CASE c.relkind WHEN &amp;#39;r&amp;#39; THEN &amp;#39;table&amp;#39; WHEN &amp;#39;v&amp;#39; THEN &amp;#39;view&amp;#39; WHEN &amp;#39;i&amp;#39; THEN &amp;#39;index&amp;#39; WHEN &amp;#39;I&amp;#39; THEN &amp;#39;global partition index&amp;#39; WHEN &amp;#39;S&amp;#39; THEN &amp;#39;sequence&amp;#39; WHEN &amp;#39;L&amp;#39; THEN &amp;#39;large sequence&amp;#39; WHEN &amp;#39;f&amp;#39; THEN &amp;#39;foreign table&amp;#39; WHEN &amp;#39;m&amp;#39; THEN &amp;#39;materialized view&amp;#39;  WHEN &amp;#39;e&amp;#39; THEN &amp;#39;stream&amp;#39; WHEN &amp;#39;o&amp;#39; THEN &amp;#39;contview&amp;#39; END as &amp;#34;Type&amp;#34;,
+  pg_catalog.pg_get_userbyid(c.relowner) as &amp;#34;Owner&amp;#34;,
+  -- 该值暂时无法支持显示，需要获取大小
+  pg_catalog.pg_size_pretty(pg_catalog.pg_table_size(c.oid)) as &amp;#34;Size&amp;#34;,
+  c.reloptions as &amp;#34;Storage&amp;#34;,
+  -- 该值依赖 pg_catalog.pg_description 表的收集以及 oid 的映射维护
+  -- select description from pg_catalog.pg_description where objoid = $1 and classoid = (select oid from pg_catalog.pg_class where relname = $2 and relnamespace = 11) and objsubid = 0
+  pg_catalog.obj_description(c.oid, &amp;#39;pg_class&amp;#39;) as &amp;#34;Description&amp;#34;
+FROM pg_catalog.pg_class c
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relkind IN (&amp;#39;r&amp;#39;,&amp;#39;v&amp;#39;,&amp;#39;m&amp;#39;,&amp;#39;S&amp;#39;,&amp;#39;L&amp;#39;,&amp;#39;f&amp;#39;,&amp;#39;e&amp;#39;,&amp;#39;o&amp;#39;,&amp;#39;&amp;#39;)
+      AND n.nspname &amp;lt;&amp;gt; &amp;#39;pg_catalog&amp;#39;
+      AND n.nspname &amp;lt;&amp;gt; &amp;#39;db4ai&amp;#39;
+      AND n.nspname &amp;lt;&amp;gt; &amp;#39;information_schema&amp;#39;
+      AND n.nspname !~ &amp;#39;^pg_toast&amp;#39;
+      AND c.relname not like &amp;#39;matviewmap\_%&amp;#39;
+      AND c.relname not like &amp;#39;mlog\_%&amp;#39;
+  AND pg_catalog.pg_table_is_visible(c.oid)
+ORDER BY 1,2;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;附录&#34;&gt;附录&lt;/h2&gt;
+&lt;h3 id=&#34;系统函数分析&#34;&gt;系统函数分析&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;pg_get_userbyid&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;对应源码为&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/* ----------
+ * pg_get_userbyid    - Get a user name by roleid and
+ *            fallback to &amp;#39;unknown (OID=n)&amp;#39;
+ * ----------
+ */
+Datum
+pg_get_userbyid(PG_FUNCTION_ARGS)
+{
+   Oid          roleid = PG_GETARG_OID(0);
+   Name      result;
+   HeapTuple  roletup;
+   Form_pg_authid role_rec;
+
+   /*
+    * Allocate space for the result
+    */
+   result = (Name) palloc(NAMEDATALEN);
+   memset(NameStr(*result), 0, NAMEDATALEN);
+
+   /*
+    * Get the pg_authid entry and print the result
+    */
+   roletup = SearchSysCache1(AUTHOID, ObjectIdGetDatum(roleid));
+   if (HeapTupleIsValid(roletup))
+   {
+      role_rec = (Form_pg_authid) GETSTRUCT(roletup);
+      *result = role_rec-&amp;gt;rolname;
+      ReleaseSysCache(roletup);
+   }
+   else
+      sprintf(NameStr(*result), &amp;#34;unknown (OID=%u)&amp;#34;, roleid);
+
+   PG_RETURN_NAME(result);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以用以下语句获取&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;strong&amp;gt;select&amp;lt;/strong&amp;gt; oid,rolname &amp;lt;strong&amp;gt;from&amp;lt;/strong&amp;gt; pg_authid where oid = 1234
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;pg_table_is_visible(c.oid)&lt;/code&gt; 函数对应源码如下&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/*
+ * RelationIsVisible
+ *    Determine whether a relation (identified by OID) is visible in the
+ *    current search path.  Visible means &amp;#34;would be found by searching
+ *    for the unqualified relation name&amp;#34;.
+ */
+bool
+RelationIsVisible(Oid relid)
+{
+   HeapTuple  reltup;
+   Form_pg_class relform;
+   Oid          relnamespace;
+   bool      visible;
+
+   reltup = SearchSysCache1(&amp;lt;em&amp;gt;RELOID&amp;lt;/em&amp;gt;, ObjectIdGetDatum(relid));
+   if (!HeapTupleIsValid(reltup))
+      elog(ERROR, &amp;#34;cache lookup failed for relation %u&amp;#34;, relid);
+   relform = (Form_pg_class) GETSTRUCT(reltup);
+
+   recomputeNamespacePath();
+
+   /*
+    * Quick check: if it ain&amp;#39;t in the path at all, it ain&amp;#39;t visible. Items in
+    * the system namespace are surely in the path and so we needn&amp;#39;t even do
+    * list_member_oid() for them.
+    */
+   relnamespace = relform-&amp;gt;relnamespace;
+   if (relnamespace != PG_CATALOG_NAMESPACE &amp;amp;&amp;amp;
+      !list_member_oid(activeSearchPath, relnamespace))
+      visible = false;
+   else
+   {
+      /*
+       * If it is in the path, it might still not be visible; it could be
+       * hidden by another relation of the same name earlier in the path. So
+       * we must do a slow check for conflicting relations.
+       */
+      char      *relname = NameStr(relform-&amp;gt;relname);
+      ListCell   *l;
+
+      visible = false;
+      foreach(l, activeSearchPath)
+      {
+         Oid          namespaceId = lfirst_oid(l);
+
+         if (namespaceId == relnamespace)
+         {
+            /* Found it first in path */
+            visible = true;
+            break;
+         }
+         if (OidIsValid(get_relname_relid(relname, namespaceId)))
+         {
+            /* Found something else first in path */
+            break;
+         }
+      }
+   }
+
+   ReleaseSysCache(reltup);
+
+   return visible;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
 </content>
             
             
