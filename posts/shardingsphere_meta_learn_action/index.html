@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.107.0"><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>ShardingSphere 元数据能力增强解读与实战 | tuichenchuxin&#39;s blog</title>
+
+    <link rel="stylesheet" href="/css/meme.min.21d090babe38ec6e5e83b6b1417c76df8072fac00bb8567a38d6830adc09ca44.css"/>
+
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.fc809fffaa543135a6bfdd43e4180d4873c68c487f45bdeca252054177da0d94.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM&#43;Plex&#43;Serif:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;family=Comfortaa:wght@700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM&#43;Plex&#43;Serif:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;family=Comfortaa:wght@700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="reuixiy" /><meta name="description" content="Apache ShardingSphere 元数据介绍 Apache ShardingSphere 的元数据主要包括规则、数据源、表结构等信息。规则信息可能包含分片、加密、读写分离、事务、高可用等。 数据源信息存储的是需要通过 ShardingSphere 来进行管理的底层数据库资源。表结构信息主要就是底层数据源的表结构，包括表的 column 信息、索引信息等。
+Apache ShardingSphere 通过这些元数据信息配合治理中心的能力，例如 zookeeper、etcd 的存储和通知能力，可以实现集群内配置的共享和变更，从而实现计算节点的水平扩展。同时元数据信息对于 ShardingSphere 而言也是至关重要的，以表的数据结构为例，ShardingSphere 利用表的数据结构可以对采用了加密规则的 SQL 进行正确的改写，内核中的 federation 引擎也会利用表结构信息进行 SQL 优化。
+既然 ShardingSphere 的元数据如此重要，那么我们该怎么入手了解元数据呢？
+Apache ShardingSphere 三层元数据结构 ShardingSphere 的三层元数据结构是个了解元数据信息的很好入口。我们可以启动 ShardingSphere–proxy 的 cluster 模式，这样可以在 zookeeper 中直观的看到 ShardingSphere 的三层元数据结构。 如下结构展示了 ShardingSphere 元数据在 zookeeper 中的结构" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="tuichenchuxin&#39;s blog" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="tuichenchuxin&#39;s blog" />
+    <meta name="msapplication-starturl" content="../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://example.com/posts/shardingsphere_meta_learn_action/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2023-03-06T09:14:47+08:00",
+        "dateModified": "2023-03-09T19:28:16+08:00",
+        "url": "https://example.com/posts/shardingsphere_meta_learn_action/",
+        "headline": "ShardingSphere 元数据能力增强解读与实战",
+        "description": "Apache ShardingSphere 元数据介绍 Apache ShardingSphere 的元数据主要包括规则、数据源、表结构等信息。规则信息可能包含分片、加密、读写分离、事务、高可用等。 数据源信息存储的是需要通过 ShardingSphere 来进行管理的底层数据库资源。表结构信息主要就是底层数据源的表结构，包括表的 column 信息、索引信息等。\nApache ShardingSphere 通过这些元数据信息配合治理中心的能力，例如 zookeeper、etcd 的存储和通知能力，可以实现集群内配置的共享和变更，从而实现计算节点的水平扩展。同时元数据信息对于 ShardingSphere 而言也是至关重要的，以表的数据结构为例，ShardingSphere 利用表的数据结构可以对采用了加密规则的 SQL 进行正确的改写，内核中的 federation 引擎也会利用表结构信息进行 SQL 优化。\n既然 ShardingSphere 的元数据如此重要，那么我们该怎么入手了解元数据呢？\nApache ShardingSphere 三层元数据结构 ShardingSphere 的三层元数据结构是个了解元数据信息的很好入口。我们可以启动 ShardingSphere–proxy 的 cluster 模式，这样可以在 zookeeper 中直观的看到 ShardingSphere 的三层元数据结构。 如下结构展示了 ShardingSphere 元数据在 zookeeper 中的结构",
+        "inLanguage" : "en",
+        "articleSection": "posts",
+        "wordCount":  1502 ,
+        "image": "https://example.com/icons/apple-touch-icon.png",
+        "author": {
+            "@type": "Person",
+            "description": "Viva La Vida",
+            "email": "reuixiy@gmail.com",
+            "image": "https://example.com/icons/apple-touch-icon.png",
+            "url": "https://io-oi.me/",
+            "name": "reuixiy"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "tuichenchuxin's blog",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://example.com/icons/apple-touch-icon.png"
+            },
+            "url": "https://example.com/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://example.com/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:site" content="@reuixiy" />
+<meta name="twitter:creator" content="@reuixiy" />
+
+    
+
+
+
+<meta property="og:title" content="ShardingSphere 元数据能力增强解读与实战" />
+<meta property="og:description" content="Apache ShardingSphere 元数据介绍 Apache ShardingSphere 的元数据主要包括规则、数据源、表结构等信息。规则信息可能包含分片、加密、读写分离、事务、高可用等。 数据源信息存储的是需要通过 ShardingSphere 来进行管理的底层数据库资源。表结构信息主要就是底层数据源的表结构，包括表的 column 信息、索引信息等。
+Apache ShardingSphere 通过这些元数据信息配合治理中心的能力，例如 zookeeper、etcd 的存储和通知能力，可以实现集群内配置的共享和变更，从而实现计算节点的水平扩展。同时元数据信息对于 ShardingSphere 而言也是至关重要的，以表的数据结构为例，ShardingSphere 利用表的数据结构可以对采用了加密规则的 SQL 进行正确的改写，内核中的 federation 引擎也会利用表结构信息进行 SQL 优化。
+既然 ShardingSphere 的元数据如此重要，那么我们该怎么入手了解元数据呢？
+Apache ShardingSphere 三层元数据结构 ShardingSphere 的三层元数据结构是个了解元数据信息的很好入口。我们可以启动 ShardingSphere–proxy 的 cluster 模式，这样可以在 zookeeper 中直观的看到 ShardingSphere 的三层元数据结构。 如下结构展示了 ShardingSphere 元数据在 zookeeper 中的结构" />
+<meta property="og:url" content="https://example.com/posts/shardingsphere_meta_learn_action/" />
+<meta property="og:site_name" content="tuichenchuxin&#39;s blog" />
+<meta property="og:locale" content="en" /><meta property="og:image" content="https://example.com/icons/apple-touch-icon.png" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2023-03-06T09:14:47&#43;08:00" />
+    <meta property="article:modified_time" content="2023-03-09T19:28:16&#43;08:00" />
+    
+    <meta property="article:section" content="posts" />
+
+
+
+    
+    
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">tuichenchuxin&#39;s blog</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">Posts</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/categories/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon th"><path d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255 0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm386.667-56H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24z"/></svg><span class="menu-item-name">Categories</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/tags/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon tags"><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg><span class="menu-item-name">Tags</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class="menu-item-name">About</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+            
+                <li class="menu-item search-item">
+                        <form id="search" class="search" role="search">
+    <label for="search-input"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon search-icon"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></label>
+    <input type="search" id="search-input" class="search-input">
+</form>
+
+<template id="search-result" hidden>
+    <article class="content post">
+        <h2 class="post-title"><a class="summary-title-link"></a></h2>
+        <summary class="summary"></summary>
+        <div class="read-more-container">
+            <a class="read-more-link">Read More »</a>
+        </div>
+    </article>
+</template>
+
+                    </li>
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    <div class="main-inner">
+
+        
+
+        <article class="content post h-entry" data-small-caps="true" data-align="default" data-type="posts" data-toc-num="true">
+
+            <h1 class="post-title p-name">ShardingSphere 元数据能力增强解读与实战</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2023-03-06T09:14:47&#43;08:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2023.3.6</time>
+    
+    
+        
+        <time datetime="2023-03-09T19:28:16&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.3.9</time>
+    
+    
+    
+        
+        
+        
+            
+        
+    
+    
+        
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;1502</span>
+    
+    
+        
+        <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;8&nbsp;mins</span>
+    
+    
+    
+</div>
+
+            
+
+            <div class="post-body e-content">
+                <h2 id="apache-shardingsphere-元数据介绍"><a href="#apache-shardingsphere-元数据介绍" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Apache ShardingSphere 元数据介绍</h2>
+<p style="text-indent:0"><span class="drop-cap">A</span>pache ShardingSphere 的元数据主要包括规则、数据源、表结构等信息。规则信息可能包含分片、加密、读写分离、事务、高可用等。
+数据源信息存储的是需要通过 ShardingSphere 来进行管理的底层数据库资源。表结构信息主要就是底层数据源的表结构，包括表的 column 信息、索引信息等。</p>
+<p>Apache ShardingSphere 通过这些元数据信息配合治理中心的能力，例如 zookeeper、etcd 的存储和通知能力，可以实现集群内配置的共享和变更，从而实现计算节点的水平扩展。同时元数据信息对于 ShardingSphere 而言也是至关重要的，以表的数据结构为例，ShardingSphere 利用表的数据结构可以对采用了加密规则的 SQL 进行正确的改写，内核中的 federation 引擎也会利用表结构信息进行 SQL 优化。</p>
+<p>既然 ShardingSphere 的元数据如此重要，那么我们该怎么入手了解元数据呢？</p>
+<h2 id="apache-shardingsphere-三层元数据结构"><a href="#apache-shardingsphere-三层元数据结构" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Apache ShardingSphere 三层元数据结构</h2>
+<p>ShardingSphere 的三层元数据结构是个了解元数据信息的很好入口。我们可以启动 ShardingSphere&ndash;proxy 的 cluster 模式，这样可以在 zookeeper 中直观的看到 ShardingSphere 的三层元数据结构。
+如下结构展示了 ShardingSphere 元数据在 zookeeper 中的结构</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">governance_ds</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>--<span class="l">metadata (元数据信息)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-<span class="l">sharding_db (逻辑库名称)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---<span class="l">active_version (当前生效的版本)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---<span class="l">versions</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-----<span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-------<span class="l">data_sources (底层数据库信息)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-------<span class="l">rules (逻辑库的规则信息，例如分片规则，加密规则等)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---<span class="l">schemas (表、视图信息)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-----<span class="l">sharding_db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-------<span class="l">tables</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">t_order</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">t_single</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-------<span class="l">views</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-<span class="l">shardingsphere (内置元数据库)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---<span class="l">schemas</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-----<span class="l">shardingsphere</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-------<span class="l">tables</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">sharding_table_statics (分片统计信息表)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">cluster_information （版本信息）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-<span class="l">performance_schema (模拟 mysql 数据库)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---<span class="l">schemas</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-----<span class="l">performance_schema</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-------<span class="l">tables</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">accounts</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-<span class="l">information_schema (模拟 mysql 数据库)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---<span class="l">schemas</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-----<span class="l">information_schema</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-------<span class="l">tables</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">tables</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">schemata</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">engines</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">routines</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">parameters</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">views</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-<span class="l">mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-<span class="l">sys</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>--<span class="l">sys_data (内置元数据库的具体行信息)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-<span class="l">shardingsphere</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---<span class="l">schemas</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-----<span class="l">shardingsphere</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-------<span class="l">tables</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">sharding_table_statistics</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-----------<span class="l">79ff60bc40ab09395bed54cfecd08f94</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-----------<span class="l">e832393209c9a4e7e117664c5ff8fc61</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>---------<span class="l">cluster_information</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span>-----------<span class="l">d387c4f7de791e34d206f7dd59e24c1c</span><span class="w">
+</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>上图展示了 ShardingSphere 的元数据结构信息，内容非常丰富，不过我们也不用担心，只要了解了大的节点信息，就可以根据逻辑推测出其它相关信息。</p>
+<p>我们首先关注下 metadata 节点，下方的 active_version 中展示了当前生效的元数据版本，然后在 versions 节点下我们可以找到生效的版本 0 ， 在这个生效版本节点下存储了规则和数据库的连接信息。
+schemas 节点下存储了该逻辑库下的表和视图的具体信息，值得一提的是，ShardingSphere 存储的表结构信息是经过规则装饰后的表结构信息，例如分片表只会根据其中一片真实表获取结构，然后替换表名称，如果是加密规则，也不会在表结构中展示真实的加密列信息。这样做的目的是为了让用户完全面向逻辑库来进行相关操作。</p>
+<p>对于 metadata 下的 shardingsphere 节点，该节点也跟逻辑库的结构类似，只不过这里存储的是 ShardingSphere 内置的一些表结构，例如  sharding_table_statics （分片统计信息表）、cluster_information （版本信息表）等。这一块内容后面的内置元数据库会再进一步展开讲讲。</p>
+<p>至于 performance_schema、information_schema、mysql、sys 等节点都是用来模拟 mysql 的数据字典而建立的。当然如果用户的前端协议是 PostgreSQL， 那么这些数据字典也会变更为 PostgreSQL 的数据字典。目前数据字典这边主要用于支持各种客户端工具直接连接 proxy，未来会进一步增加数据收集从而支持对于这些数据字典的查询。这一块也会在后面的元数据库内容中做进一步介绍。</p>
+<p>可能有同学看到我们的数据结构会比较好奇，为什么在 sharding_db 的逻辑库下还有一层 sharding_db 呢？为什么不直接把 tables 节点放置在 sharding_db 下呢？其实这也就是 ShardingSphere 三层元数据结构的由来，ShardingSphere 是一个数据库的上层平台，因此需要兼容多种数据库格式，MySQL 的确是两层结构的，但是对于 PostgreSQL 而言，它是三层结构的，由 实例 和 database 以及 schema 组成，因此为了兼容性，ShardingSphere 使用了三层数据库结构，对于 MySQL，ShardingSphere 增加了一个相同的逻辑 schema 层，从而保证逻辑的统一性。</p>
+<p>在了解了 metadata 的结构之后，相信细心的同学也发现了 sys_data 节点。那么这个节点的作用是什么呢？让我们走进 ShardingSphere 的内置元数据库。</p>
+<h2 id="apache-shardingsphere-内置元数据库"><a href="#apache-shardingsphere-内置元数据库" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Apache ShardingSphere 内置元数据库</h2>
+<h3 id="内置元数据库简介"><a href="#内置元数据库简介" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>内置元数据库简介</h3>
+<p>内置元数据库是什么？其实我们从上面的节点中就能猜出来，在 metadata 节点下有一个 shardingsphere 节点，该节点下目前存在着两张表，sharding_table_statics （分片信息收集表），cluster_information （版本信息表）。可能有同学会说他们都是 ShardingSphere 内部信息的收集表，的确 ShardingSphere 内置元数据库的设计目标之一就是存储内部收集信息服务于功能和用户，另外，内置元数据库还可以用来存储用户设置的信息（暂未实现）。</p>
+<p>说了这么多，肯定有同学好奇，sys_data 节点的作用是什么。ShardingSphere 将表的结构信息存储在 metadata 中，表的行信息存储在 sys_data 中。我们可以看到 sys_data 节点下的多个 id，其实他们就是该表的每一行，具体行的内容就存储在该节点之下。</p>
+<p>通过在 metadata 中存储表结构，在 sys_data 中存储表的内容，我们就可以实现通过 sql 直接查询内置元数据库表的信息了。例如我们可以通过如下 SQL 直接查询出当前的版本信息。</p>
+<pre tabindex="0"><code>mysql&gt; select * from shardingsphere.cluster_information;
++----------------+
+| version        |
++----------------+
+| 5.3.2-SNAPSHOT |
++----------------+
+1 row in set (3.35 sec)
+</code></pre><p>我们还可以直接查询出某个真实表的统计信息。</p>
+<pre tabindex="0"><code>mysql&gt; select * from shardingsphere.sharding_table_statistics where actual_table_name = &#34;t_order_1&#34;\G
+*************************** 1. row ***************************
+                  id: 2
+ logic_database_name: sharding_db
+    logic_table_name: t_order
+actual_database_name: ds_0
+   actual_table_name: t_order_1
+           row_count: 0
+                size: 16384
+*************************** 2. row ***************************
+                  id: 4
+ logic_database_name: sharding_db
+    logic_table_name: t_order
+actual_database_name: ds_1
+   actual_table_name: t_order_1
+           row_count: 0
+                size: 16384
+2 rows in set (0.39 sec)
+</code></pre><p>那么元数据库的功能是如何实现的呢？</p>
+<h3 id="内置数据库的工作原理"><a href="#内置数据库的工作原理" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>内置数据库的工作原理</h3>
+<p>内置元数据库功能的实现主要依赖两个方面，一是数据收集，二是查询实现。</p>
+<p>数据收集主要需要考虑如何将数据采集到内存，同时还需要考虑如何将内存信息同步到治理中心来保证集群间的同步。如何将数据采集到内存中，以 sharding_table_statistics 表的数据采集为例。从 <code>ShardingSphereDataCollector</code> 接口出发，我们看到该类有一个数据收集的方法。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * ShardingSphere data collector.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@SingletonSPI</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ShardingSphereDataCollector</span> <span class="kd">extends</span> <span class="n">TypedSPI</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Collect.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param databaseName database name
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param table table
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param shardingSphereDatabases ShardingSphere databases
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return ShardingSphere table data
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @throws SQLException sql exception
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Optional</span><span class="o">&lt;</span><span class="n">ShardingSphereTableData</span><span class="o">&gt;</span> <span class="nf">collect</span><span class="o">(</span><span class="n">String</span> <span class="n">databaseName</span><span class="o">,</span> <span class="n">ShardingSphereTable</span> <span class="n">table</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">ShardingSphereDatabase</span><span class="o">&gt;</span> <span class="n">shardingSphereDatabases</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">SQLException</span><span class="o">;</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>查询该接口的调用方，我们可以看到是 <code>ShardingSphereDataCollectorRunnable</code> 定时任务在调用。没错，当前的实现方式是在 proxy 端启动定时任务来进行数据收集，根据内置元数据表来区分不同的数据收集器进行数据采集。未来会根据社区用户反馈，可能将这一部分做成 e-job 触发的方式来进行收集。
+<code>ShardingStatisticsTableCollector</code> 类中具体展示了收集信息的逻辑。主要就是利用底层数据源和分片规则去查询数据库信息从而获取统计信息。</p>
+<p>在数据收集完成后，<code>ShardingSphereDataScheduleCollector</code> 类会根据收集到的信息跟内存中的信息做比对，如果发现不一致，那么会通过 EVENTBUS 发送事件给治理中心模块，治理中心收到事件后，会更新其它节点的信息，并做内存同步。监听事件类的代码如下。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * ShardingSphere schema data registry subscriber.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;UnstableApiUsage&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">ShardingSphereSchemaDataRegistrySubscriber</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">ShardingSphereDataPersistService</span> <span class="n">persistService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">GlobalLockPersistService</span> <span class="n">lockPersistService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">ShardingSphereSchemaDataRegistrySubscriber</span><span class="o">(</span><span class="kd">final</span> <span class="n">ClusterPersistRepository</span> <span class="n">repository</span><span class="o">,</span> <span class="kd">final</span> <span class="n">GlobalLockPersistService</span> <span class="n">globalLockPersistService</span><span class="o">,</span> <span class="kd">final</span> <span class="n">EventBusContext</span> <span class="n">eventBusContext</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">persistService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ShardingSphereDataPersistService</span><span class="o">(</span><span class="n">repository</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lockPersistService</span> <span class="o">=</span> <span class="n">globalLockPersistService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">eventBusContext</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Update when ShardingSphere schema data altered.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param event schema altered event
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Subscribe</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="kd">final</span> <span class="n">ShardingSphereSchemaDataAlteredEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">databaseName</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getDatabaseName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">schemaName</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getSchemaName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">GlobalLockDefinition</span> <span class="n">lockDefinition</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GlobalLockDefinition</span><span class="o">(</span><span class="s">&#34;sys_data_&#34;</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="na">getDatabaseName</span><span class="o">()</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="na">getSchemaName</span><span class="o">()</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="na">getTableName</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">lockPersistService</span><span class="o">.</span><span class="na">tryLock</span><span class="o">(</span><span class="n">lockDefinition</span><span class="o">,</span> <span class="mi">10_000</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">persistService</span><span class="o">.</span><span class="na">getTableRowDataPersistService</span><span class="o">().</span><span class="na">persist</span><span class="o">(</span><span class="n">databaseName</span><span class="o">,</span> <span class="n">schemaName</span><span class="o">,</span> <span class="n">event</span><span class="o">.</span><span class="na">getTableName</span><span class="o">(),</span> <span class="n">event</span><span class="o">.</span><span class="na">getAddedRows</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">                <span class="n">persistService</span><span class="o">.</span><span class="na">getTableRowDataPersistService</span><span class="o">().</span><span class="na">persist</span><span class="o">(</span><span class="n">databaseName</span><span class="o">,</span> <span class="n">schemaName</span><span class="o">,</span> <span class="n">event</span><span class="o">.</span><span class="na">getTableName</span><span class="o">(),</span> <span class="n">event</span><span class="o">.</span><span class="na">getUpdatedRows</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">                <span class="n">persistService</span><span class="o">.</span><span class="na">getTableRowDataPersistService</span><span class="o">().</span><span class="na">delete</span><span class="o">(</span><span class="n">databaseName</span><span class="o">,</span> <span class="n">schemaName</span><span class="o">,</span> <span class="n">event</span><span class="o">.</span><span class="na">getTableName</span><span class="o">(),</span> <span class="n">event</span><span class="o">.</span><span class="na">getDeletedRows</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">lockPersistService</span><span class="o">.</span><span class="na">unlock</span><span class="o">(</span><span class="n">lockDefinition</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>如上述代码所示，在事件接受后，当前节点会更新治理中心的信息，当节点信息发生变更后，依赖 zookeeper/etcd 的通知能力，集群中的其它节点会收到治理中心的变更，并在如下代码中更新自己节点的内存信息。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * ShardingSphere data changed watcher.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">ShardingSphereDataChangedWatcher</span> <span class="kd">implements</span> <span class="n">GovernanceWatcher</span><span class="o">&lt;</span><span class="n">GovernanceEvent</span><span class="o">&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">getWatchingKeys</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">databaseName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Collections</span><span class="o">.</span><span class="na">singleton</span><span class="o">(</span><span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getShardingSphereDataNodePath</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;</span> <span class="nf">getWatchingTypes</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">Type</span><span class="o">.</span><span class="na">ADDED</span><span class="o">,</span> <span class="n">Type</span><span class="o">.</span><span class="na">UPDATED</span><span class="o">,</span> <span class="n">Type</span><span class="o">.</span><span class="na">DELETED</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">GovernanceEvent</span><span class="o">&gt;</span> <span class="nf">createGovernanceEvent</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">isDatabaseChanged</span><span class="o">(</span><span class="n">event</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">createDatabaseChangedEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">isSchemaChanged</span><span class="o">(</span><span class="n">event</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">createSchemaChangedEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">isTableChanged</span><span class="o">(</span><span class="n">event</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">createTableChangedEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">isTableRowDataChanged</span><span class="o">(</span><span class="n">event</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">createRowDataChangedEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">empty</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isDatabaseChanged</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getDatabaseName</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">()).</span><span class="na">isPresent</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isSchemaChanged</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getDatabaseNameByDatabasePath</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">()).</span><span class="na">isPresent</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getSchemaName</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">()).</span><span class="na">isPresent</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isTableChanged</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">databaseName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getDatabaseNameByDatabasePath</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">schemaName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getSchemaNameBySchemaPath</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tableName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getTableName</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">databaseName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">schemaName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">tableName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isTableRowDataChanged</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getRowUniqueKey</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">()).</span><span class="na">isPresent</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">GovernanceEvent</span><span class="o">&gt;</span> <span class="nf">createDatabaseChangedEvent</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">databaseName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getDatabaseName</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Type</span><span class="o">.</span><span class="na">ADDED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">()</span> <span class="o">||</span> <span class="n">Type</span><span class="o">.</span><span class="na">UPDATED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="n">DatabaseDataAddedEvent</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">get</span><span class="o">()));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Type</span><span class="o">.</span><span class="na">DELETED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="n">DatabaseDataDeletedEvent</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">get</span><span class="o">()));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">empty</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">GovernanceEvent</span><span class="o">&gt;</span> <span class="nf">createSchemaChangedEvent</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">databaseName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getDatabaseNameByDatabasePath</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">schemaName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getSchemaName</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">schemaName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Type</span><span class="o">.</span><span class="na">ADDED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">()</span> <span class="o">||</span> <span class="n">Type</span><span class="o">.</span><span class="na">UPDATED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="n">SchemaDataAddedEvent</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">schemaName</span><span class="o">.</span><span class="na">get</span><span class="o">()));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Type</span><span class="o">.</span><span class="na">DELETED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="n">SchemaDataDeletedEvent</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">schemaName</span><span class="o">.</span><span class="na">get</span><span class="o">()));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">empty</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">GovernanceEvent</span><span class="o">&gt;</span> <span class="nf">createTableChangedEvent</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">databaseName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getDatabaseNameByDatabasePath</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">schemaName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getSchemaNameBySchemaPath</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">schemaName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">doCreateTableChangedEvent</span><span class="o">(</span><span class="n">event</span><span class="o">,</span> <span class="n">databaseName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">schemaName</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">GovernanceEvent</span><span class="o">&gt;</span> <span class="nf">doCreateTableChangedEvent</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">databaseName</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">schemaName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tableName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getTableName</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">tableName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Type</span><span class="o">.</span><span class="na">ADDED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">()</span> <span class="o">||</span> <span class="n">Type</span><span class="o">.</span><span class="na">UPDATED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="n">TableDataChangedEvent</span><span class="o">(</span><span class="n">databaseName</span><span class="o">,</span> <span class="n">schemaName</span><span class="o">,</span> <span class="n">tableName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="kc">null</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Type</span><span class="o">.</span><span class="na">DELETED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="n">TableDataChangedEvent</span><span class="o">(</span><span class="n">databaseName</span><span class="o">,</span> <span class="n">schemaName</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">tableName</span><span class="o">.</span><span class="na">get</span><span class="o">()));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">empty</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">GovernanceEvent</span><span class="o">&gt;</span> <span class="nf">createRowDataChangedEvent</span><span class="o">(</span><span class="kd">final</span> <span class="n">DataChangedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">databaseName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getDatabaseNameByDatabasePath</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">schemaName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getSchemaNameBySchemaPath</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">schemaName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tableName</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getTableNameByRowPath</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">tableName</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">rowPath</span> <span class="o">=</span> <span class="n">ShardingSphereDataNode</span><span class="o">.</span><span class="na">getRowUniqueKey</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">rowPath</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Type</span><span class="o">.</span><span class="na">ADDED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">()</span> <span class="o">||</span> <span class="n">Type</span><span class="o">.</span><span class="na">UPDATED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">Strings</span><span class="o">.</span><span class="na">isNullOrEmpty</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getValue</span><span class="o">()))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">YamlShardingSphereRowData</span> <span class="n">yamlShardingSphereRowData</span> <span class="o">=</span> <span class="n">YamlEngine</span><span class="o">.</span><span class="na">unmarshal</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">YamlShardingSphereRowData</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="n">ShardingSphereRowDataChangedEvent</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">schemaName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">tableName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">yamlShardingSphereRowData</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Type</span><span class="o">.</span><span class="na">DELETED</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="n">ShardingSphereRowDataDeletedEvent</span><span class="o">(</span><span class="n">databaseName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">schemaName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">tableName</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="n">rowPath</span><span class="o">.</span><span class="na">get</span><span class="o">()));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">empty</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>经过上述流程，我们就完成了元数据库信息的收集。</p>
+<p>那么内置元数据库是如何支持用户查询的呢？其实就是利用了 ShardingSphere 内置的 federation 引擎实现的。federation 引擎借助 calcite 的能力，可以将内存中的数据结构注册到 calcite 上，通过 calcite 将 sql 查询转化为内存的查询，从而实现 SQL 语句直接返回结果。
+在 <code>FilterableTableScanExecutor</code> 类中，我们可以看到如果用户查询的表在内置元数据库中，那么会采用内存查询。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Enumerable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">[]&gt;</span> <span class="nf">executeByShardingSphereData</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">databaseName</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">schemaName</span><span class="o">,</span> <span class="kd">final</span> <span class="n">ShardingSphereTable</span> <span class="n">table</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">ShardingSphereTableData</span><span class="o">&gt;</span> <span class="n">tableData</span> <span class="o">=</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">getDatabaseData</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="n">databaseName</span><span class="o">)).</span><span class="na">map</span><span class="o">(</span><span class="n">optional</span> <span class="o">-&gt;</span> <span class="n">optional</span><span class="o">.</span><span class="na">getSchemaData</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="n">schemaName</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">ShardingSphereSchemaData</span><span class="o">::</span><span class="n">getTableData</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">shardingSphereData</span> <span class="o">-&gt;</span> <span class="n">shardingSphereData</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">tableData</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">this</span><span class="o">::</span><span class="n">createMemoryEnumerator</span><span class="o">).</span><span class="na">orElseGet</span><span class="o">(</span><span class="k">this</span><span class="o">::</span><span class="n">createEmptyEnumerable</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Enumerable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">[]&gt;</span> <span class="nf">createMemoryEnumerator</span><span class="o">(</span><span class="kd">final</span> <span class="n">ShardingSphereTableData</span> <span class="n">tableData</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">AbstractEnumerable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">[]&gt;()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="n">Enumerator</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">[]&gt;</span> <span class="nf">enumerator</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="k">new</span> <span class="n">MemoryEnumerator</span><span class="o">&lt;&gt;(</span><span class="n">tableData</span><span class="o">.</span><span class="na">getRows</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">};</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>当然 federation 引擎还提供了其它更强大的功能，例如跨库查询、复杂子查询等，当前 federation 也在快速迭代中，欢迎社区小伙伴前来贡献。</p>
+<p>在了解了内置元数据库的基本实现原理后，我们就可以利用内置元数据库实现更多更丰富的功能了。例如支持 PostgreSQL 客户端的 \d 查询。</p>
+<h3 id="postgresql-d-的查询支持"><a href="#postgresql-d-的查询支持" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>PostgreSQL \d 的查询支持</h3>
+<p>PostgreSQL \d 是 PG 客户端常用的命令之一，要实现 \d 的查询，其实就是需要实现它对应的 SQL，并且需要对数据做一定的装饰，例如分片表替换成逻辑表。</p>
+<p>\d 实际的执行语句如下</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">nspname</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s2">&#34;Schema&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">c</span><span class="p">.</span><span class="n">relname</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s2">&#34;Name&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">CASE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">relkind</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;table&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;v&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;view&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;i&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;index&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;I&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;global partition index&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;S&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;sequence&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;L&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;large sequence&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;f&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;foreign table&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;m&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;materialized view&#39;</span><span class="w">  </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;e&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;stream&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;o&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;contview&#39;</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s2">&#34;Type&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">pg_catalog</span><span class="p">.</span><span class="n">pg_get_userbyid</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">relowner</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s2">&#34;Owner&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">c</span><span class="p">.</span><span class="n">reloptions</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s2">&#34;Storage&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">pg_catalog</span><span class="p">.</span><span class="n">pg_class</span><span class="w"> </span><span class="k">c</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">pg_catalog</span><span class="p">.</span><span class="n">pg_namespace</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">oid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">relnamespace</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">relkind</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;v&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">,</span><span class="s1">&#39;L&#39;</span><span class="p">,</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">nspname</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;pg_catalog&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">nspname</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;db4ai&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">nspname</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;information_schema&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">nspname</span><span class="w"> </span><span class="o">!~</span><span class="w"> </span><span class="s1">&#39;^pg_toast&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">relname</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;matviewmap\_%&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">relname</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;mlog\_%&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">pg_catalog</span><span class="p">.</span><span class="n">pg_table_is_visible</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>需要实现该语句的查询，我们需要收集 <code>pg_catalog.pg_class</code> <code>pg_catalog.pg_namespace</code> 两张表的信息。另外我们还需要模拟返回如下两个函数的返回结果 <code>pg_catalog.pg_get_userbyid(c.relowner)</code>, <code>pg_catalog.pg_table_is_visible(c.oid)</code>。</p>
+<p>表的收集同上面的 <code>sharding_table_statistics</code> 表的收集逻辑类似，这里就不再赘述，由于 pg_class 内容比较多，所以我们只收集 \d 涉及到的一些信息。另外在数据收集阶段，由于分片规则的存在，我们需要展示逻辑表名，因此需要对收集的信息做进一步的装饰，例如表名的替换。</p>
+<p>查询的过程我们只需要模拟函数结果就可以，很幸运，calcite 提供了注册函数的能力。当然目前只是单纯的 mock，未来可以进一步扩展成为真实数据。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Create catalog reader.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param schemaName schema name
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param schema schema
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param relDataTypeFactory rel data type factory
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param connectionConfig connection config
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return calcite catalog reader
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">CalciteCatalogReader</span> <span class="nf">createCatalogReader</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">schemaName</span><span class="o">,</span> <span class="kd">final</span> <span class="n">Schema</span> <span class="n">schema</span><span class="o">,</span> <span class="kd">final</span> <span class="n">RelDataTypeFactory</span> <span class="n">relDataTypeFactory</span><span class="o">,</span> <span class="kd">final</span> <span class="n">CalciteConnectionConfig</span> <span class="n">connectionConfig</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CalciteSchema</span> <span class="n">rootSchema</span> <span class="o">=</span> <span class="n">CalciteSchema</span><span class="o">.</span><span class="na">createRootSchema</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rootSchema</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">schemaName</span><span class="o">,</span> <span class="n">schema</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">registryUserDefinedFunction</span><span class="o">(</span><span class="n">schemaName</span><span class="o">,</span> <span class="n">rootSchema</span><span class="o">.</span><span class="na">plus</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">CalciteCatalogReader</span><span class="o">(</span><span class="n">rootSchema</span><span class="o">,</span> <span class="n">Collections</span><span class="o">.</span><span class="na">singletonList</span><span class="o">(</span><span class="n">schemaName</span><span class="o">),</span> <span class="n">relDataTypeFactory</span><span class="o">,</span> <span class="n">connectionConfig</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">registryUserDefinedFunction</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">schemaName</span><span class="o">,</span> <span class="kd">final</span> <span class="n">SchemaPlus</span> <span class="n">schemaPlus</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(!</span><span class="s">&#34;pg_catalog&#34;</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">schemaName</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">schemaPlus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;pg_catalog.pg_table_is_visible&#34;</span><span class="o">,</span> <span class="n">ScalarFunctionImpl</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">SQLFederationPlannerUtil</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&#34;pgTableIsVisible&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">schemaPlus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;pg_catalog.pg_get_userbyid&#34;</span><span class="o">,</span> <span class="n">ScalarFunctionImpl</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">SQLFederationPlannerUtil</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&#34;pgGetUserById&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Mock pg_table_is_visible function.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param oid oid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return true
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unused&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">pgTableIsVisible</span><span class="o">(</span><span class="kd">final</span> <span class="n">Long</span> <span class="n">oid</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Mock pg_get_userbyid function.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param oid oid
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return user name
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unused&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">pgGetUserById</span><span class="o">(</span><span class="kd">final</span> <span class="n">Long</span> <span class="n">oid</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;mock user&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>其它流程就基本跟 <code>sharding_table_statistics</code> 一致。那么我们来看下我们的成果吧。</p>
+<p>我们执行 \d 结果如下（t_order 为分片表，t_single 为普通单表）。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">sharding_db</span><span class="o">=&gt;</span><span class="w"> </span><span class="err">\</span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                 </span><span class="n">List</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">relations</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">Schema</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="n">Name</span><span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="k">Type</span><span class="w">        </span><span class="o">|</span><span class="w">   </span><span class="k">Owner</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">--------+----------+-------------------+-----------
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">t_order</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="k">table</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="n">mock</span><span class="w"> </span><span class="k">user</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">t_single</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">table</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="n">mock</span><span class="w"> </span><span class="k">user</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>目前 ShardingSphere 内置元数据库功能是试验性的功能，很多流程和实现方式还需要进一步完善，它是 ShardingSphere 社区对于元数据库的一次探索，它的进一步发展还依赖社区小伙伴的支持。读完了全完的你是不是也跃跃欲试了？欢迎来社区贡献，我们准备了丰富的任务列表等你来挑战。
+<a href="https://github.com/apache/shardingsphere/issues/24378" target="_blank" rel="noopener">https://github.com/apache/shardingsphere/issues/24378</a></p>
+
+            </div>
+
+            
+    
+    
+        <ul class="post-copyright">
+            <li class="copyright-item author"><span class="copyright-item-text">Author</span>: <a href="https://io-oi.me/" class="p-author h-card" target="_blank" rel="noopener">reuixiy</a></li>
+            
+                
+                
+                
+                
+                <li class="copyright-item link"><span class="copyright-item-text">Link</span>: <a href="/posts/shardingsphere_meta_learn_action/" target="_blank" rel="noopener">https://example.com/posts/shardingsphere_meta_learn_action/</a></li>
+            
+            <li class="copyright-item license"><span class="copyright-item-text">License</span>: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></li>
+            
+        </ul>
+    
+
+
+
+        </article>
+
+        
+
+        
+    <div class="updated-badge-container">
+        <span title="Updated @ 2023-03-09 19:28:16 CST" style="cursor:help">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-03-09</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-03-09</text></g></svg>
+        </span></div>
+
+
+
+        
+
+
+        <div class="post-share">
+
+        
+
+        <div class="share-items">
+
+            
+                <div class="share-item twitter">
+                    
+                    <a href="https://twitter.com/share?url=https://example.com/posts/shardingsphere_meta_learn_action/&amp;text=ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e8%83%bd%e5%8a%9b%e5%a2%9e%e5%bc%ba%e8%a7%a3%e8%af%bb%e4%b8%8e%e5%ae%9e%e6%88%98&amp;hashtags=&amp;via=reuixiy" title="Share on Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon twitter-icon"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item facebook">
+                    
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/posts/shardingsphere_meta_learn_action/&amp;hashtag=%23" title="Share on Facebook" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon facebook-icon"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item linkedin">
+                    
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://example.com/posts/shardingsphere_meta_learn_action/&amp;title=ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e8%83%bd%e5%8a%9b%e5%a2%9e%e5%bc%ba%e8%a7%a3%e8%af%bb%e4%b8%8e%e5%ae%9e%e6%88%98&amp;summary=Apache%20ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e4%bb%8b%e7%bb%8d%20Apache%20ShardingSphere%20%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%e4%b8%bb%e8%a6%81%e5%8c%85%e6%8b%ac%e8%a7%84%e5%88%99%e3%80%81%e6%95%b0%e6%8d%ae%e6%ba%90%e3%80%81%e8%a1%a8%e7%bb%93%e6%9e%84%e7%ad%89%e4%bf%a1%e6%81%af%e3%80%82%e8%a7%84%e5%88%99%e4%bf%a1%e6%81%af%e5%8f%af%e8%83%bd%e5%8c%85%e5%90%ab%e5%88%86%e7%89%87%e3%80%81%e5%8a%a0%e5%af%86%e3%80%81%e8%af%bb%e5%86%99%e5%88%86%e7%a6%bb%e3%80%81%e4%ba%8b%e5%8a%a1%e3%80%81%e9%ab%98%e5%8f%af%e7%94%a8%e7%ad%89%e3%80%82%20%e6%95%b0%e6%8d%ae%e6%ba%90%e4%bf%a1%e6%81%af%e5%ad%98%e5%82%a8%e7%9a%84%e6%98%af%e9%9c%80%e8%a6%81%e9%80%9a%e8%bf%87%20ShardingSphere%20%e6%9d%a5%e8%bf%9b%e8%a1%8c%e7%ae%a1%e7%90%86%e7%9a%84%e5%ba%95%e5%b1%82%e6%95%b0%e6%8d%ae%e5%ba%93%e8%b5%84%e6%ba%90%e3%80%82%e8%a1%a8%e7%bb%93%e6%9e%84%e4%bf%a1%e6%81%af%e4%b8%bb%e8%a6%81%e5%b0%b1%e6%98%af%e5%ba%95%e5%b1%82%e6%95%b0%e6%8d%ae%e6%ba%90%e7%9a%84%e8%a1%a8%e7%bb%93%e6%9e%84%ef%bc%8c%e5%8c%85%e6%8b%ac%e8%a1%a8%e7%9a%84%20column%20%e4%bf%a1%e6%81%af%e3%80%81%e7%b4%a2%e5%bc%95%e4%bf%a1%e6%81%af%e7%ad%89%e3%80%82%0aApache%20ShardingSphere%20%e9%80%9a%e8%bf%87%e8%bf%99%e4%ba%9b%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e9%85%8d%e5%90%88%e6%b2%bb%e7%90%86%e4%b8%ad%e5%bf%83%e7%9a%84%e8%83%bd%e5%8a%9b%ef%bc%8c%e4%be%8b%e5%a6%82%20zookeeper%e3%80%81etcd%20%e7%9a%84%e5%ad%98%e5%82%a8%e5%92%8c%e9%80%9a%e7%9f%a5%e8%83%bd%e5%8a%9b%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%ae%9e%e7%8e%b0%e9%9b%86%e7%be%a4%e5%86%85%e9%85%8d%e7%bd%ae%e7%9a%84%e5%85%b1%e4%ba%ab%e5%92%8c%e5%8f%98%e6%9b%b4%ef%bc%8c%e4%bb%8e%e8%80%8c%e5%ae%9e%e7%8e%b0%e8%ae%a1%e7%ae%97%e8%8a%82%e7%82%b9%e7%9a%84%e6%b0%b4%e5%b9%b3%e6%89%a9%e5%b1%95%e3%80%82%e5%90%8c%e6%97%b6%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e5%af%b9%e4%ba%8e%20ShardingSphere%20%e8%80%8c%e8%a8%80%e4%b9%9f%e6%98%af%e8%87%b3%e5%85%b3%e9%87%8d%e8%a6%81%e7%9a%84%ef%bc%8c%e4%bb%a5%e8%a1%a8%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%ba%e4%be%8b%ef%bc%8cShardingSphere%20%e5%88%a9%e7%94%a8%e8%a1%a8%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e5%8f%af%e4%bb%a5%e5%af%b9%e9%87%87%e7%94%a8%e4%ba%86%e5%8a%a0%e5%af%86%e8%a7%84%e5%88%99%e7%9a%84%20SQL%20%e8%bf%9b%e8%a1%8c%e6%ad%a3%e7%a1%ae%e7%9a%84%e6%94%b9%e5%86%99%ef%bc%8c%e5%86%85%e6%a0%b8%e4%b8%ad%e7%9a%84%20federation%20%e5%bc%95%e6%93%8e%e4%b9%9f%e4%bc%9a%e5%88%a9%e7%94%a8%e8%a1%a8%e7%bb%93%e6%9e%84%e4%bf%a1%e6%81%af%e8%bf%9b%e8%a1%8c%20SQL%20%e4%bc%98%e5%8c%96%e3%80%82%0a%e6%97%a2%e7%84%b6%20ShardingSphere%20%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%e5%a6%82%e6%ad%a4%e9%87%8d%e8%a6%81%ef%bc%8c%e9%82%a3%e4%b9%88%e6%88%91%e4%bb%ac%e8%af%a5%e6%80%8e%e4%b9%88%e5%85%a5%e6%89%8b%e4%ba%86%e8%a7%a3%e5%85%83%e6%95%b0%e6%8d%ae%e5%91%a2%ef%bc%9f%0aApache%20ShardingSphere%20%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%20ShardingSphere%20%e7%9a%84%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e6%98%af%e4%b8%aa%e4%ba%86%e8%a7%a3%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e7%9a%84%e5%be%88%e5%a5%bd%e5%85%a5%e5%8f%a3%e3%80%82%e6%88%91%e4%bb%ac%e5%8f%af%e4%bb%a5%e5%90%af%e5%8a%a8%20ShardingSphere%e2%80%93proxy%20%e7%9a%84%20cluster%20%e6%a8%a1%e5%bc%8f%ef%bc%8c%e8%bf%99%e6%a0%b7%e5%8f%af%e4%bb%a5%e5%9c%a8%20zookeeper%20%e4%b8%ad%e7%9b%b4%e8%a7%82%e7%9a%84%e7%9c%8b%e5%88%b0%20ShardingSphere%20%e7%9a%84%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e3%80%82%20%e5%a6%82%e4%b8%8b%e7%bb%93%e6%9e%84%e5%b1%95%e7%a4%ba%e4%ba%86%20ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e5%9c%a8%20zookeeper%20%e4%b8%ad%e7%9a%84%e7%bb%93%e6%9e%84&amp;source=tuichenchuxin%27s%20blog" title="Share on LinkedIn" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon linkedin-icon"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item telegram">
+                    
+                    <a href="https://t.me/share/url?url=https://example.com/posts/shardingsphere_meta_learn_action/&amp;text=ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e8%83%bd%e5%8a%9b%e5%a2%9e%e5%bc%ba%e8%a7%a3%e8%af%bb%e4%b8%8e%e5%ae%9e%e6%88%98" title="Share on Telegram" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon telegram-icon"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item weibo">
+                    
+                    <a href="https://service.weibo.com/share/share.php?&amp;url=https://example.com/posts/shardingsphere_meta_learn_action/&amp;title=ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e8%83%bd%e5%8a%9b%e5%a2%9e%e5%bc%ba%e8%a7%a3%e8%af%bb%e4%b8%8e%e5%ae%9e%e6%88%98&amp;pic=https://example.com/icons/apple-touch-icon.png&amp;searchPic=false" title="Share on Weibo" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon weibo-icon"><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item douban">
+                    
+                    <a href="https://www.douban.com/share/service?href=https://example.com/posts/shardingsphere_meta_learn_action/&amp;name=ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e8%83%bd%e5%8a%9b%e5%a2%9e%e5%bc%ba%e8%a7%a3%e8%af%bb%e4%b8%8e%e5%ae%9e%e6%88%98&amp;text=Apache%20ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e4%bb%8b%e7%bb%8d%20Apache%20ShardingSphere%20%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%e4%b8%bb%e8%a6%81%e5%8c%85%e6%8b%ac%e8%a7%84%e5%88%99%e3%80%81%e6%95%b0%e6%8d%ae%e6%ba%90%e3%80%81%e8%a1%a8%e7%bb%93%e6%9e%84%e7%ad%89%e4%bf%a1%e6%81%af%e3%80%82%e8%a7%84%e5%88%99%e4%bf%a1%e6%81%af%e5%8f%af%e8%83%bd%e5%8c%85%e5%90%ab%e5%88%86%e7%89%87%e3%80%81%e5%8a%a0%e5%af%86%e3%80%81%e8%af%bb%e5%86%99%e5%88%86%e7%a6%bb%e3%80%81%e4%ba%8b%e5%8a%a1%e3%80%81%e9%ab%98%e5%8f%af%e7%94%a8%e7%ad%89%e3%80%82%20%e6%95%b0%e6%8d%ae%e6%ba%90%e4%bf%a1%e6%81%af%e5%ad%98%e5%82%a8%e7%9a%84%e6%98%af%e9%9c%80%e8%a6%81%e9%80%9a%e8%bf%87%20ShardingSphere%20%e6%9d%a5%e8%bf%9b%e8%a1%8c%e7%ae%a1%e7%90%86%e7%9a%84%e5%ba%95%e5%b1%82%e6%95%b0%e6%8d%ae%e5%ba%93%e8%b5%84%e6%ba%90%e3%80%82%e8%a1%a8%e7%bb%93%e6%9e%84%e4%bf%a1%e6%81%af%e4%b8%bb%e8%a6%81%e5%b0%b1%e6%98%af%e5%ba%95%e5%b1%82%e6%95%b0%e6%8d%ae%e6%ba%90%e7%9a%84%e8%a1%a8%e7%bb%93%e6%9e%84%ef%bc%8c%e5%8c%85%e6%8b%ac%e8%a1%a8%e7%9a%84%20column%20%e4%bf%a1%e6%81%af%e3%80%81%e7%b4%a2%e5%bc%95%e4%bf%a1%e6%81%af%e7%ad%89%e3%80%82%0aApache%20ShardingSphere%20%e9%80%9a%e8%bf%87%e8%bf%99%e4%ba%9b%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e9%85%8d%e5%90%88%e6%b2%bb%e7%90%86%e4%b8%ad%e5%bf%83%e7%9a%84%e8%83%bd%e5%8a%9b%ef%bc%8c%e4%be%8b%e5%a6%82%20zookeeper%e3%80%81etcd%20%e7%9a%84%e5%ad%98%e5%82%a8%e5%92%8c%e9%80%9a%e7%9f%a5%e8%83%bd%e5%8a%9b%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%ae%9e%e7%8e%b0%e9%9b%86%e7%be%a4%e5%86%85%e9%85%8d%e7%bd%ae%e7%9a%84%e5%85%b1%e4%ba%ab%e5%92%8c%e5%8f%98%e6%9b%b4%ef%bc%8c%e4%bb%8e%e8%80%8c%e5%ae%9e%e7%8e%b0%e8%ae%a1%e7%ae%97%e8%8a%82%e7%82%b9%e7%9a%84%e6%b0%b4%e5%b9%b3%e6%89%a9%e5%b1%95%e3%80%82%e5%90%8c%e6%97%b6%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e5%af%b9%e4%ba%8e%20ShardingSphere%20%e8%80%8c%e8%a8%80%e4%b9%9f%e6%98%af%e8%87%b3%e5%85%b3%e9%87%8d%e8%a6%81%e7%9a%84%ef%bc%8c%e4%bb%a5%e8%a1%a8%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%ba%e4%be%8b%ef%bc%8cShardingSphere%20%e5%88%a9%e7%94%a8%e8%a1%a8%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e5%8f%af%e4%bb%a5%e5%af%b9%e9%87%87%e7%94%a8%e4%ba%86%e5%8a%a0%e5%af%86%e8%a7%84%e5%88%99%e7%9a%84%20SQL%20%e8%bf%9b%e8%a1%8c%e6%ad%a3%e7%a1%ae%e7%9a%84%e6%94%b9%e5%86%99%ef%bc%8c%e5%86%85%e6%a0%b8%e4%b8%ad%e7%9a%84%20federation%20%e5%bc%95%e6%93%8e%e4%b9%9f%e4%bc%9a%e5%88%a9%e7%94%a8%e8%a1%a8%e7%bb%93%e6%9e%84%e4%bf%a1%e6%81%af%e8%bf%9b%e8%a1%8c%20SQL%20%e4%bc%98%e5%8c%96%e3%80%82%0a%e6%97%a2%e7%84%b6%20ShardingSphere%20%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%e5%a6%82%e6%ad%a4%e9%87%8d%e8%a6%81%ef%bc%8c%e9%82%a3%e4%b9%88%e6%88%91%e4%bb%ac%e8%af%a5%e6%80%8e%e4%b9%88%e5%85%a5%e6%89%8b%e4%ba%86%e8%a7%a3%e5%85%83%e6%95%b0%e6%8d%ae%e5%91%a2%ef%bc%9f%0aApache%20ShardingSphere%20%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%20ShardingSphere%20%e7%9a%84%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e6%98%af%e4%b8%aa%e4%ba%86%e8%a7%a3%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e7%9a%84%e5%be%88%e5%a5%bd%e5%85%a5%e5%8f%a3%e3%80%82%e6%88%91%e4%bb%ac%e5%8f%af%e4%bb%a5%e5%90%af%e5%8a%a8%20ShardingSphere%e2%80%93proxy%20%e7%9a%84%20cluster%20%e6%a8%a1%e5%bc%8f%ef%bc%8c%e8%bf%99%e6%a0%b7%e5%8f%af%e4%bb%a5%e5%9c%a8%20zookeeper%20%e4%b8%ad%e7%9b%b4%e8%a7%82%e7%9a%84%e7%9c%8b%e5%88%b0%20ShardingSphere%20%e7%9a%84%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e3%80%82%20%e5%a6%82%e4%b8%8b%e7%bb%93%e6%9e%84%e5%b1%95%e7%a4%ba%e4%ba%86%20ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e5%9c%a8%20zookeeper%20%e4%b8%ad%e7%9a%84%e7%bb%93%e6%9e%84" title="Share on Douban" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon douban-icon"><path d="M.643.92v2.412h22.714V.92H.643zm1.974 4.926v9.42h18.764v-9.42H2.617zm2.72 2.408H18.69v4.605H5.338V8.254zm1.657 7.412l-2.512.938c1.037 1.461 1.87 2.825 2.512 4.091H0v2.385h24v-2.385h-6.678c.818-1.176 1.589-2.543 2.303-4.091l-2.73-.938a29.952 29.952 0 01-2.479 5.03h-4.75c-.786-1.962-1.677-3.641-2.672-5.03Z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item qq">
+                    
+                    <a href="https://connect.qq.com/widget/shareqq/index.html?url=https://example.com/posts/shardingsphere_meta_learn_action/&amp;title=ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e8%83%bd%e5%8a%9b%e5%a2%9e%e5%bc%ba%e8%a7%a3%e8%af%bb%e4%b8%8e%e5%ae%9e%e6%88%98&amp;summary=Apache%20ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e4%bb%8b%e7%bb%8d%20Apache%20ShardingSphere%20%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%e4%b8%bb%e8%a6%81%e5%8c%85%e6%8b%ac%e8%a7%84%e5%88%99%e3%80%81%e6%95%b0%e6%8d%ae%e6%ba%90%e3%80%81%e8%a1%a8%e7%bb%93%e6%9e%84%e7%ad%89%e4%bf%a1%e6%81%af%e3%80%82%e8%a7%84%e5%88%99%e4%bf%a1%e6%81%af%e5%8f%af%e8%83%bd%e5%8c%85%e5%90%ab%e5%88%86%e7%89%87%e3%80%81%e5%8a%a0%e5%af%86%e3%80%81%e8%af%bb%e5%86%99%e5%88%86%e7%a6%bb%e3%80%81%e4%ba%8b%e5%8a%a1%e3%80%81%e9%ab%98%e5%8f%af%e7%94%a8%e7%ad%89%e3%80%82%20%e6%95%b0%e6%8d%ae%e6%ba%90%e4%bf%a1%e6%81%af%e5%ad%98%e5%82%a8%e7%9a%84%e6%98%af%e9%9c%80%e8%a6%81%e9%80%9a%e8%bf%87%20ShardingSphere%20%e6%9d%a5%e8%bf%9b%e8%a1%8c%e7%ae%a1%e7%90%86%e7%9a%84%e5%ba%95%e5%b1%82%e6%95%b0%e6%8d%ae%e5%ba%93%e8%b5%84%e6%ba%90%e3%80%82%e8%a1%a8%e7%bb%93%e6%9e%84%e4%bf%a1%e6%81%af%e4%b8%bb%e8%a6%81%e5%b0%b1%e6%98%af%e5%ba%95%e5%b1%82%e6%95%b0%e6%8d%ae%e6%ba%90%e7%9a%84%e8%a1%a8%e7%bb%93%e6%9e%84%ef%bc%8c%e5%8c%85%e6%8b%ac%e8%a1%a8%e7%9a%84%20column%20%e4%bf%a1%e6%81%af%e3%80%81%e7%b4%a2%e5%bc%95%e4%bf%a1%e6%81%af%e7%ad%89%e3%80%82%0aApache%20ShardingSphere%20%e9%80%9a%e8%bf%87%e8%bf%99%e4%ba%9b%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e9%85%8d%e5%90%88%e6%b2%bb%e7%90%86%e4%b8%ad%e5%bf%83%e7%9a%84%e8%83%bd%e5%8a%9b%ef%bc%8c%e4%be%8b%e5%a6%82%20zookeeper%e3%80%81etcd%20%e7%9a%84%e5%ad%98%e5%82%a8%e5%92%8c%e9%80%9a%e7%9f%a5%e8%83%bd%e5%8a%9b%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%ae%9e%e7%8e%b0%e9%9b%86%e7%be%a4%e5%86%85%e9%85%8d%e7%bd%ae%e7%9a%84%e5%85%b1%e4%ba%ab%e5%92%8c%e5%8f%98%e6%9b%b4%ef%bc%8c%e4%bb%8e%e8%80%8c%e5%ae%9e%e7%8e%b0%e8%ae%a1%e7%ae%97%e8%8a%82%e7%82%b9%e7%9a%84%e6%b0%b4%e5%b9%b3%e6%89%a9%e5%b1%95%e3%80%82%e5%90%8c%e6%97%b6%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e5%af%b9%e4%ba%8e%20ShardingSphere%20%e8%80%8c%e8%a8%80%e4%b9%9f%e6%98%af%e8%87%b3%e5%85%b3%e9%87%8d%e8%a6%81%e7%9a%84%ef%bc%8c%e4%bb%a5%e8%a1%a8%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%ba%e4%be%8b%ef%bc%8cShardingSphere%20%e5%88%a9%e7%94%a8%e8%a1%a8%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e5%8f%af%e4%bb%a5%e5%af%b9%e9%87%87%e7%94%a8%e4%ba%86%e5%8a%a0%e5%af%86%e8%a7%84%e5%88%99%e7%9a%84%20SQL%20%e8%bf%9b%e8%a1%8c%e6%ad%a3%e7%a1%ae%e7%9a%84%e6%94%b9%e5%86%99%ef%bc%8c%e5%86%85%e6%a0%b8%e4%b8%ad%e7%9a%84%20federation%20%e5%bc%95%e6%93%8e%e4%b9%9f%e4%bc%9a%e5%88%a9%e7%94%a8%e8%a1%a8%e7%bb%93%e6%9e%84%e4%bf%a1%e6%81%af%e8%bf%9b%e8%a1%8c%20SQL%20%e4%bc%98%e5%8c%96%e3%80%82%0a%e6%97%a2%e7%84%b6%20ShardingSphere%20%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%e5%a6%82%e6%ad%a4%e9%87%8d%e8%a6%81%ef%bc%8c%e9%82%a3%e4%b9%88%e6%88%91%e4%bb%ac%e8%af%a5%e6%80%8e%e4%b9%88%e5%85%a5%e6%89%8b%e4%ba%86%e8%a7%a3%e5%85%83%e6%95%b0%e6%8d%ae%e5%91%a2%ef%bc%9f%0aApache%20ShardingSphere%20%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%20ShardingSphere%20%e7%9a%84%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e6%98%af%e4%b8%aa%e4%ba%86%e8%a7%a3%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e7%9a%84%e5%be%88%e5%a5%bd%e5%85%a5%e5%8f%a3%e3%80%82%e6%88%91%e4%bb%ac%e5%8f%af%e4%bb%a5%e5%90%af%e5%8a%a8%20ShardingSphere%e2%80%93proxy%20%e7%9a%84%20cluster%20%e6%a8%a1%e5%bc%8f%ef%bc%8c%e8%bf%99%e6%a0%b7%e5%8f%af%e4%bb%a5%e5%9c%a8%20zookeeper%20%e4%b8%ad%e7%9b%b4%e8%a7%82%e7%9a%84%e7%9c%8b%e5%88%b0%20ShardingSphere%20%e7%9a%84%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e3%80%82%20%e5%a6%82%e4%b8%8b%e7%bb%93%e6%9e%84%e5%b1%95%e7%a4%ba%e4%ba%86%20ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e5%9c%a8%20zookeeper%20%e4%b8%ad%e7%9a%84%e7%bb%93%e6%9e%84&amp;pics=https://example.com/icons/apple-touch-icon.png&amp;site=tuichenchuxin%27s%20blog" title="Share on QQ" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon qq-icon"><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item qzone">
+                    
+                    <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://example.com/posts/shardingsphere_meta_learn_action/&amp;title=ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e8%83%bd%e5%8a%9b%e5%a2%9e%e5%bc%ba%e8%a7%a3%e8%af%bb%e4%b8%8e%e5%ae%9e%e6%88%98&amp;summary=Apache%20ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e4%bb%8b%e7%bb%8d%20Apache%20ShardingSphere%20%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%e4%b8%bb%e8%a6%81%e5%8c%85%e6%8b%ac%e8%a7%84%e5%88%99%e3%80%81%e6%95%b0%e6%8d%ae%e6%ba%90%e3%80%81%e8%a1%a8%e7%bb%93%e6%9e%84%e7%ad%89%e4%bf%a1%e6%81%af%e3%80%82%e8%a7%84%e5%88%99%e4%bf%a1%e6%81%af%e5%8f%af%e8%83%bd%e5%8c%85%e5%90%ab%e5%88%86%e7%89%87%e3%80%81%e5%8a%a0%e5%af%86%e3%80%81%e8%af%bb%e5%86%99%e5%88%86%e7%a6%bb%e3%80%81%e4%ba%8b%e5%8a%a1%e3%80%81%e9%ab%98%e5%8f%af%e7%94%a8%e7%ad%89%e3%80%82%20%e6%95%b0%e6%8d%ae%e6%ba%90%e4%bf%a1%e6%81%af%e5%ad%98%e5%82%a8%e7%9a%84%e6%98%af%e9%9c%80%e8%a6%81%e9%80%9a%e8%bf%87%20ShardingSphere%20%e6%9d%a5%e8%bf%9b%e8%a1%8c%e7%ae%a1%e7%90%86%e7%9a%84%e5%ba%95%e5%b1%82%e6%95%b0%e6%8d%ae%e5%ba%93%e8%b5%84%e6%ba%90%e3%80%82%e8%a1%a8%e7%bb%93%e6%9e%84%e4%bf%a1%e6%81%af%e4%b8%bb%e8%a6%81%e5%b0%b1%e6%98%af%e5%ba%95%e5%b1%82%e6%95%b0%e6%8d%ae%e6%ba%90%e7%9a%84%e8%a1%a8%e7%bb%93%e6%9e%84%ef%bc%8c%e5%8c%85%e6%8b%ac%e8%a1%a8%e7%9a%84%20column%20%e4%bf%a1%e6%81%af%e3%80%81%e7%b4%a2%e5%bc%95%e4%bf%a1%e6%81%af%e7%ad%89%e3%80%82%0aApache%20ShardingSphere%20%e9%80%9a%e8%bf%87%e8%bf%99%e4%ba%9b%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e9%85%8d%e5%90%88%e6%b2%bb%e7%90%86%e4%b8%ad%e5%bf%83%e7%9a%84%e8%83%bd%e5%8a%9b%ef%bc%8c%e4%be%8b%e5%a6%82%20zookeeper%e3%80%81etcd%20%e7%9a%84%e5%ad%98%e5%82%a8%e5%92%8c%e9%80%9a%e7%9f%a5%e8%83%bd%e5%8a%9b%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%ae%9e%e7%8e%b0%e9%9b%86%e7%be%a4%e5%86%85%e9%85%8d%e7%bd%ae%e7%9a%84%e5%85%b1%e4%ba%ab%e5%92%8c%e5%8f%98%e6%9b%b4%ef%bc%8c%e4%bb%8e%e8%80%8c%e5%ae%9e%e7%8e%b0%e8%ae%a1%e7%ae%97%e8%8a%82%e7%82%b9%e7%9a%84%e6%b0%b4%e5%b9%b3%e6%89%a9%e5%b1%95%e3%80%82%e5%90%8c%e6%97%b6%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e5%af%b9%e4%ba%8e%20ShardingSphere%20%e8%80%8c%e8%a8%80%e4%b9%9f%e6%98%af%e8%87%b3%e5%85%b3%e9%87%8d%e8%a6%81%e7%9a%84%ef%bc%8c%e4%bb%a5%e8%a1%a8%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%ba%e4%be%8b%ef%bc%8cShardingSphere%20%e5%88%a9%e7%94%a8%e8%a1%a8%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e5%8f%af%e4%bb%a5%e5%af%b9%e9%87%87%e7%94%a8%e4%ba%86%e5%8a%a0%e5%af%86%e8%a7%84%e5%88%99%e7%9a%84%20SQL%20%e8%bf%9b%e8%a1%8c%e6%ad%a3%e7%a1%ae%e7%9a%84%e6%94%b9%e5%86%99%ef%bc%8c%e5%86%85%e6%a0%b8%e4%b8%ad%e7%9a%84%20federation%20%e5%bc%95%e6%93%8e%e4%b9%9f%e4%bc%9a%e5%88%a9%e7%94%a8%e8%a1%a8%e7%bb%93%e6%9e%84%e4%bf%a1%e6%81%af%e8%bf%9b%e8%a1%8c%20SQL%20%e4%bc%98%e5%8c%96%e3%80%82%0a%e6%97%a2%e7%84%b6%20ShardingSphere%20%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%e5%a6%82%e6%ad%a4%e9%87%8d%e8%a6%81%ef%bc%8c%e9%82%a3%e4%b9%88%e6%88%91%e4%bb%ac%e8%af%a5%e6%80%8e%e4%b9%88%e5%85%a5%e6%89%8b%e4%ba%86%e8%a7%a3%e5%85%83%e6%95%b0%e6%8d%ae%e5%91%a2%ef%bc%9f%0aApache%20ShardingSphere%20%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%20ShardingSphere%20%e7%9a%84%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e6%98%af%e4%b8%aa%e4%ba%86%e8%a7%a3%e5%85%83%e6%95%b0%e6%8d%ae%e4%bf%a1%e6%81%af%e7%9a%84%e5%be%88%e5%a5%bd%e5%85%a5%e5%8f%a3%e3%80%82%e6%88%91%e4%bb%ac%e5%8f%af%e4%bb%a5%e5%90%af%e5%8a%a8%20ShardingSphere%e2%80%93proxy%20%e7%9a%84%20cluster%20%e6%a8%a1%e5%bc%8f%ef%bc%8c%e8%bf%99%e6%a0%b7%e5%8f%af%e4%bb%a5%e5%9c%a8%20zookeeper%20%e4%b8%ad%e7%9b%b4%e8%a7%82%e7%9a%84%e7%9c%8b%e5%88%b0%20ShardingSphere%20%e7%9a%84%e4%b8%89%e5%b1%82%e5%85%83%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e3%80%82%20%e5%a6%82%e4%b8%8b%e7%bb%93%e6%9e%84%e5%b1%95%e7%a4%ba%e4%ba%86%20ShardingSphere%20%e5%85%83%e6%95%b0%e6%8d%ae%e5%9c%a8%20zookeeper%20%e4%b8%ad%e7%9a%84%e7%bb%93%e6%9e%84&amp;pics=https://example.com/icons/apple-touch-icon.png&amp;site=tuichenchuxin%27s%20blog" title="Share on Qzone" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon qzone-icon"><path d="M23.985 9.202c-.032-.099-.127-.223-.334-.258-.207-.036-7.351-1.406-7.351-1.406s-.105-.022-.198-.07c-.092-.047-.127-.167-.127-.167S12.447.956 12.349.77C12.25.583 12.104.532 12 .532c-.104 0-.251.051-.349.238-.098.186-3.626 6.531-3.626 6.531s-.035.12-.128.167c-.092.047-.197.07-.197.07S.556 8.908.348 8.943c-.208.036-.302.16-.333.258a.477.477 0 0 0 .125.449l5.362 5.49s.072.08.119.172c.016.104.005.21.005.21s-1.189 7.242-1.22 7.45.075.369.159.43c.083.062.233.106.421.013.189-.093 6.812-3.261 6.812-3.261s.098-.044.201-.061c.103-.017.201.061.201.061s6.623 3.168 6.812 3.261c.188.094.338.049.421-.013a.463.463 0 0 0 .159-.43c-.021-.14-.93-5.677-.93-5.677.876-.54 1.425-1.039 1.849-1.747-2.594.969-6.006 1.717-9.415 1.866-.915.041-2.41.097-3.473-.015-.678-.071-1.17-.144-1.243-.438-.053-.215.054-.46.545-.831a2640.5 2640.5 0 0 1 2.861-2.155c1.285-.968 3.559-2.47 3.559-2.731 0-.285-2.144-.781-4.037-.781-1.945 0-2.275.132-2.811.168-.488.034-.769.005-.804-.138-.06-.248.183-.389.588-.568.709-.314 1.86-.594 1.984-.626.194-.052 3.082-.805 5.618-.535 1.318.14 3.244.668 3.244 1.276 0 .342-1.721 1.494-3.225 2.597-1.149.843-2.217 1.561-2.217 1.688 0 .342 3.533 1.241 6.689 1.01l.003-.022c.048-.092.119-.172.119-.172l5.362-5.49a.477.477 0 0 0 .127-.449z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item qrcode">
+                    <div class="qrcode-container" title="Share via QR Code"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon qrcode-icon"><path d="M0 224h192V32H0v192zM64 96h64v64H64V96zm192-64v192h192V32H256zm128 128h-64V96h64v64zM0 480h192V288H0v192zm64-128h64v64H64v-64zm352-64h32v128h-96v-32h-32v96h-64V288h96v32h64v-32zm0 160h32v32h-32v-32zm-64 0h32v32h-32v-32z"/></svg><div id="qrcode-img"></div>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+
+<script>
+    const typeNumber = 0;
+    const errorCorrectionLevel = 'L';
+    const qr = qrcode(typeNumber, errorCorrectionLevel);
+    qr.addData('https:\/\/example.com\/posts\/shardingsphere_meta_learn_action\/');
+    qr.make();
+    document.getElementById('qrcode-img').innerHTML = qr.createImgTag();
+</script>
+
+                </div>
+            
+
+        </div>
+
+    </div>
+
+
+
+
+        
+    
+    
+
+
+
+        
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+            
+                <li class="post-nav-next">
+                    <a href="/posts/datattl/" rel="next">DataTTL 相关调研 &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;1969–2023&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;reuixiy</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+
+            
+    
+        <ul class="socials"><li class="socials-item">
+                    <a href="/rss.xml" target="_blank" rel="external noopener" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="mailto:reuixiy@gmail.com" target="_blank" rel="external noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://github.com/reuixiy" target="_blank" rel="external noopener" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://twitter.com/reuixiy" target="_blank" rel="external noopener" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://t.me/yixiuer" target="_blank" rel="external noopener" title="Telegram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon social-icon"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg></a>
+                </li></ul>
+    
+
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+
+
+    </body>
+</html>
