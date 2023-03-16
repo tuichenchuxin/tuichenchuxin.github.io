@@ -23,10 +23,129 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Wed, 15 Mar 2023 16:43:51 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 16 Mar 2023 12:11:04 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
+        
+            <item>
+                <title>Polardb-x 的 join 实现</title>
+                <link>https://example.com/posts/polardbxjoin/</link>
+                <guid isPermaLink="true">https://example.com/posts/polardbxjoin/</guid>
+                <pubDate>Thu, 16 Mar 2023 09:37:34 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;h1 id=&#34;文档信息提取&#34;&gt;文档信息提取&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://developer.aliyun.com/article/783392&#34;&gt;https://developer.aliyun.com/article/783392&lt;/a&gt;
+本文首先介绍了 MySQL 的 join 实现，包括以下方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nested-Loop Join (NL Join)&lt;/li&gt;
+&lt;li&gt;Batched Key Access Join (BKA Join)&lt;/li&gt;
+&lt;li&gt;Block Nested-Loop Join（版本 &amp;lt; 8.0.20）&lt;/li&gt;
+&lt;li&gt;Hash Join (版本 &amp;gt;= 8.0.18)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;polardb-x 支持多种 join 方式，包括 Lookup Join、Nested-Loop Join、Hash Join、Sort-Merge Join 等，本文主要讲的是 Lookup Join&lt;/p&gt;
+&lt;h2 id=&#34;lookup-join&#34;&gt;lookup join&lt;/h2&gt;
+&lt;p&gt;Lookup Join 的执行过程如下（非索引回表情形）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;从驱动侧拉取一批数据。通常情况下数据量不会很多，如果数据较多，那么每个批的大小受到 lookup 端的分片数量以及是否可以进行分片裁剪限制。批大小的选择会直接影响查询性能，如果批特别小会导致 RPC 次数太高，批太大则会导致内存中暂存的数据量膨胀，高并发情况下可能导致 OOM。默认情况下我们尽可能让每个分片平均查询 50 个值、最多不超过 300 个值。&lt;/li&gt;
+&lt;li&gt;计算 batch 内每行数据所在分片，由于 lookup 侧是一个分区表，驱动表的每行数据要 lookup 的数据位于不同的分区中。只有包含数据的分片才需要参与 Join，如果没有任何值被路由到某个分片上，那么这个分片也无需被 Lookup。&lt;/li&gt;
+&lt;li&gt;并发请求所有需要 lookup 的分片，并将查到的数据行以 Join Key 为 Key 构建成哈希表，缓存在内存中。&lt;/li&gt;
+&lt;li&gt;类似于 Hash Join，利用哈希表为驱动侧的每行找到与其 Join 的行，取决于 Join 类型，可能 Join 出 0 行、1 行或多行。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* Query 1 */&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o_orderkey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o_custkey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;orders&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;customer&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o_cutkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_custkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o_orderkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BETWEEN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1001&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1005&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-112228.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;依赖全局索引的 Join 则更为复杂一些，回忆下 MySQL 的 BKA Join，需要进行两次 lookup：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一次用 Join key 查询全局索引表（用于 Join）&lt;/li&gt;
+&lt;li&gt;第二次用全局索引表中的主键查询主表（用于索引回表）&lt;/li&gt;
+&lt;li&gt;将回表结果以 PK 为 key 构建哈希表，与2中的查询结果 Join，得到完整的 Join 右侧数据&lt;/li&gt;
+&lt;li&gt;将完整的 Join 右侧数据以 Join Key 为 key 构建哈希表，与 1 的数据 Join，得到最终 Join 结果&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* Query 2 */&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_custkey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o_orderkey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o_totalprice&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;customer&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;orders&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_cutkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o_custkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_custkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BETWEEN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-113634.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://help.aliyun.com/document_detail/316601.html&#34;&gt;https://help.aliyun.com/document_detail/316601.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nested-loop-join-nljoin&#34;&gt;Nested-Loop Join (NLJoin)&lt;/h2&gt;
+&lt;p&gt;一般是含有不等式条件场景下会使用
+流程如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;拉取内表（右表，通常是数据量较小的一边）的全部数据，缓存到内存中。&lt;/li&gt;
+&lt;li&gt;遍历外表数据，对于外表的每行：
+&lt;ul&gt;
+&lt;li&gt;对于每一条缓存在内存中的内表数据。&lt;/li&gt;
+&lt;li&gt;构造结果行，并检查是否满足JOIN条件，如果满足条件则输出。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;支持通过 hint 来定义顺序&lt;/p&gt;
+&lt;h2 id=&#34;hash-join&#34;&gt;Hash Join&lt;/h2&gt;
+&lt;p&gt;Hash Join是等值JOIN最常用的算法之一。它的原理如下所示：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;拉取内表（右表，通常是数据量较小的一边）的全部数据，写进内存中的哈希表。&lt;/li&gt;
+&lt;li&gt;遍历外表数据，对于外表的每行：
+&lt;ul&gt;
+&lt;li&gt;根据等值条件JOIN Key查询哈希表，取出0-N匹配的行（JOIN Key相同）。&lt;/li&gt;
+&lt;li&gt;构造结果行，并检查是否满足JOIN条件，如果满足条件则输出。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当索引无法满足，不能使用 lookup join 的时候，可以使用 hash join&lt;/p&gt;
+&lt;h2 id=&#34;sort-merge-join&#34;&gt;Sort-Merge Join&lt;/h2&gt;
+&lt;p&gt;Sort-Merge Join是另一种等值JOIN算法，它依赖左右两边输入的顺序，必须按JOIN Key排序。它的原理如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开始Sort-Merge Join之前，输入端必须排序（借助MergeSort或MemSort）。&lt;/li&gt;
+&lt;li&gt;比较当前左右表输入的行，并按以下方式操作，不断消费左右两边的输入：
+&lt;ul&gt;
+&lt;li&gt;如果左表的JOIN Key较小，则消费左表的下一条数据。&lt;/li&gt;
+&lt;li&gt;如果右表的JOIN Key较小，则消费右表的下一条数据。&lt;/li&gt;
+&lt;li&gt;如果左右表JOIN Key相等，说明获得了1条或多条匹配，检查是否满足JOIN条件并输出。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;关于-join-顺序以及各种-join-的使用场景&#34;&gt;关于 Join 顺序以及各种 join 的使用场景&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-121006.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>分布式 join 调研</title>
