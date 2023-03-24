@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2023-03-16T12:11:04&#43;08:00</updated>
+    <updated>2023-03-24T10:24:23&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">Polardb-x 的 join 实现</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/polardbxjoin/" />
             <id>https://example.com/posts/polardbxjoin/</id>
-            <updated>2023-03-16T12:10:55&#43;08:00</updated>
+            <updated>2023-03-24T10:02:22&#43;08:00</updated>
             <published>2023-03-16T09:37:34&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -86,6 +86,7 @@ lookup join Lookup Join 的执行过程如下（非索引回表情形）：</sum
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-113634.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;文档信息提取-1&#34;&gt;文档信息提取&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://help.aliyun.com/document_detail/316601.html&#34;&gt;https://help.aliyun.com/document_detail/316601.html&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nested-loop-join-nljoin&#34;&gt;Nested-Loop Join (NLJoin)&lt;/h2&gt;
 &lt;p&gt;一般是含有不等式条件场景下会使用
@@ -126,6 +127,49 @@ lookup join Lookup Join 的执行过程如下（非索引回表情形）：</sum
 &lt;/ul&gt;
 &lt;h2 id=&#34;关于-join-顺序以及各种-join-的使用场景&#34;&gt;关于 Join 顺序以及各种 join 的使用场景&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-121006.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;文档信息提取-2&#34;&gt;文档信息提取&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/379967662&#34;&gt;https://zhuanlan.zhihu.com/p/379967662&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;面对 OLTP 场景，可以使用大表和小表进行 join ，使用前文提到的 Lookup Join 算法
+但是对于 OLAP 的场景，我们可能就需要将数据从内存拉出来进行计算。&lt;/p&gt;
+&lt;p&gt;等值 JOIN 那么一般就是 hash-join 和 sort-merge join 两种，Hash join 根据是否支持大数据量，又分为 内存 Hash-join 和 落盘版的 Hash-join&lt;/p&gt;
+&lt;h2 id=&#34;内存版-hash-join-的实现&#34;&gt;内存版 Hash join 的实现&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230320-105410.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;根据统计信息选取较小的表根据 join 条件对给定的列 build hash table，然后流式遍历，去 hash table 里面找 key，如果一致，那么就拿出一整行，然后直接向下游输出，这个过程又叫 probe table&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;//build Table
+for row in t1:
+    hashValue = hash_func(row)
+    put (hashValue, row) into hash-table;
+
+//probe Table
+for row in t2:
+    hashValue = hash_func(row)
+    t1_row = lookup from hash-table 
+    if (t1_row != null) {
+       join(t1_row, row) 
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;polardb-x 与一般的 hash join 最大的不同，是采用了内存友好的 vector 重新实现了哈希表，对 CPU CACHE 更友好，可以提高 JOIN 性能。
+&lt;img src=&#34;https://example.com/img/20230320-113142.jpg&#34; alt=&#34;&#34;&gt;
+具体实现没太明白。。。大概是搞了一些缓存索引结构？&lt;/p&gt;
+&lt;p&gt;如果数据量太大，无法全部放到内存中的时候，那么就需要使用 HybridHashJoin 算法。&lt;/p&gt;
+&lt;h2 id=&#34;hybirdhashjoin&#34;&gt;HybirdHashJoin&lt;/h2&gt;
+&lt;p&gt;Hybird hash join 从我的角度理解，就是将原表按照关联的键做 partition，然后分别在每个分区做 hash join.
+&lt;img src=&#34;https://example.com/img/20230320-134504.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230320-134700.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;sortmergejoin&#34;&gt;SortMergeJoin&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sort t1, sort t2
+R1 = t1.next()
+R2 = t2.next()
+while (R1 != null &amp;amp;&amp;amp; R2 != null) {
+   if R1 joins with R2  
+      output (R1, R2)
+   else if R1 &amp;lt; R2  
+      R1 = t1.next()
+   else
+      R2 = t2.next()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种场景一般外排序会比较消耗 IO，一般 hash join.不过某些极端场景下， hash join 分桶之后，数据量还是超限，那么这种场景可能 sort merge join 就比较优势了。&lt;/p&gt;
+&lt;h2 id=&#34;shuffle-join&#34;&gt;Shuffle join&lt;/h2&gt;
+&lt;p&gt;TODO&lt;/p&gt;
 </content>
             
             
@@ -144,7 +188,7 @@ lookup join Lookup Join 的执行过程如下（非索引回表情形）：</sum
             <title type="text">分布式 join 调研</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/join_learn/" />
             <id>https://example.com/posts/join_learn/</id>
-            <updated>2023-03-15T16:43:47&#43;08:00</updated>
+            <updated>2023-03-24T10:15:34&#43;08:00</updated>
             <published>2023-03-14T09:40:45&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -223,6 +267,14 @@ lookup join Lookup Join 的执行过程如下（非索引回表情形）：</sum
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -233,7 +285,7 @@ lookup join Lookup Join 的执行过程如下（非索引回表情形）：</sum
             <title type="text">ShardingSphere 元数据能力增强解读与实战</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/shardingsphere_meta_learn_action/" />
             <id>https://example.com/posts/shardingsphere_meta_learn_action/</id>
-            <updated>2023-03-09T19:28:16&#43;08:00</updated>
+            <updated>2023-03-24T10:16:16&#43;08:00</updated>
             <published>2023-03-06T09:14:47&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -970,6 +1022,14 @@ actual_database_name: ds_1
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -1115,7 +1175,7 @@ actual_database_name: ds_1
             <title type="text">ShardingSphere 内置数据库设计</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/shardingspheresysdatabase/" />
             <id>https://example.com/posts/shardingspheresysdatabase/</id>
-            <updated>2023-02-20T19:08:00&#43;08:00</updated>
+            <updated>2023-03-24T10:16:29&#43;08:00</updated>
             <published>2022-11-23T10:02:24&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -2052,6 +2112,14 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -2062,7 +2130,7 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
             <title type="text">ShardingSphere PostgreSQL openGauss \d 支持方案</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/shardingsphere_sys_data_d/" />
             <id>https://example.com/posts/shardingsphere_sys_data_d/</id>
-            <updated>2023-02-21T18:16:42&#43;08:00</updated>
+            <updated>2023-03-24T10:16:23&#43;08:00</updated>
             <published>2022-11-04T18:09:40&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -2293,6 +2361,14 @@ RelationIsVisible(Oid relid)
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -2303,7 +2379,7 @@ RelationIsVisible(Oid relid)
             <title type="text">Add Yat Test for ShardingSphere</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/add-yat-test-for-shardingsphere/" />
             <id>https://example.com/posts/add-yat-test-for-shardingsphere/</id>
-            <updated>2023-02-07T15:02:41&#43;08:00</updated>
+            <updated>2023-03-24T10:03:52&#43;08:00</updated>
             <published>2022-06-22T17:44:41&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -2367,6 +2443,14 @@ Run test suite finished
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -2377,7 +2461,7 @@ Run test suite finished
             <title type="text">Polar Db</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/polar-db/" />
             <id>https://example.com/posts/polar-db/</id>
-            <updated>2023-02-06T14:51:55&#43;08:00</updated>
+            <updated>2023-03-24T10:16:06&#43;08:00</updated>
             <published>2022-06-14T18:09:13&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -2513,6 +2597,14 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -2523,7 +2615,7 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
             <title type="text">How to Modify Pr</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/modifypr/" />
             <id>https://example.com/posts/modifypr/</id>
-            <updated>2023-02-07T14:59:29&#43;08:00</updated>
+            <updated>2023-03-24T10:15:57&#43;08:00</updated>
             <published>2022-05-12T17:56:24&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -2564,6 +2656,14 @@ $ git push sirmin HEAD:sirmin/resultSet
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -2574,7 +2674,7 @@ $ git push sirmin HEAD:sirmin/resultSet
             <title type="text">mac docker 安装 oracle 11g</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/installoracle11g/" />
             <id>https://example.com/posts/installoracle11g/</id>
-            <updated>2023-02-06T14:51:21&#43;08:00</updated>
+            <updated>2023-03-24T10:15:29&#43;08:00</updated>
             <published>2022-04-25T18:12:49&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -2611,6 +2711,14 @@ $ git push sirmin HEAD:sirmin/resultSet
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -2621,7 +2729,7 @@ $ git push sirmin HEAD:sirmin/resultSet
             <title type="text">Freemarker 的使用</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/use_free_marker/" />
             <id>https://example.com/posts/use_free_marker/</id>
-            <updated>2023-02-06T14:52:10&#43;08:00</updated>
+            <updated>2023-03-24T10:24:14&#43;08:00</updated>
             <published>2022-04-25T11:22:13&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -2755,6 +2863,14 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -2765,7 +2881,7 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
             <title type="text">How To Debug PgAdmin4</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/howtodebugpgadmin4/" />
             <id>https://example.com/posts/howtodebugpgadmin4/</id>
-            <updated>2023-02-07T14:59:18&#43;08:00</updated>
+            <updated>2023-03-24T10:15:24&#43;08:00</updated>
             <published>2022-04-14T11:37:36&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -2800,6 +2916,14 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -2810,7 +2934,7 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
             <title type="text">PgAmdin4 展示 DDL 语句逻辑分析</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/analysispgamdin4ddl/" />
             <id>https://example.com/posts/analysispgamdin4ddl/</id>
-            <updated>2023-02-06T14:51:36&#43;08:00</updated>
+            <updated>2023-03-24T10:03:54&#43;08:00</updated>
             <published>2022-04-13T19:31:40&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -3569,6 +3693,14 @@ ORDER BY
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -3579,7 +3711,7 @@ ORDER BY
             <title type="text">How to get postgres create table sql</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/get_postgres_create_table_sql/" />
             <id>https://example.com/posts/get_postgres_create_table_sql/</id>
-            <updated>2023-02-07T15:00:04&#43;08:00</updated>
+            <updated>2023-03-24T10:15:19&#43;08:00</updated>
             <published>2022-04-08T14:09:16&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -4061,6 +4193,14 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -4071,7 +4211,7 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
             <title type="text">guava EventBus 使用以及注意点</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/second/" />
             <id>https://example.com/posts/second/</id>
-            <updated>2023-02-06T14:52:04&#43;08:00</updated>
+            <updated>2023-03-24T10:16:10&#43;08:00</updated>
             <published>2022-04-06T10:39:09&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -4406,6 +4546,14 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
                 
                     
                 
@@ -4416,7 +4564,7 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
             <title type="text">ShardingSphere Hint 实用指南</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/my-first-post/" />
             <id>https://example.com/posts/my-first-post/</id>
-            <updated>2023-02-06T14:51:52&#43;08:00</updated>
+            <updated>2023-03-24T10:16:01&#43;08:00</updated>
             <published>2022-04-01T19:33:02&#43;08:00</published>
             <author>
                     <name>reuixiy</name>
@@ -4911,6 +5059,14 @@ SELECT * FROM t_order;&lt;/p&gt;
             
             
                 
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
                     
                 
                     

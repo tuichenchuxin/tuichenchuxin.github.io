@@ -3,60 +3,64 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://example.com/posts/polardbxjoin/</loc>
-    <lastmod>2023-03-16T12:10:55+08:00</lastmod>
+    <lastmod>2023-03-24T10:02:22+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/</loc>
-    <lastmod>2023-03-16T12:10:55+08:00</lastmod>
+    <lastmod>2023-03-24T10:24:14+08:00</lastmod>
   </url><url>
     <loc>https://example.com/</loc>
-    <lastmod>2023-03-16T12:10:55+08:00</lastmod>
+    <lastmod>2023-03-24T10:24:14+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/categories/</loc>
+    <lastmod>2023-03-24T10:24:14+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/categories/tech/</loc>
+    <lastmod>2023-03-24T10:24:14+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/join_learn/</loc>
-    <lastmod>2023-03-15T16:43:47+08:00</lastmod>
+    <lastmod>2023-03-24T10:15:34+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/shardingsphere_meta_learn_action/</loc>
-    <lastmod>2023-03-09T19:28:16+08:00</lastmod>
+    <lastmod>2023-03-24T10:16:16+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/datattl/</loc>
     <lastmod>2023-02-07T14:58:27+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/shardingspheresysdatabase/</loc>
-    <lastmod>2023-02-20T19:08:00+08:00</lastmod>
+    <lastmod>2023-03-24T10:16:29+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/shardingsphere_sys_data_d/</loc>
-    <lastmod>2023-02-21T18:16:42+08:00</lastmod>
+    <lastmod>2023-03-24T10:16:23+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/add-yat-test-for-shardingsphere/</loc>
-    <lastmod>2023-02-07T15:02:41+08:00</lastmod>
+    <lastmod>2023-03-24T10:03:52+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/polar-db/</loc>
-    <lastmod>2023-02-06T14:51:55+08:00</lastmod>
+    <lastmod>2023-03-24T10:16:06+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/modifypr/</loc>
-    <lastmod>2023-02-07T14:59:29+08:00</lastmod>
+    <lastmod>2023-03-24T10:15:57+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/installoracle11g/</loc>
-    <lastmod>2023-02-06T14:51:21+08:00</lastmod>
+    <lastmod>2023-03-24T10:15:29+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/use_free_marker/</loc>
-    <lastmod>2023-02-06T14:52:10+08:00</lastmod>
+    <lastmod>2023-03-24T10:24:14+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/howtodebugpgadmin4/</loc>
-    <lastmod>2023-02-07T14:59:18+08:00</lastmod>
+    <lastmod>2023-03-24T10:15:24+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/analysispgamdin4ddl/</loc>
-    <lastmod>2023-02-06T14:51:36+08:00</lastmod>
+    <lastmod>2023-03-24T10:03:54+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/get_postgres_create_table_sql/</loc>
-    <lastmod>2023-02-07T15:00:04+08:00</lastmod>
+    <lastmod>2023-03-24T10:15:19+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/second/</loc>
-    <lastmod>2023-02-06T14:52:04+08:00</lastmod>
+    <lastmod>2023-03-24T10:16:10+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/my-first-post/</loc>
-    <lastmod>2023-02-06T14:51:52+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/categories/</loc>
+    <lastmod>2023-03-24T10:16:01+08:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/</loc>
   </url>

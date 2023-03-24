@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Thu, 16 Mar 2023 12:11:04 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 24 Mar 2023 10:24:23 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
@@ -93,6 +93,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-113634.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;文档信息提取-1&#34;&gt;文档信息提取&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://help.aliyun.com/document_detail/316601.html&#34;&gt;https://help.aliyun.com/document_detail/316601.html&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nested-loop-join-nljoin&#34;&gt;Nested-Loop Join (NLJoin)&lt;/h2&gt;
 &lt;p&gt;一般是含有不等式条件场景下会使用
@@ -133,6 +134,49 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;关于-join-顺序以及各种-join-的使用场景&#34;&gt;关于 Join 顺序以及各种 join 的使用场景&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-121006.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;文档信息提取-2&#34;&gt;文档信息提取&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/379967662&#34;&gt;https://zhuanlan.zhihu.com/p/379967662&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;面对 OLTP 场景，可以使用大表和小表进行 join ，使用前文提到的 Lookup Join 算法
+但是对于 OLAP 的场景，我们可能就需要将数据从内存拉出来进行计算。&lt;/p&gt;
+&lt;p&gt;等值 JOIN 那么一般就是 hash-join 和 sort-merge join 两种，Hash join 根据是否支持大数据量，又分为 内存 Hash-join 和 落盘版的 Hash-join&lt;/p&gt;
+&lt;h2 id=&#34;内存版-hash-join-的实现&#34;&gt;内存版 Hash join 的实现&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230320-105410.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;根据统计信息选取较小的表根据 join 条件对给定的列 build hash table，然后流式遍历，去 hash table 里面找 key，如果一致，那么就拿出一整行，然后直接向下游输出，这个过程又叫 probe table&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;//build Table
+for row in t1:
+    hashValue = hash_func(row)
+    put (hashValue, row) into hash-table;
+
+//probe Table
+for row in t2:
+    hashValue = hash_func(row)
+    t1_row = lookup from hash-table 
+    if (t1_row != null) {
+       join(t1_row, row) 
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;polardb-x 与一般的 hash join 最大的不同，是采用了内存友好的 vector 重新实现了哈希表，对 CPU CACHE 更友好，可以提高 JOIN 性能。
+&lt;img src=&#34;https://example.com/img/20230320-113142.jpg&#34; alt=&#34;&#34;&gt;
+具体实现没太明白。。。大概是搞了一些缓存索引结构？&lt;/p&gt;
+&lt;p&gt;如果数据量太大，无法全部放到内存中的时候，那么就需要使用 HybridHashJoin 算法。&lt;/p&gt;
+&lt;h2 id=&#34;hybirdhashjoin&#34;&gt;HybirdHashJoin&lt;/h2&gt;
+&lt;p&gt;Hybird hash join 从我的角度理解，就是将原表按照关联的键做 partition，然后分别在每个分区做 hash join.
+&lt;img src=&#34;https://example.com/img/20230320-134504.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230320-134700.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;sortmergejoin&#34;&gt;SortMergeJoin&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sort t1, sort t2
+R1 = t1.next()
+R2 = t2.next()
+while (R1 != null &amp;amp;&amp;amp; R2 != null) {
+   if R1 joins with R2  
+      output (R1, R2)
+   else if R1 &amp;lt; R2  
+      R1 = t1.next()
+   else
+      R2 = t2.next()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种场景一般外排序会比较消耗 IO，一般 hash join.不过某些极端场景下， hash join 分桶之后，数据量还是超限，那么这种场景可能 sort merge join 就比较优势了。&lt;/p&gt;
+&lt;h2 id=&#34;shuffle-join&#34;&gt;Shuffle join&lt;/h2&gt;
+&lt;p&gt;TODO&lt;/p&gt;
 </description>
                 
                 
@@ -222,6 +266,14 @@
                 
                 
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
                         
                     
                         
@@ -963,6 +1015,14 @@ actual_database_name: ds_1
                 
                 
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
                         
                     
                         
@@ -2033,6 +2093,14 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
                 
                     
                         
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
+                        
                     
                         
                     
@@ -2270,6 +2338,14 @@ RelationIsVisible(Oid relid)
                 
                     
                         
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
+                        
                     
                         
                     
@@ -2336,6 +2412,14 @@ Run test suite finished
                 
                 
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
                         
                     
                         
@@ -2477,6 +2561,14 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
                 
                     
                         
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
+                        
                     
                         
                     
@@ -2522,6 +2614,14 @@ $ git push sirmin HEAD:sirmin/resultSet
                 
                     
                         
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
+                        
                     
                         
                     
@@ -2565,6 +2665,14 @@ $ git push sirmin HEAD:sirmin/resultSet
                 
                 
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
                         
                     
                         
@@ -2704,6 +2812,14 @@ $ git push sirmin HEAD:sirmin/resultSet
                 
                     
                         
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
+                        
                     
                         
                     
@@ -2744,6 +2860,14 @@ $ git push sirmin HEAD:sirmin/resultSet
                 
                 
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
                         
                     
                         
@@ -3511,6 +3635,14 @@ ORDER BY
                 
                     
                         
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
+                        
                     
                         
                     
@@ -3998,6 +4130,14 @@ ORDER BY
                 
                     
                         
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
+                        
                     
                         
                     
@@ -4338,6 +4478,14 @@ ORDER BY
                 
                 
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
                         
                     
                         
@@ -4841,6 +4989,14 @@ SELECT * FROM t_order;&lt;/p&gt;
                 
                 
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
                         
                     
                         
