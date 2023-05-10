@@ -23,10 +23,62 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Fri, 24 Mar 2023 10:24:23 &#43;0800</lastBuildDate>
+        <lastBuildDate>Wed, 10 May 2023 13:51:20 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
+        
+            <item>
+                <title>分布式 join 实现</title>
+                <link>https://example.com/posts/distributed-join/</link>
+                <guid isPermaLink="true">https://example.com/posts/distributed-join/</guid>
+                <pubDate>Wed, 10 May 2023 11:28:36 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;p&gt;如何才能实现分布式 join？&lt;/p&gt;
+&lt;p&gt;有三种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将数据全部抽取到内存中，进行内存计算。&lt;/li&gt;
+&lt;li&gt;将数据全部抽取到一个数据源中，直接进行查询。&lt;/li&gt;
+&lt;li&gt;内存和存储并用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于分析型的 SQL 而言，不需要考虑事务和性能的话，可以采用数据挪动的方式来实现。&lt;/p&gt;
+&lt;p&gt;如下图所示，列出了可能的实现方式。
+&lt;img src=&#34;https://example.com/img/20230510-113802.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;该方案的具体实现需要考虑 2 点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;语义分析 （考虑通过 calcite 或者自行解析提取条件）
+&lt;ul&gt;
+&lt;li&gt;获取表之间的依赖关系，例如 A left join B on condition，那么 B 依赖 A, 可以先将 A 抽取出来，再依据 A 来抽取 B&lt;/li&gt;
+&lt;li&gt;增加条件到表中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;支持数据迁移（需要支持数据迁移的管理）&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Polardb-x 的 join 实现</title>
@@ -1031,6 +1083,43 @@ actual_database_name: ds_1
             </item>
         
             <item>
+                <title>rust 学习</title>
+                <link>https://example.com/posts/learn_rust/</link>
+                <guid isPermaLink="true">https://example.com/posts/learn_rust/</guid>
+                <pubDate>Tue, 28 Feb 2023 08:51:39 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;p&gt;最开始是通过官方网站上这本书来学习
+&lt;a href=&#34;https://doc.rust-lang.org/book/&#34;&gt;https://doc.rust-lang.org/book/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;通读之后开始学习 &lt;a href=&#34;https://github.com/rust-lang/rustlings/&#34;&gt;https://github.com/rust-lang/rustlings/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;中间参与了一个开源项目 &lt;a href=&#34;https://github.com/database-mesh/pisanix/tree/master&#34;&gt;https://github.com/database-mesh/pisanix/tree/master&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最近开始学习 &lt;a href=&#34;https://exercism.org/tracks/rust&#34;&gt;https://exercism.org/tracks/rust&lt;/a&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
                 <title>DataTTL 相关调研</title>
                 <link>https://example.com/posts/datattl/</link>
                 <guid isPermaLink="true">https://example.com/posts/datattl/</guid>
@@ -1151,6 +1240,14 @@ actual_database_name: ds_1
                 
                 
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                
+                            
                         
                     
                         
