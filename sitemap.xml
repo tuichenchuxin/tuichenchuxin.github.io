@@ -3,19 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://example.com/categories/</loc>
-    <lastmod>2023-05-10T13:50:48+08:00</lastmod>
+    <lastmod>2023-06-28T10:37:06+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/open_dal/</loc>
+    <lastmod>2023-06-28T10:36:07+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/</loc>
-    <lastmod>2023-05-10T13:50:48+08:00</lastmod>
+    <lastmod>2023-06-28T10:37:06+08:00</lastmod>
   </url><url>
     <loc>https://example.com/categories/tech/</loc>
-    <lastmod>2023-05-10T13:50:48+08:00</lastmod>
+    <lastmod>2023-06-28T10:37:06+08:00</lastmod>
   </url><url>
     <loc>https://example.com/</loc>
-    <lastmod>2023-05-10T13:50:48+08:00</lastmod>
+    <lastmod>2023-06-28T10:37:06+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/distributed-join/</loc>
     <lastmod>2023-05-10T13:49:19+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/learn_calcite/</loc>
+    <lastmod>2023-06-28T10:34:45+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/learnhadoop/</loc>
+    <lastmod>2023-06-28T10:37:01+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/learnspark/</loc>
+    <lastmod>2023-06-28T10:37:06+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/polardbxjoin/</loc>
     <lastmod>2023-03-24T10:02:22+08:00</lastmod>
@@ -37,6 +49,12 @@
   </url><url>
     <loc>https://example.com/posts/shardingsphere_sys_data_d/</loc>
     <lastmod>2023-03-24T10:16:23+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/join-pisanix/</loc>
+    <lastmod>2023-06-28T10:35:41+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/docker/</loc>
+    <lastmod>2023-06-28T10:35:25+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/add-yat-test-for-shardingsphere/</loc>
     <lastmod>2023-03-24T10:03:52+08:00</lastmod>

@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2023-05-10T13:51:20&#43;08:00</updated>
+    <updated>2023-06-28T10:37:19&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,46 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
+        <entry>
+            <title type="text">Open_dal</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/open_dal/" />
+            <id>https://example.com/posts/open_dal/</id>
+            <updated>2023-06-28T10:36:07&#43;08:00</updated>
+            <published>2023-06-19T21:14:19&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">初步了解 opendal 查看 examples 了解到 opendal 是各种数据源的通用连接器
+查看 good first issue 的相关 pr </summary>
+            
+                <content type="html">&lt;h2 id=&#34;初步了解-opendal&#34;&gt;初步了解 opendal&lt;/h2&gt;
+&lt;p&gt;查看 examples
+了解到 opendal 是各种数据源的通用连接器&lt;/p&gt;
+&lt;h2 id=&#34;查看-good-first-issue-的相关-pr&#34;&gt;查看 good first issue 的相关 pr&lt;/h2&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">分布式 join 实现</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/distributed-join/" />
@@ -54,6 +94,166 @@
 &lt;li&gt;支持数据迁移（需要支持数据迁移的管理）&lt;/li&gt;
 &lt;/ul&gt;
 </content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">calcite 学习</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/learn_calcite/" />
+            <id>https://example.com/posts/learn_calcite/</id>
+            <updated>2023-06-28T10:34:45&#43;08:00</updated>
+            <published>2023-04-10T18:05:59&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Target 说清楚 calcite 是什么，能做什么 画出 calcite 的大体架构 明白 calcite 是如何跟 SS 整合的 未来 SS 还可以在哪些方面进一步利用 calcite calcite 优化逻辑源码级理解 在 calcite 上提交 pr Process calcite 是什么，能做什么 calcite 是动态数据的管理框架。我理解，就是数据库的计算层，去除掉了存储的部分。 calcite 可以接入任何形式的数据，只需要我们将数据注册成表的形式，那么就可以使用 SQL 来对它进行查询。
+calcite 的大体架构 calcite 如何跟 SS 整合 ShardingSphere 可以支持分库分表，所以也自然会有跨实例查询的 SQL。 例如跨实例的 join。这些 SQL 是没办法直接下推到数据库去执行的，因此利用 calcite 来实现复杂子查询或者是跨实例 join。 我们可以从一个跨实例 join 的 select debug 来查看整合 calcite 的方式。 1.</summary>
+            
+                <content type="html">&lt;h2 id=&#34;target&#34;&gt;Target&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;说清楚 calcite 是什么，能做什么&lt;/li&gt;
+&lt;li&gt;画出 calcite 的大体架构&lt;/li&gt;
+&lt;li&gt;明白 calcite 是如何跟 SS 整合的&lt;/li&gt;
+&lt;li&gt;未来 SS 还可以在哪些方面进一步利用 calcite&lt;/li&gt;
+&lt;li&gt;calcite 优化逻辑源码级理解&lt;/li&gt;
+&lt;li&gt;在 calcite 上提交 pr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;process&#34;&gt;Process&lt;/h2&gt;
+&lt;h3 id=&#34;calcite-是什么能做什么&#34;&gt;calcite 是什么，能做什么&lt;/h3&gt;
+&lt;p&gt;calcite 是动态数据的管理框架。我理解，就是数据库的计算层，去除掉了存储的部分。
+calcite 可以接入任何形式的数据，只需要我们将数据注册成表的形式，那么就可以使用 SQL 来对它进行查询。&lt;/p&gt;
+&lt;h3 id=&#34;calcite-的大体架构&#34;&gt;calcite 的大体架构&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230417-172948.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;calcite-如何跟-ss-整合&#34;&gt;calcite 如何跟 SS 整合&lt;/h3&gt;
+&lt;p&gt;ShardingSphere 可以支持分库分表，所以也自然会有跨实例查询的 SQL。 例如跨实例的 join。这些 SQL 是没办法直接下推到数据库去执行的，因此利用 calcite 来实现复杂子查询或者是跨实例 join。
+我们可以从一个跨实例 join 的 select debug 来查看整合 calcite 的方式。
+1.
+执行查询前，会先构造 OptimizerContext，里面包含一些数据库的配置，例如
+caseSensitive -&amp;gt; false
+conformance -&amp;gt; MYSQL_5
+timeZone -&amp;gt; UTC
+lex -&amp;gt; MYSQL
+fun -&amp;gt; mysql
+以及一些默认的规则
+HepPlanner&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;注册 schema
+将表转化为 translatable table&lt;/li&gt;
+&lt;li&gt;创建 CalciteCatalogReader 对象（参数： rootSchema, schemaName, RelDataTypeFactory, CalciteConnectionConfig）&lt;/li&gt;
+&lt;li&gt;创建 SqlValidator&lt;/li&gt;
+&lt;li&gt;创建 SqlToRelConverter&lt;/li&gt;
+&lt;li&gt;拿到之前的 RelOptPlanner （HepPlanner）&lt;/li&gt;
+&lt;li&gt;将 shardingsphere 的 sqlstatement 转化成 SqlNode&lt;/li&gt;
+&lt;li&gt;利用 SqlToRelConverter 将 sqlNode 转化为 RelNode&lt;/li&gt;
+&lt;li&gt;然后分别进行RBO 和 CBO 优化&lt;/li&gt;
+&lt;li&gt;将优化结果与 dataContext 绑定&lt;/li&gt;
+&lt;li&gt;在 FilterableTableScanExecutor 执行下推逻辑，下推到各个逻辑库上执行。&lt;/li&gt;
+&lt;li&gt;将结果集封装到 ResultSet 中&lt;/li&gt;
+&lt;li&gt;同普通查询后续流程一致&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如何规划执行？默认每个表下推一次吗？
+从目前代码的 TranslatableTableScanExecutor 来看，确实是单表的下推。&lt;/p&gt;
+&lt;h3 id=&#34;未来-ss-还可以在哪些方面进一步利用-calcite&#34;&gt;未来 SS 还可以在哪些方面进一步利用 calcite&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;内存的优化，目前全部都是抽取到内存中，大数据会 OOM&lt;/li&gt;
+&lt;li&gt;自定义算子的实现&lt;/li&gt;
+&lt;li&gt;利用数据的收集做代价优化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;calcite-优化逻辑源码级理解&#34;&gt;calcite 优化逻辑源码级理解&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;关系代数的理解 &lt;a href=&#34;https://blog.csdn.net/QuinnNorris/article/details/70739094&#34;&gt;https://blog.csdn.net/QuinnNorris/article/details/70739094&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Learnhadoop</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/learnhadoop/" />
+            <id>https://example.com/posts/learnhadoop/</id>
+            <updated>2023-06-28T10:37:01&#43;08:00</updated>
+            <published>2023-03-23T18:24:20&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
+            
+                <content type="html"></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">LearnSpark</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/learnspark/" />
+            <id>https://example.com/posts/learnspark/</id>
+            <updated>2023-06-28T10:37:06&#43;08:00</updated>
+            <published>2023-03-23T18:23:59&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
+            
+                <content type="html"></content>
             
             
             
@@ -2463,6 +2663,82 @@ RelationIsVisible(Oid relid)
    return visible;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Pisanix protocol</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/join-pisanix/" />
+            <id>https://example.com/posts/join-pisanix/</id>
+            <updated>2023-06-28T10:35:41&#43;08:00</updated>
+            <published>2022-09-21T10:02:13&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
+            
+                <content type="html"></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Docker</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/docker/" />
+            <id>https://example.com/posts/docker/</id>
+            <updated>2023-06-28T10:35:25&#43;08:00</updated>
+            <published>2022-06-22T18:12:49&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">https://yeasy.gitbook.io/docker_practice/
+使用 dockerFile 创建镜像 FROM nginx RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &amp;gt; /usr/share/nginx/html/index.html 容器的使用 </summary>
+            
+                <content type="html">&lt;p&gt;&lt;a href=&#34;https://yeasy.gitbook.io/docker_practice/&#34;&gt;https://yeasy.gitbook.io/docker_practice/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;使用-dockerfile-创建镜像&#34;&gt;使用 dockerFile 创建镜像&lt;/h1&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;FROM nginx
+RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &amp;gt; /usr/share/nginx/html/index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;容器的使用&#34;&gt;容器的使用&lt;/h1&gt;
 </content>
             
             
