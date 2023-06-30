@@ -23,10 +23,61 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Wed, 28 Jun 2023 10:37:19 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 30 Jun 2023 18:08:30 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
+        
+            <item>
+                <title>使用 sqlline 连接 sharding_jdbc</title>
+                <link>https://example.com/posts/use_sql_line/</link>
+                <guid isPermaLink="true">https://example.com/posts/use_sql_line/</guid>
+                <pubDate>Fri, 30 Jun 2023 16:02:42 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;p&gt;&lt;a href=&#34;https://github.com/julianhyde/sqlline&#34;&gt;https://github.com/julianhyde/sqlline&lt;/a&gt;
+sqlline 是一个通过 jdbc 的连接工具。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载代码并编译&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone git://github.com/julianhyde/sqlline.git
+cd sqlline
+./mvnw package
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;将 shardingsphere-jdbc 打包，之后最好再使用 sharde PLUGIN 打成一个 jar 包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 sqlline bin 目录下的 sqlline 脚本，将相关依赖添加进去包括数据库驱动、shardingsphere shade jar、 sqlline-VERSION-jar-with-dependencies.jar&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+# sqlline - Script to launch SQL shell on Unix, Linux or Mac OS
+
+BINPATH=$(dirname $0)
+exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/Documents/sqlline-sqlline-1.12.0/bin/*&amp;#34; sqlline.SqlLine &amp;#34;$@&amp;#34;
+
+# End sqlline
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;使用 sqlline&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; sqlline -d org.apache.shardingsphere.driver.ShardingSphereDriver -u jdbc:shardingsphere:absolutepath:/Users/chenchuxin/Documents/GitHub/sw-test/src/main/resources/META-INF/oracle.yaml
+&lt;/code&gt;&lt;/pre&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Open_dal</title>

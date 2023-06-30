@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2023-06-28T10:37:19&#43;08:00</updated>
+    <updated>2023-06-30T18:08:30&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,63 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
+        <entry>
+            <title type="text">使用 sqlline 连接 sharding_jdbc</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/use_sql_line/" />
+            <id>https://example.com/posts/use_sql_line/</id>
+            <updated>2023-06-30T18:08:25&#43;08:00</updated>
+            <published>2023-06-30T16:02:42&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">https://github.com/julianhyde/sqlline sqlline 是一个通过 jdbc 的连接工具。
+下载代码并编译 git clone git://github.com/julianhyde/sqlline.git cd sqlline ./mvnw package 将 shardingsphere-jdbc 打包，之后最好再使用 sharde PLUGIN 打成一个 jar 包
+修改 sqlline bin 目录下的 sqlline 脚本，将相关依赖添加进去包括数据库驱动、shardingsphere shade jar、 sqlline-VERSION-jar-with-dependencies.jar
+#!/bin/bash # sqlline - Script to launch SQL shell on Unix, Linux or Mac OS BINPATH=$(dirname $0) exec java -cp &amp;#34;$BINPATH/.</summary>
+            
+                <content type="html">&lt;p&gt;&lt;a href=&#34;https://github.com/julianhyde/sqlline&#34;&gt;https://github.com/julianhyde/sqlline&lt;/a&gt;
+sqlline 是一个通过 jdbc 的连接工具。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载代码并编译&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone git://github.com/julianhyde/sqlline.git
+cd sqlline
+./mvnw package
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;将 shardingsphere-jdbc 打包，之后最好再使用 sharde PLUGIN 打成一个 jar 包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 sqlline bin 目录下的 sqlline 脚本，将相关依赖添加进去包括数据库驱动、shardingsphere shade jar、 sqlline-VERSION-jar-with-dependencies.jar&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/bash
+# sqlline - Script to launch SQL shell on Unix, Linux or Mac OS
+
+BINPATH=$(dirname $0)
+exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/Documents/sqlline-sqlline-1.12.0/bin/*&amp;#34; sqlline.SqlLine &amp;#34;$@&amp;#34;
+
+# End sqlline
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;使用 sqlline&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; sqlline -d org.apache.shardingsphere.driver.ShardingSphereDriver -u jdbc:shardingsphere:absolutepath:/Users/chenchuxin/Documents/GitHub/sw-test/src/main/resources/META-INF/oracle.yaml
+&lt;/code&gt;&lt;/pre&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Open_dal</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/open_dal/" />
