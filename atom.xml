@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2023-06-30T18:08:30&#43;08:00</updated>
+    <updated>2023-08-23T18:08:15&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,64 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
+        <entry>
+            <title type="text">No suitable driver 问题调查</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/driverclassname/" />
+            <id>https://example.com/posts/driverclassname/</id>
+            <updated>2023-08-23T18:07:29&#43;08:00</updated>
+            <published>2023-08-23T17:55:43&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">背景 用户使用 shardingsphere 发现 No suitable driver 异常。但是用户的 jar 包中是有该驱动的。
+调查 发现如果增加这段代码后，可以正常执行
+1 Class.forName(&amp;#34;com.mysql.cj.jdbc.Driver&amp;#34;); 正常而言，按照 JDBC4.0 标准，驱动是通过 spi 机制加载。不需要手动加载。 通过 debug DriverManager 发现其中有个驱动的名称中包含了 - 不是合法的 java 名称。 但是会将异常吞掉，所以没有展示出来。 修复名称后，可以正常使用。
+相关知识 JDBC4.0 是通过 spi 加载。 - 不是合法名称，使用 shade 插件替换名称时要注意。 DriverManager 加载多个驱动过程中，如果有任何一个失败，都不会再继续加载，并不会抛出相关异常。</summary>
+            
+                <content type="html">&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;用户使用 shardingsphere 发现 No suitable driver 异常。但是用户的 jar 包中是有该驱动的。&lt;/p&gt;
+&lt;h1 id=&#34;调查&#34;&gt;调查&lt;/h1&gt;
+&lt;p&gt;发现如果增加这段代码后，可以正常执行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;forName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.mysql.cj.jdbc.Driver&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;正常而言，按照 JDBC4.0 标准，驱动是通过 spi 机制加载。不需要手动加载。
+通过 debug DriverManager 发现其中有个驱动的名称中包含了 &lt;code&gt;-&lt;/code&gt; 不是合法的 java 名称。
+但是会将异常吞掉，所以没有展示出来。
+修复名称后，可以正常使用。&lt;/p&gt;
+&lt;h1 id=&#34;相关知识&#34;&gt;相关知识&lt;/h1&gt;
+&lt;p&gt;JDBC4.0 是通过 spi 加载。
+&lt;code&gt;-&lt;/code&gt; 不是合法名称，使用 shade 插件替换名称时要注意。
+DriverManager 加载多个驱动过程中，如果有任何一个失败，都不会再继续加载，并不会抛出相关异常。&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">使用 sqlline 连接 sharding_jdbc</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/use_sql_line/" />
