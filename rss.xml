@@ -23,10 +23,38 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Mon, 16 Oct 2023 15:20:47 &#43;0800</lastBuildDate>
+        <lastBuildDate>Wed, 01 Nov 2023 15:57:43 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
+        
+            <item>
+                <title>使用idea创建部分文件的jar包</title>
+                <link>https://example.com/posts/use_idea_to_generate_jar/</link>
+                <guid isPermaLink="true">https://example.com/posts/use_idea_to_generate_jar/</guid>
+                <pubDate>Wed, 01 Nov 2023 15:38:48 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;p&gt;该场景适用于打包项目中的部分文件，不需要经过项目编译。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/img/20231101-155254.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://example.com/img/20231101-155302.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://example.com/img/20231101-155306.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>如果 result set 仅有一个结果集，是否可以用 if(resultset.next()) ?</title>
