@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Wed, 01 Nov 2023 18:01:45 &#43;0800</lastBuildDate>
+        <lastBuildDate>Wed, 01 Nov 2023 18:46:37 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
@@ -42,8 +42,9 @@
 &lt;img src=&#34;https://example.com/img/20231101-155254.jpeg&#34; alt=&#34;&#34;&gt;
 &lt;img src=&#34;https://example.com/img/20231101-155302.jpeg&#34; alt=&#34;&#34;&gt;
 &lt;img src=&#34;https://example.com/img/20231101-155306.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;经过了一下午的尝试，无论是添加.class 文件还是添加 文件夹，编译后的 jar 文件中都是.java 文件，不是.class 文件。
-所以最后还是直接用 maven 吧，无需添加任何插件，直接 mvn clean install 即可。&lt;/p&gt;
+&lt;p&gt;经过了一下午的尝试，发现手动创建包，然后指定 .class 文件可以成功打包。
+&lt;img src=&#34;https://example.com/img/20231101-180739.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;不过没有特别需求还是直接用 maven 吧，简单些，无需添加任何插件，直接 mvn clean install 即可。&lt;/p&gt;
 </description>
                 
                 
