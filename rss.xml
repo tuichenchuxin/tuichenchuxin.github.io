@@ -23,10 +23,98 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Wed, 01 Nov 2023 18:46:37 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 09 Nov 2023 16:37:13 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
+        
+            <item>
+                <title>Connection_is_not_avaible</title>
+                <link>https://example.com/posts/connection_is_not_avaible/</link>
+                <guid isPermaLink="true">https://example.com/posts/connection_is_not_avaible/</guid>
+                <pubDate>Thu, 09 Nov 2023 16:03:41 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;h1 id=&#34;connection-is-not-available-request-timed-out-after-30000ms&#34;&gt;Connection is not available, request timed out after 30000ms&lt;/h1&gt;
+&lt;p&gt;最近碰到一个这个异常，前端是 xxl-job 任务，后端将 shardingsphere-proxy 作为数据源来使用。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;偶发，频率比较高&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;网络上相关解释
+从 Hikari 拿连接，但是拿不到，要不就是达到最大连接数了
+&lt;a href=&#34;https://stackoverflow.com/questions/32968530/hikaricp-connection-is-not-available&#34;&gt;https://stackoverflow.com/questions/32968530/hikaricp-connection-is-not-available&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Mysql 连接数上看，两台实例 205， 206 都是没有超过 1000 最大连接数 20000&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;这个是业务的报错，想拿 connection 拿不到，不确定是 proxy 报的还是业务报的， proxy 无异常日志
+根据日志找到了业务的库配置&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;spring.datasource.dynamic.datasource.sharding0.driver-class-name = com.mysql.jdbc.Driver
+spring.datasource.dynamic.datasource.sharding0.druid.initial-size = 5
+spring.datasource.dynamic.datasource.sharding0.druid.max-active = 100
+spring.datasource.dynamic.datasource.sharding0.druid.max-wait = 60000
+spring.datasource.dynamic.datasource.sharding0.druid.min-idle = 5
+spring.datasource.dynamic.datasource.sharding0.druid.validation-query = select 1
+spring.datasource.dynamic.datasource.sharding0.password = root
+spring.datasource.dynamic.datasource.sharding0.url = jdbc:mysql://xxx?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;serverTimezone=GMT%2B8&amp;amp;useSSL=false&amp;amp;allowPublicKeyRetrieval=true
+spring.datasource.dynamic.datasource.sharding0.username = root
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;奇怪的是为什么是 druid 连接池，但是却没有 druid 相关信息?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;客户反馈 druid 的链接信息没有生效，实际使用的是 hikari，并且应该是采用了默认配置，那也就是最大连接数是 10&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;查实修改下连接池配置&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;spring.datasource.dynamic.datasource.sharding0.hikari.minimum-idle = 5
+spring.datasource.dynamic.datasource.sharding0.hikari.maximum-pool-size = 100
+spring.datasource.dynamic.datasource.sharding0.hikari.connection-timeout = 40000
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;发现报错信息变成了
+sharding0 - Connection is not available, request timed out after 40000ms.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;说明参数生效了，另外也说明了的确是用户业务 hikari 连接池 报出的异常信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;难道 100 的连接池还不够，试试 500 ，结果还是不行，难道是客户业务代码有 bug？&lt;/p&gt;
+&lt;p&gt;还是先证明不是 proxy 的问题吧，考虑监控下发送到 proxy 的连接，看看究竟有多少&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proxy 的外部连接数，从停止服务的 2 ,启动服务后增长到  52, 启动 job 一直到 job 失败，连接数都是 52&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 统计连接到 3307 端口的外部链接数量
+netstat -n | grep 3307 | wc -l
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;既然确定是业务的问题，那么就从 业务 hikari 连接池找原因吧，首先打开 hikari 的 debug 日志&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 放到 application.properties 中
+logging.level.com.zaxxer.hikari.HikariConfig = DEBUG
+logging.level.com.zaxxer.hikari = TRACE
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;发现连接池参数没生效，还是 10
+难道是写法错误？&lt;/p&gt;
+&lt;p&gt;尝试修改配置项&lt;/p&gt;
+&lt;p&gt;Dynamic datasource 的文档居然要收费。。。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.kancloud.cn/tracy5546/dynamic-datasource/2270657&#34;&gt;https://www.kancloud.cn/tracy5546/dynamic-datasource/2270657&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;交钱是不可能交钱的。&lt;/p&gt;
+&lt;p&gt;下载源码后，发现有 spring 的相关提示&lt;/p&gt;
+&lt;p&gt;原来 dynamic datasource 配置的 hikari 最大连接数是。&lt;/p&gt;
+&lt;p&gt;我怀疑是为了赚钱，故意的。。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;spring.datasource.dynamic.datasource.sharding0.hikari.min-idle = 5
+spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;问题解决。&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>使用idea创建的 jar 文件都是 .java 而不是 .class</title>
