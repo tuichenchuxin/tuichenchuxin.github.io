@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2023-11-09T16:37:13&#43;08:00</updated>
+    <updated>2023-12-07T11:55:10&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,56 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
+        <entry>
+            <title type="text">rust 学习</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/learn_rust/" />
+            <id>https://example.com/posts/learn_rust/</id>
+            <updated>2023-12-07T11:54:54&#43;08:00</updated>
+            <published>2023-12-07T08:51:39&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">最开始是通过官方网站上这本书来学习 https://doc.rust-lang.org/book/
+通读之后开始学习 https://github.com/rust-lang/rustlings/
+中间参与了一个开源项目 https://github.com/database-mesh/pisanix/tree/master
+最近开始学习 https://exercism.org/tracks/rust </summary>
+            
+                <content type="html">&lt;p&gt;最开始是通过官方网站上这本书来学习
+&lt;a href=&#34;https://doc.rust-lang.org/book/&#34;&gt;https://doc.rust-lang.org/book/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;通读之后开始学习 &lt;a href=&#34;https://github.com/rust-lang/rustlings/&#34;&gt;https://github.com/rust-lang/rustlings/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;中间参与了一个开源项目 &lt;a href=&#34;https://github.com/database-mesh/pisanix/tree/master&#34;&gt;https://github.com/database-mesh/pisanix/tree/master&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最近开始学习 &lt;a href=&#34;https://exercism.org/tracks/rust&#34;&gt;https://exercism.org/tracks/rust&lt;/a&gt;
+&lt;img src=&#34;https://example.com/img/20231207-115016.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://example.com/img/20231207-115026.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://example.com/img/20231207-115032.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://example.com/img/20231207-115044.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://example.com/img/20231207-115050.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://example.com/img/20231207-115056.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://example.com/img/20231207-115101.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Connection_is_not_avaible</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/connection_is_not_avaible/" />
@@ -1798,49 +1848,6 @@ actual_database_name: ds_1
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;目前 ShardingSphere 内置元数据库功能是试验性的功能，很多流程和实现方式还需要进一步完善，它是 ShardingSphere 社区对于元数据库的一次探索，它的进一步发展还依赖社区小伙伴的支持。读完了全完的你是不是也跃跃欲试了？欢迎来社区贡献，我们准备了丰富的任务列表等你来挑战。
 &lt;a href=&#34;https://github.com/apache/shardingsphere/issues/24378&#34;&gt;https://github.com/apache/shardingsphere/issues/24378&lt;/a&gt;&lt;/p&gt;
-</content>
-            
-            
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
-                            
-                        
-                    
-                
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">rust 学习</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/learn_rust/" />
-            <id>https://example.com/posts/learn_rust/</id>
-            <updated>2023-05-10T13:50:48&#43;08:00</updated>
-            <published>2023-02-28T08:51:39&#43;08:00</published>
-            <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">最开始是通过官方网站上这本书来学习 https://doc.rust-lang.org/book/
-通读之后开始学习 https://github.com/rust-lang/rustlings/
-中间参与了一个开源项目 https://github.com/database-mesh/pisanix/tree/master
-最近开始学习 https://exercism.org/tracks/rust</summary>
-            
-                <content type="html">&lt;p&gt;最开始是通过官方网站上这本书来学习
-&lt;a href=&#34;https://doc.rust-lang.org/book/&#34;&gt;https://doc.rust-lang.org/book/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;通读之后开始学习 &lt;a href=&#34;https://github.com/rust-lang/rustlings/&#34;&gt;https://github.com/rust-lang/rustlings/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;中间参与了一个开源项目 &lt;a href=&#34;https://github.com/database-mesh/pisanix/tree/master&#34;&gt;https://github.com/database-mesh/pisanix/tree/master&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;最近开始学习 &lt;a href=&#34;https://exercism.org/tracks/rust&#34;&gt;https://exercism.org/tracks/rust&lt;/a&gt;&lt;/p&gt;
 </content>
             
             
