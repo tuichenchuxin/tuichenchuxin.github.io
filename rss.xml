@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Fri, 15 Dec 2023 10:56:03 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 15 Dec 2023 11:01:47 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
@@ -54,11 +54,12 @@ Error occurred during initialization of boot layer FindException: Module not fou
 后来发现 mvn clean 之后，可以运行，但是有部分代码是会在编译阶段被更改，因此还得 install 之后在跑
 但是 idea 运行之前会 build 然后就改变了 target 下部分代码。
 所以需要勾选运行前不 build 即可解决问题。&lt;/p&gt;
-&lt;p&gt;[x] testSealed2
-[x] testSealed3
-[x] testSealedAccessibleMethods
-创建 hikari datasoure 的时候会设置 sealed, 如果已经 sealed 了，那么后续就不允许改了。
-[x] testIdleTimeout 看一下 idle 为什么被释放。&lt;/p&gt;
+&lt;p&gt;[x] testSealed2&lt;/p&gt;
+&lt;p&gt;[x] testSealed3&lt;/p&gt;
+&lt;p&gt;[x] testSealedAccessibleMethods&lt;/p&gt;
+&lt;p&gt;创建 hikari datasoure 的时候会设置 sealed, 如果已经 sealed 了，那么后续就不允许改了。&lt;/p&gt;
+&lt;p&gt;[x] testIdleTimeout&lt;/p&gt;
+&lt;p&gt;看一下 idle 为什么被释放。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -156,9 +157,9 @@ Error occurred during initialization of boot layer FindException: Module not fou
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;houseKeeperTask&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;houseKeepingExecutorService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;scheduleWithFixedDelay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HouseKeeper&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;housekeepingPeriodMs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MILLISECONDS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;debug 发现是 houseKeeperTask ,定时任务，探测到最小空闲连接已经小于 4 了，因此又补充了。
-那么又是谁释放了呢？
-依然是 houseKeeperTask 发现空闲连接已经大于最小空闲连接配置，并且时间已经超过 配置的 3000 ms,所以就释放了。&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;debug 发现是 houseKeeperTask ,定时任务，探测到最小空闲连接已经小于 4 了，因此又补充了。&lt;/p&gt;
+&lt;p&gt;那么又是谁释放了呢？&lt;/p&gt;
+&lt;p&gt;依然是 houseKeeperTask 发现空闲连接已经大于最小空闲连接配置，并且时间已经超过 配置的 3000 ms,所以就释放了。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
