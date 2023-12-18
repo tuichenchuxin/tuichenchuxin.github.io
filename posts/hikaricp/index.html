@@ -63,13 +63,13 @@ HikariCP 怎么学习 考虑编译起来，然后运行 test 查看代码逻辑
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2023-12-15T09:14:20+08:00",
-        "dateModified": "2023-12-15T11:01:39+08:00",
+        "dateModified": "2023-12-18T12:00:32+08:00",
         "url": "https://example.com/posts/hikaricp/",
         "headline": "探索 HikariCP",
         "description": "项目地址： https://github.com/brettwooldridge/HikariCP\n“Simplicity is prerequisite for reliability.” - Edsger Dijkstra\n最先强调的就是简单，扁平，性能，做了 字节码级别的优化。 配置简单，很多东西选择不做，例如 statement 缓存。\npool size 比想象的要小的多，这样更能拥有更好的性能。因为单 cpu 并非并行，上下文切换需要时间，另外查询的位置需要来回切换等等。 不过 IO wait 比较大时，那么并发时能够提升的。 另外对于大事务和短事务，比较难以协调，这时候最好搞两个 pool。\nHikariCP 怎么学习 考虑编译起来，然后运行 test 查看代码逻辑\n[x] testSealed1\n通过 IDEA 运行时发现总会报 Error occurred during initialization of boot layer FindException: Module not found 后来发现 mvn clean 之后，可以运行，但是有部分代码是会在编译阶段被更改，因此还得 install 之后在跑 但是 idea 运行之前会 build 然后就改变了 target 下部分代码。 所以需要勾选运行前不 build 即可解决问题。",
         "inLanguage" : "en",
         "articleSection": "posts",
-        "wordCount":  326 ,
+        "wordCount":  335 ,
         "image": "https://example.com/icons/apple-touch-icon.png",
         "author": {
             "@type": "Person",
@@ -120,7 +120,7 @@ HikariCP 怎么学习 考虑编译起来，然后运行 test 查看代码逻辑
 <meta property="og:locale" content="en" /><meta property="og:image" content="https://example.com/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2023-12-15T09:14:20&#43;08:00" />
-    <meta property="article:modified_time" content="2023-12-15T11:01:39&#43;08:00" />
+    <meta property="article:modified_time" content="2023-12-18T12:00:32&#43;08:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -255,7 +255,7 @@ HikariCP 怎么学习 考虑编译起来，然后运行 test 查看代码逻辑
     
     
         
-        <time datetime="2023-12-15T11:01:39&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.12.15</time>
+        <time datetime="2023-12-18T12:00:32&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.12.18</time>
     
     
     
@@ -267,7 +267,7 @@ HikariCP 怎么学习 考虑编译起来，然后运行 test 查看代码逻辑
     
     
         
-        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;326</span>
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;335</span>
     
     
         
@@ -432,7 +432,21 @@ Error occurred during initialization of boot layer FindException: Module not fou
 </span></span><span class="line"><span class="cl">            <span class="o">}</span>
 </span></span></code></pre></td></tr></table></div>
 </div>
-</div>
+</div><ul>
+<li><input checked="" disabled="" type="checkbox"> testIdleTimeout2</li>
+<li><input checked="" disabled="" type="checkbox"> testConcurrentClose</li>
+<li><input checked="" disabled="" type="checkbox"> testPoolSizeAboutSameSizeAsThreadCount
+<blockquote>
+<p>测试 poolSize 的大小基本上跟线程数差不多</p>
+</blockquote>
+</li>
+<li><input checked="" disabled="" type="checkbox"> testSlowConnectionTimeBurstyWork
+<blockquote>
+<p>测试快速的任务处理下，连接创建比较慢，但是实际使用的connection 很少</p>
+</blockquote>
+</li>
+</ul>
+
             </div>
 
             
@@ -460,9 +474,9 @@ Error occurred during initialization of boot layer FindException: Module not fou
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-12-15 11:01:39 CST" style="cursor:help">
+        <span title="Updated @ 2023-12-18 12:00:32 CST" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-12-15</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-12-15</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-12-18</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-12-18</text></g></svg>
         </span></div>
 
 
