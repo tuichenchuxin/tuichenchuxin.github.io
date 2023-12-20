@@ -4,15 +4,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2023-12-18T12:00:44&#43;08:00</updated>
+    <updated>2023-12-20T18:45:03&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
     <author>
-            <name>reuixiy</name>
+            <name>chuxin chen</name>
             <uri>https://example.com/</uri>
             
-                <email>reuixiy@gmail.com</email>
+                <email>chuxinchen.x@qq.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
@@ -20,20 +20,19 @@
             <title type="text">探索 HikariCP</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/hikaricp/" />
             <id>https://example.com/posts/hikaricp/</id>
-            <updated>2023-12-18T12:00:32&#43;08:00</updated>
+            <updated>2023-12-20T18:44:56&#43;08:00</updated>
             <published>2023-12-15T09:14:20&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">项目地址： https://github.com/brettwooldridge/HikariCP
 &amp;ldquo;Simplicity is prerequisite for reliability.&amp;rdquo; - Edsger Dijkstra
 最先强调的就是简单，扁平，性能，做了 字节码级别的优化。 配置简单，很多东西选择不做，例如 statement 缓存。
 pool size 比想象的要小的多，这样更能拥有更好的性能。因为单 cpu 并非并行，上下文切换需要时间，另外查询的位置需要来回切换等等。 不过 IO wait 比较大时，那么并发时能够提升的。 另外对于大事务和短事务，比较难以协调，这时候最好搞两个 pool。
 HikariCP 怎么学习 考虑编译起来，然后运行 test 查看代码逻辑
-[x] testSealed1
-通过 IDEA 运行时发现总会报 Error occurred during initialization of boot layer FindException: Module not found 后来发现 mvn clean 之后，可以运行，但是有部分代码是会在编译阶段被更改，因此还得 install 之后在跑 但是 idea 运行之前会 build 然后就改变了 target 下部分代码。 所以需要勾选运行前不 build 即可解决问题。</summary>
+testSealed1 通过 IDEA 运行时发现总会报 Error occurred during initialization of boot layer FindException: Module not found 后来发现 mvn clean 之后，可以运行，但是有部分代码是会在编译阶段被更改，因此还得 install 之后在跑 但是 idea 运行之前会 build 然后就改变了 target 下部分代码。 所以需要勾选运行前不 build 即可解决问题。</summary>
             
                 <content type="html">&lt;p&gt;项目地址： &lt;a href=&#34;https://github.com/brettwooldridge/HikariCP&#34;&gt;https://github.com/brettwooldridge/HikariCP&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;Simplicity is prerequisite for reliability.&amp;rdquo;
@@ -45,17 +44,29 @@ HikariCP 怎么学习 考虑编译起来，然后运行 test 查看代码逻辑
 另外对于大事务和短事务，比较难以协调，这时候最好搞两个 pool。&lt;/p&gt;
 &lt;h2 id=&#34;hikaricp-怎么学习&#34;&gt;HikariCP 怎么学习&lt;/h2&gt;
 &lt;p&gt;考虑编译起来，然后运行 test 查看代码逻辑&lt;/p&gt;
-&lt;p&gt;[x] testSealed1&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testSealed1&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;通过 IDEA 运行时发现总会报
 Error occurred during initialization of boot layer FindException: Module not found
 后来发现 mvn clean 之后，可以运行，但是有部分代码是会在编译阶段被更改，因此还得 install 之后在跑
 但是 idea 运行之前会 build 然后就改变了 target 下部分代码。
 所以需要勾选运行前不 build 即可解决问题。&lt;/p&gt;
-&lt;p&gt;[x] testSealed2&lt;/p&gt;
-&lt;p&gt;[x] testSealed3&lt;/p&gt;
-&lt;p&gt;[x] testSealedAccessibleMethods&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testSealed2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testSealed3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testSealedAccessibleMethods&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;创建 hikari datasoure 的时候会设置 sealed, 如果已经 sealed 了，那么后续就不允许改了。&lt;/p&gt;
-&lt;p&gt;[x] testIdleTimeout&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testIdleTimeout&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;看一下 idle 为什么被释放。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -200,6 +211,32 @@ Error occurred during initialization of boot layer FindException: Module not fou
 &lt;p&gt;测试快速的任务处理下，连接创建比较慢，但是实际使用的connection 很少&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testRaceCondition
+&lt;blockquote&gt;
+&lt;p&gt;测试30s,不停创建连接和驱逐连接&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testAutoCommit
+&lt;blockquote&gt;
+&lt;p&gt;测试设置 autoCommit 为false ,关闭连接后，代理的原真实连接还是会恢复成原状&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testTransactionIsolation
+&lt;blockquote&gt;
+&lt;p&gt;测试设置 isolation，关闭连接后，恢复（dirtyBits 通过位运算来提高性能）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testIsolation
+&lt;blockquote&gt;
+&lt;p&gt;看起来就是测试设置 isolation 成功
+-[x] testReadOnly
+测试设置 readOnly, 关闭连接后，恢复
+-[x] testCatalog
+测试设置 catalog, 关闭连接后，恢复
+-[x] testCommitTracking
+测试 isCommitStateDirty 在 autoCommit = false 时，有 SQL 执行时，就变成 true, rollback 或者 commit 就恢复&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </content>
             
@@ -222,9 +259,9 @@ Error occurred during initialization of boot layer FindException: Module not fou
             <updated>2023-12-07T11:54:54&#43;08:00</updated>
             <published>2023-12-07T08:51:39&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">最开始是通过官方网站上这本书来学习 https://doc.rust-lang.org/book/
 通读之后开始学习 https://github.com/rust-lang/rustlings/
@@ -272,9 +309,9 @@ Error occurred during initialization of boot layer FindException: Module not fou
             <updated>2023-11-09T16:36:53&#43;08:00</updated>
             <published>2023-11-09T16:03:41&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Connection is not available, request timed out after 30000ms 最近碰到一个这个异常，前端是 xxl-job 任务，后端将 shardingsphere-proxy 作为数据源来使用。
 偶发，频率比较高 网络上相关解释 从 Hikari 拿连接，但是拿不到，要不就是达到最大连接数了 https://stackoverflow.com/questions/32968530/hikaricp-connection-is-not-available
@@ -367,9 +404,9 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
             <updated>2023-11-01T18:46:29&#43;08:00</updated>
             <published>2023-11-01T15:38:48&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">通过如下步骤打包后发现 jar 包中的文件都是 .java 文件，而不是 .class 文件 经过了一下午的尝试，发现手动创建包，然后指定 .class 文件可以成功打包。 不过没有特别需求还是直接用 maven 吧，简单些，无需添加任何插件，直接 mvn clean install 即可。</summary>
             
@@ -401,9 +438,9 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
             <updated>2023-10-16T15:20:40&#43;08:00</updated>
             <published>2023-10-16T15:13:38&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">今天写代码时遇到一个异常。如下
 java.sql.SQLException: Streaming result set com.mysql.jdbc.RowDataDynamic@4b76a937 is still active. No statements may be issued when any streaming result sets are open and in use on a given connection. Ensure that you have called .close() on any active streaming result sets before attempting more queries.</summary>
@@ -490,9 +527,9 @@ java.sql.SQLException: Streaming result set com.mysql.jdbc.RowDataDynamic@4b76a9
             <updated>2023-10-13T16:13:45&#43;08:00</updated>
             <published>2023-10-13T14:19:38&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">背景 在优化全局二级索引的过程中，有一个优化点是如果二级索引的数据量太大，那么带回主表再查可能引起一些问题，例如效率不高，OOM 或者 SQL 超长等问题，因此考虑二级索引表数据量大的时候，直接查询主表。 因此需要查询二级索引表的数据量。 这里考虑能否直接查询二级索引表的同时获取本次查询结果的数据量。
 实践 方式一 通过 ResultSet.TYPE_SCROLL_INSENSITIVE 可以将游标放到最后，然后根据 getRow() 方法获取
@@ -598,9 +635,9 @@ Oracle
             <updated>2023-09-22T15:51:23&#43;08:00</updated>
             <published>2023-09-22T15:45:09&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 create table ENCRYPT.TEST1 ( A VARCHAR2(200) PRIMARY KEY, B VARCHAR2(200), C VARCHAR2(200) ) / create table ENCRYPT.TEST2 ( A VARCHAR2(200) PRIMARY KEY, B VARCHAR2(200), C VARCHAR2(200) ) / insert into TEST1 values (1,2,3); insert into TEST1 values (2,3,4); insert into TEST2 values (4,2,3); merge into TEST2 fi using TEST1 se on (fi.</summary>
             
@@ -682,9 +719,9 @@ ORA-00001: unique constraint (ENCRYPT.SYS_C007033) violated&lt;/p&gt;
             <updated>2023-08-23T18:07:29&#43;08:00</updated>
             <published>2023-08-23T17:55:43&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">背景 用户使用 shardingsphere 发现 No suitable driver 异常。但是用户的 jar 包中是有该驱动的。
 调查 发现如果增加这段代码后，可以正常执行
@@ -740,9 +777,9 @@ DriverManager 加载多个驱动过程中，如果有任何一个失败，都不
             <updated>2023-06-30T18:08:25&#43;08:00</updated>
             <published>2023-06-30T16:02:42&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">https://github.com/julianhyde/sqlline sqlline 是一个通过 jdbc 的连接工具。
 下载代码并编译 git clone git://github.com/julianhyde/sqlline.git cd sqlline ./mvnw package 将 shardingsphere-jdbc 打包，之后最好再使用 sharde PLUGIN 打成一个 jar 包
@@ -794,19 +831,20 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
             <title type="text">Open_dal</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/open_dal/" />
             <id>https://example.com/posts/open_dal/</id>
-            <updated>2023-06-28T10:36:07&#43;08:00</updated>
+            <updated>2023-12-20T21:14:19&#43;08:00</updated>
             <published>2023-06-19T21:14:19&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">初步了解 opendal 查看 examples 了解到 opendal 是各种数据源的通用连接器
-查看 good first issue 的相关 pr </summary>
+运行接入到 mysql 试试看 查看 good first issue 的相关 pr </summary>
             
                 <content type="html">&lt;h2 id=&#34;初步了解-opendal&#34;&gt;初步了解 opendal&lt;/h2&gt;
 &lt;p&gt;查看 examples
 了解到 opendal 是各种数据源的通用连接器&lt;/p&gt;
+&lt;h2 id=&#34;运行接入到-mysql-试试看&#34;&gt;运行接入到 mysql 试试看&lt;/h2&gt;
 &lt;h2 id=&#34;查看-good-first-issue-的相关-pr&#34;&gt;查看 good first issue 的相关 pr&lt;/h2&gt;
 </content>
             
@@ -837,9 +875,9 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
             <updated>2023-05-10T13:49:19&#43;08:00</updated>
             <published>2023-05-10T11:28:36&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">如何才能实现分布式 join？
 有三种方式：
@@ -896,9 +934,9 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
             <updated>2023-06-28T10:34:45&#43;08:00</updated>
             <published>2023-04-10T18:05:59&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Target 说清楚 calcite 是什么，能做什么 画出 calcite 的大体架构 明白 calcite 是如何跟 SS 整合的 未来 SS 还可以在哪些方面进一步利用 calcite calcite 优化逻辑源码级理解 在 calcite 上提交 pr Process calcite 是什么，能做什么 calcite 是动态数据的管理框架。我理解，就是数据库的计算层，去除掉了存储的部分。 calcite 可以接入任何形式的数据，只需要我们将数据注册成表的形式，那么就可以使用 SQL 来对它进行查询。
 calcite 的大体架构 calcite 如何跟 SS 整合 ShardingSphere 可以支持分库分表，所以也自然会有跨实例查询的 SQL。 例如跨实例的 join。这些 SQL 是没办法直接下推到数据库去执行的，因此利用 calcite 来实现复杂子查询或者是跨实例 join。 我们可以从一个跨实例 join 的 select debug 来查看整合 calcite 的方式。 1.</summary>
@@ -986,9 +1024,9 @@ HepPlanner&lt;/p&gt;
             <updated>2023-06-28T10:37:01&#43;08:00</updated>
             <published>2023-03-23T18:24:20&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
             
@@ -1021,9 +1059,9 @@ HepPlanner&lt;/p&gt;
             <updated>2023-06-28T10:37:06&#43;08:00</updated>
             <published>2023-03-23T18:23:59&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
             
@@ -1056,9 +1094,9 @@ HepPlanner&lt;/p&gt;
             <updated>2023-03-24T10:02:22&#43;08:00</updated>
             <published>2023-03-16T09:37:34&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">文档信息提取 https://developer.aliyun.com/article/783392 本文首先介绍了 MySQL 的 join 实现，包括以下方式
 Nested-Loop Join (NL Join) Batched Key Access Join (BKA Join) Block Nested-Loop Join（版本 &amp;lt; 8.0.20） Hash Join (版本 &amp;gt;= 8.0.18) polardb-x 支持多种 join 方式，包括 Lookup Join、Nested-Loop Join、Hash Join、Sort-Merge Join 等，本文主要讲的是 Lookup Join
@@ -1224,9 +1262,9 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
             <updated>2023-03-24T10:15:34&#43;08:00</updated>
             <published>2023-03-14T09:40:45&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">分布式 join 调研 Citus Data Citus Data 是一个开源的分布式数据库管理系统，它是基于 PostgreSQL 架构之上，能够允许数据库在多个服务器之间进行分布式运算，以便应对大型数据处理和高流量负载的需求。利用 Citus Data 可以为 PostgreSQL 提供横向扩展的能力，使其可以更好地应对应用中的大量数据请求，具有较高的性能和可扩展性。Citus Data 的特点还包括良好的可用性、容错性、可管理性和可扩展性。Citrus Data 可以作为云端数据库的解决方案提供，同时也适用于在本地运行的企业数据库和分析场景中。
 分布式 join 支持方式（数据复制） 单表 join 分表
@@ -1321,9 +1359,9 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
             <updated>2023-03-24T10:16:16&#43;08:00</updated>
             <published>2023-03-06T09:14:47&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Apache ShardingSphere 元数据介绍 Apache ShardingSphere 的元数据主要包括规则、数据源、表结构等信息。规则信息可能包含分片、加密、读写分离、事务、高可用等。 数据源信息存储的是需要通过 ShardingSphere 来进行管理的底层数据库资源。表结构信息主要就是底层数据源的表结构，包括表的 column 信息、索引信息等。
 Apache ShardingSphere 通过这些元数据信息配合治理中心的能力，例如 zookeeper、etcd 的存储和通知能力，可以实现集群内配置的共享和变更，从而实现计算节点的水平扩展。同时元数据信息对于 ShardingSphere 而言也是至关重要的，以表的数据结构为例，ShardingSphere 利用表的数据结构可以对采用了加密规则的 SQL 进行正确的改写，内核中的 federation 引擎也会利用表结构信息进行 SQL 优化。
@@ -2076,9 +2114,9 @@ actual_database_name: ds_1
             <updated>2023-04-03T09:28:24&#43;08:00</updated>
             <published>2023-02-06T11:46:34&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">TiDB 使用 创建表时可以设置数据过期时间，然后后台定时任务删除相关数据
 产品文档：https://docs.pingcap.com/zh/tidb/dev/time-to-live
@@ -2219,9 +2257,9 @@ actual_database_name: ds_1
             <updated>2023-03-24T10:16:29&#43;08:00</updated>
             <published>2022-11-23T10:02:24&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">目标 新增 SS 默认系统库，初步支持全局静态元数据（编码、事务隔离级别）管理 设计元数据调度收集功能，支持 ShardingSphere 动态元数据管理（数据分布等信息） 现状 当前 ss 缺乏自己的元数据信息，例如分片的数据分布、编码等等。
 之前为了解决各个客户端连接报错的问题，设计了各个数据库方言的模拟库。 只有用户表会从真实数据库获取，其他表都是通过 yaml 文件来模拟存储到 zk 的。
@@ -3174,9 +3212,9 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
             <updated>2023-03-24T10:16:23&#43;08:00</updated>
             <published>2022-11-04T18:09:40&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">PG \d 支持 \d 的现状 \d 实际执行的语句如下
 SELECT n.nspname as &amp;#34;Schema&amp;#34;, c.relname as &amp;#34;Name&amp;#34;, CASE c.relkind WHEN &amp;#39;r&amp;#39; THEN &amp;#39;table&amp;#39; WHEN &amp;#39;v&amp;#39; THEN &amp;#39;view&amp;#39; WHEN &amp;#39;i&amp;#39; THEN &amp;#39;index&amp;#39; WHEN &amp;#39;I&amp;#39; THEN &amp;#39;global partition index&amp;#39; WHEN &amp;#39;S&amp;#39; THEN &amp;#39;sequence&amp;#39; WHEN &amp;#39;L&amp;#39; THEN &amp;#39;large sequence&amp;#39; WHEN &amp;#39;f&amp;#39; THEN &amp;#39;foreign table&amp;#39; WHEN &amp;#39;m&amp;#39; THEN &amp;#39;materialized view&amp;#39; WHEN &amp;#39;e&amp;#39; THEN &amp;#39;stream&amp;#39; WHEN &amp;#39;o&amp;#39; THEN &amp;#39;contview&amp;#39; END as &amp;#34;Type&amp;#34;, pg_catalog.</summary>
@@ -3423,9 +3461,9 @@ RelationIsVisible(Oid relid)
             <updated>2023-06-28T10:35:41&#43;08:00</updated>
             <published>2022-09-21T10:02:13&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
             
@@ -3458,9 +3496,9 @@ RelationIsVisible(Oid relid)
             <updated>2023-06-28T10:35:25&#43;08:00</updated>
             <published>2022-06-22T18:12:49&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">https://yeasy.gitbook.io/docker_practice/
 使用 dockerFile 创建镜像 FROM nginx RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &amp;gt; /usr/share/nginx/html/index.html 容器的使用 </summary>
@@ -3499,9 +3537,9 @@ RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &
             <updated>2023-03-24T10:03:52&#43;08:00</updated>
             <published>2022-06-22T17:44:41&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">构建 yat 下载源码
 git clone https://gitee.com/opengauss/Yat.git 构建 yat
@@ -3581,9 +3619,9 @@ Run test suite finished
             <updated>2023-03-24T10:16:06&#43;08:00</updated>
             <published>2022-06-14T18:09:13&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">https://zhuanlan.zhihu.com/p/515688555
 mac 开发环境启动 galaxysql https://hub.docker.com/r/polardbx/polardb-x
@@ -3735,9 +3773,9 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
             <updated>2023-03-24T10:15:57&#43;08:00</updated>
             <published>2022-05-12T17:56:24&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Step 1: 克隆项目
 Step 2: 添加新的远程仓库 为了修改他人 Fork 的仓库，你需要将其添加到自己的远程仓库列表中
@@ -3794,9 +3832,9 @@ $ git push sirmin HEAD:sirmin/resultSet
             <updated>2023-03-24T10:15:29&#43;08:00</updated>
             <published>2022-04-25T18:12:49&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g docker run --privileged --restart=always --name oracle_11g -p 1521:1521 -d registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g docker exec -it 容器ID /bin/bash source /home/oracle/.bash_profile sqlplus nologconnect as sysdba 1 2 3 4 create user oracle identified by oracle#123; alter user system identified by system; alter user system identified by 123456; grant connect,resource,dba to oracle; 参考：https://baijiahao.</summary>
             
@@ -3849,9 +3887,9 @@ $ git push sirmin HEAD:sirmin/resultSet
             <updated>2023-03-24T10:24:14&#43;08:00</updated>
             <published>2022-04-25T11:22:13&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Freemarker freemarker 是一款开源的模版引擎，可以基于模版方便的生成结果。 https://freemarker.apache.org/
 Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句为例 编写 delete.ftl 文件，${} 中的字段是参数
@@ -4001,9 +4039,9 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
             <updated>2023-03-24T10:15:24&#43;08:00</updated>
             <published>2022-04-14T11:37:36&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">下载源码 https://github.com/postgres/pgadmin4
 安装环境 brew install node brew install yarn cd runtime yarn install node_modules/nw/nwjs/nwjs.app/Contents/MacOS/nwjs . sudo mkdir &amp;#34;/var/log/pgadmin&amp;#34; sudo chmod a+wrx &amp;#34;/var/log/pgadmin&amp;#34; sudo mkdir &amp;#34;/var/lib/pgadmin&amp;#34; sudo chmod a+wrx &amp;#34;/var/lib/pgadmin&amp;#34; pip install --upgrade pip pip install psycopg2-binary make install-node 最后运行 pgAdmin4.py 过程中会有一些问题，参考 https://github.com/postgres/pgadmin4 readme.</summary>
@@ -4054,9 +4092,9 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
             <updated>2023-03-24T10:03:54&#43;08:00</updated>
             <published>2022-04-13T19:31:40&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">PgAmdin4 展示 DDL 语句 通过 PgAdmin4 可以获取 table 的 DDL 语句 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 -- Table: public.t_order_0 -- DROP TABLE IF EXISTS public.t_order_0; CREATE TABLE IF NOT EXISTS public.</summary>
             
@@ -4831,9 +4869,9 @@ ORDER BY
             <updated>2023-03-24T10:15:19&#43;08:00</updated>
             <published>2022-04-08T14:09:16&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">获取 postgres 的建表语句的几种方法 使用 pg_dump 可以使用 pg_dump 直接查看建表语句 以本机 docker 的 postgres 为例
 docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres -d demo_ds_0 -s -t t_order_0 结果展示
@@ -5331,9 +5369,9 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
             <updated>2023-03-24T10:16:10&#43;08:00</updated>
             <published>2022-04-06T10:39:09&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">EventBus 的使用及注意点 使用 创建全局实例 1 static final EventBus INSTANCE = new EventBus(); 将含有 @Subscribe 的方法注册到全局实例上 1 INSTANCE.register(this); 发送 event 1 INSTANCE.post(event); 流程分析 采用上述方式时有以下几个注意点
 发送事件并且接受后处理事件是同步执行的，即同一个线程执行 如果在接受事件方法中有嵌套发送事件，那么该嵌套发送的事件不会立即执行，会等到第一个事件的接收方法完成后，再执行第二个事件。 EventBus 调用流程分析 创建 EventBus 实例 将订阅者注册到 EventBus 实例上 创建 EventBus 实例 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 public EventBus() { this(&amp;#34;default&amp;#34;); } /** * Creates a new EventBus with the given {@code identifier}.</summary>
@@ -5684,9 +5722,9 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
             <updated>2023-03-24T10:16:01&#43;08:00</updated>
             <published>2022-04-01T19:33:02&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
-                    <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">背景 Apache ShardingSphere 基于用户的实际使用场景，为用户打造了多种实用功能，包括数据分片、读写分离等。在数据分片功能中，Apache ShardingSphere 提供了标准分片、复合分片等多种实用的分片策略，在各种分片策略中，用户又可以配置相关分片算法，从而解决数据分片的问题。在读写分离功能中，ShardingSphere 为用户提供了静态和动态的两种读写分离类型以及丰富的负载均衡算法以满足用户实际需求。 可以看到 ShardingSphere 的分片和读写分离功能已经非常丰富，不过用户的真实使用场景是千变万化的。以多租户场景为例，用户期望按照登录账号所属租户进行分片，但是租户信息却并不是存在于每条业务 SQL 中，这时从 SQL 中提取分片字段的算法将无法发挥作用。再以读写分离为例，大部分场景下用户都希望能够将查询操作路由到从库上执行，但是在某些实时性要求很高的场景下，用户希望将 SQL 强制路由到主库执行，这时读写分离就无法满足业务要求。 基于以上痛点 Apache ShardingSphere 为用户提供了 Hint 功能，用户可以结合实际业务场景，利用 SQL 外部的逻辑进行强制路由或者分片。目前 ShardingSphere 为用户提供了两种 Hint 方式，一种通过 Java API 手动编程，利用 HintManager 进行强制路由和分片，这种方式对采用 JDBC 编程的应用非常友好，只需要少量的代码编写，就能够轻松实现不依赖 SQL 的分片或者强制路由功能。另外一种方式对于不懂开发的 DBA 而言更加友好，ShardingSphere 基于分布式 SQL 提供的使用方式，利用 SQL HINT 和 DistSQL HINT， 为用户提供了无需编码就能实现的分片和强制路由功能。接下来，让我们一起了解下这两种使用方式。</summary>
             

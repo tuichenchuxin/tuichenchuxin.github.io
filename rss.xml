@@ -15,15 +15,15 @@
             <language>en</language>
         
         
-            <managingEditor>reuixiy@gmail.com (reuixiy)</managingEditor>
+            <managingEditor>chuxinchen.x@qq.com (chuxin chen)</managingEditor>
         
         
-            <webMaster>reuixiy@gmail.com (reuixiy)</webMaster>
+            <webMaster>chuxinchen.x@qq.com (chuxin chen)</webMaster>
         
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Mon, 18 Dec 2023 12:00:44 &#43;0800</lastBuildDate>
+        <lastBuildDate>Wed, 20 Dec 2023 18:45:03 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
@@ -34,7 +34,7 @@
                 <guid isPermaLink="true">https://example.com/posts/hikaricp/</guid>
                 <pubDate>Fri, 15 Dec 2023 09:14:20 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -48,17 +48,29 @@
 另外对于大事务和短事务，比较难以协调，这时候最好搞两个 pool。&lt;/p&gt;
 &lt;h2 id=&#34;hikaricp-怎么学习&#34;&gt;HikariCP 怎么学习&lt;/h2&gt;
 &lt;p&gt;考虑编译起来，然后运行 test 查看代码逻辑&lt;/p&gt;
-&lt;p&gt;[x] testSealed1&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testSealed1&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;通过 IDEA 运行时发现总会报
 Error occurred during initialization of boot layer FindException: Module not found
 后来发现 mvn clean 之后，可以运行，但是有部分代码是会在编译阶段被更改，因此还得 install 之后在跑
 但是 idea 运行之前会 build 然后就改变了 target 下部分代码。
 所以需要勾选运行前不 build 即可解决问题。&lt;/p&gt;
-&lt;p&gt;[x] testSealed2&lt;/p&gt;
-&lt;p&gt;[x] testSealed3&lt;/p&gt;
-&lt;p&gt;[x] testSealedAccessibleMethods&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testSealed2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testSealed3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testSealedAccessibleMethods&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;创建 hikari datasoure 的时候会设置 sealed, 如果已经 sealed 了，那么后续就不允许改了。&lt;/p&gt;
-&lt;p&gt;[x] testIdleTimeout&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testIdleTimeout&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;看一下 idle 为什么被释放。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -203,6 +215,32 @@ Error occurred during initialization of boot layer FindException: Module not fou
 &lt;p&gt;测试快速的任务处理下，连接创建比较慢，但是实际使用的connection 很少&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testRaceCondition
+&lt;blockquote&gt;
+&lt;p&gt;测试30s,不停创建连接和驱逐连接&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testAutoCommit
+&lt;blockquote&gt;
+&lt;p&gt;测试设置 autoCommit 为false ,关闭连接后，代理的原真实连接还是会恢复成原状&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testTransactionIsolation
+&lt;blockquote&gt;
+&lt;p&gt;测试设置 isolation，关闭连接后，恢复（dirtyBits 通过位运算来提高性能）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; testIsolation
+&lt;blockquote&gt;
+&lt;p&gt;看起来就是测试设置 isolation 成功
+-[x] testReadOnly
+测试设置 readOnly, 关闭连接后，恢复
+-[x] testCatalog
+测试设置 catalog, 关闭连接后，恢复
+-[x] testCommitTracking
+测试 isCommitStateDirty 在 autoCommit = false 时，有 SQL 执行时，就变成 true, rollback 或者 commit 就恢复&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
                 
@@ -224,7 +262,7 @@ Error occurred during initialization of boot layer FindException: Module not fou
                 <guid isPermaLink="true">https://example.com/posts/learn_rust/</guid>
                 <pubDate>Thu, 07 Dec 2023 08:51:39 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -268,7 +306,7 @@ Error occurred during initialization of boot layer FindException: Module not fou
                 <guid isPermaLink="true">https://example.com/posts/connection_is_not_avaible/</guid>
                 <pubDate>Thu, 09 Nov 2023 16:03:41 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -356,7 +394,7 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
                 <guid isPermaLink="true">https://example.com/posts/use_idea_to_generate_jar/</guid>
                 <pubDate>Wed, 01 Nov 2023 15:38:48 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -387,7 +425,7 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
                 <guid isPermaLink="true">https://example.com/posts/resultset_next/</guid>
                 <pubDate>Mon, 16 Oct 2023 15:13:38 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -472,7 +510,7 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
                 <guid isPermaLink="true">https://example.com/posts/result_set_type/</guid>
                 <pubDate>Fri, 13 Oct 2023 14:19:38 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -575,7 +613,7 @@ Oracle
                 <guid isPermaLink="true">https://example.com/posts/oracle_merge/</guid>
                 <pubDate>Fri, 22 Sep 2023 15:45:09 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -656,7 +694,7 @@ ORA-00001: unique constraint (ENCRYPT.SYS_C007033) violated&lt;/p&gt;
                 <guid isPermaLink="true">https://example.com/posts/driverclassname/</guid>
                 <pubDate>Wed, 23 Aug 2023 17:55:43 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -708,7 +746,7 @@ DriverManager 加载多个驱动过程中，如果有任何一个失败，都不
                 <guid isPermaLink="true">https://example.com/posts/use_sql_line/</guid>
                 <pubDate>Fri, 30 Jun 2023 16:02:42 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -759,13 +797,14 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
                 <guid isPermaLink="true">https://example.com/posts/open_dal/</guid>
                 <pubDate>Mon, 19 Jun 2023 21:14:19 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
                     <description>&lt;h2 id=&#34;初步了解-opendal&#34;&gt;初步了解 opendal&lt;/h2&gt;
 &lt;p&gt;查看 examples
 了解到 opendal 是各种数据源的通用连接器&lt;/p&gt;
+&lt;h2 id=&#34;运行接入到-mysql-试试看&#34;&gt;运行接入到 mysql 试试看&lt;/h2&gt;
 &lt;h2 id=&#34;查看-good-first-issue-的相关-pr&#34;&gt;查看 good first issue 的相关 pr&lt;/h2&gt;
 </description>
                 
@@ -795,7 +834,7 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
                 <guid isPermaLink="true">https://example.com/posts/distributed-join/</guid>
                 <pubDate>Wed, 10 May 2023 11:28:36 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -847,7 +886,7 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
                 <guid isPermaLink="true">https://example.com/posts/learn_calcite/</guid>
                 <pubDate>Mon, 10 Apr 2023 18:05:59 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -933,7 +972,7 @@ HepPlanner&lt;/p&gt;
                 <guid isPermaLink="true">https://example.com/posts/learnhadoop/</guid>
                 <pubDate>Thu, 23 Mar 2023 18:24:20 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -965,7 +1004,7 @@ HepPlanner&lt;/p&gt;
                 <guid isPermaLink="true">https://example.com/posts/learnspark/</guid>
                 <pubDate>Thu, 23 Mar 2023 18:23:59 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -997,7 +1036,7 @@ HepPlanner&lt;/p&gt;
                 <guid isPermaLink="true">https://example.com/posts/polardbxjoin/</guid>
                 <pubDate>Thu, 16 Mar 2023 09:37:34 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -1160,7 +1199,7 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
                 <guid isPermaLink="true">https://example.com/posts/join_learn/</guid>
                 <pubDate>Tue, 14 Mar 2023 09:40:45 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -1250,7 +1289,7 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
                 <guid isPermaLink="true">https://example.com/posts/shardingsphere_meta_learn_action/</guid>
                 <pubDate>Mon, 06 Mar 2023 09:14:47 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -1999,7 +2038,7 @@ actual_database_name: ds_1
                 <guid isPermaLink="true">https://example.com/posts/datattl/</guid>
                 <pubDate>Mon, 06 Feb 2023 11:46:34 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -2135,7 +2174,7 @@ actual_database_name: ds_1
                 <guid isPermaLink="true">https://example.com/posts/shardingspheresysdatabase/</guid>
                 <pubDate>Wed, 23 Nov 2022 10:02:24 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3084,7 +3123,7 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
                 <guid isPermaLink="true">https://example.com/posts/shardingsphere_sys_data_d/</guid>
                 <pubDate>Fri, 04 Nov 2022 18:09:40 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3329,7 +3368,7 @@ RelationIsVisible(Oid relid)
                 <guid isPermaLink="true">https://example.com/posts/join-pisanix/</guid>
                 <pubDate>Wed, 21 Sep 2022 10:02:13 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3361,7 +3400,7 @@ RelationIsVisible(Oid relid)
                 <guid isPermaLink="true">https://example.com/posts/docker/</guid>
                 <pubDate>Wed, 22 Jun 2022 18:12:49 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3398,7 +3437,7 @@ RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &
                 <guid isPermaLink="true">https://example.com/posts/add-yat-test-for-shardingsphere/</guid>
                 <pubDate>Wed, 22 Jun 2022 17:44:41 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3473,7 +3512,7 @@ Run test suite finished
                 <guid isPermaLink="true">https://example.com/posts/polar-db/</guid>
                 <pubDate>Tue, 14 Jun 2022 18:09:13 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3621,7 +3660,7 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
                 <guid isPermaLink="true">https://example.com/posts/modifypr/</guid>
                 <pubDate>Thu, 12 May 2022 17:56:24 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3674,7 +3713,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                 <guid isPermaLink="true">https://example.com/posts/installoracle11g/</guid>
                 <pubDate>Mon, 25 Apr 2022 18:12:49 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3726,7 +3765,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                 <guid isPermaLink="true">https://example.com/posts/use_free_marker/</guid>
                 <pubDate>Mon, 25 Apr 2022 11:22:13 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3872,7 +3911,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                 <guid isPermaLink="true">https://example.com/posts/howtodebugpgadmin4/</guid>
                 <pubDate>Thu, 14 Apr 2022 11:37:36 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -3921,7 +3960,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                 <guid isPermaLink="true">https://example.com/posts/analysispgamdin4ddl/</guid>
                 <pubDate>Wed, 13 Apr 2022 19:31:40 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -4695,7 +4734,7 @@ ORDER BY
                 <guid isPermaLink="true">https://example.com/posts/get_postgres_create_table_sql/</guid>
                 <pubDate>Fri, 08 Apr 2022 14:09:16 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -5190,7 +5229,7 @@ ORDER BY
                 <guid isPermaLink="true">https://example.com/posts/second/</guid>
                 <pubDate>Wed, 06 Apr 2022 10:39:09 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -5539,7 +5578,7 @@ ORDER BY
                 <guid isPermaLink="true">https://example.com/posts/my-first-post/</guid>
                 <pubDate>Fri, 01 Apr 2022 19:33:02 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
