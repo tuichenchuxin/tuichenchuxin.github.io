@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2023-12-21T18:21:07&#43;08:00</updated>
+    <updated>2024-01-12T16:10:19&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,77 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
+        <entry>
+            <title type="text">Antlr4 支持中文空格</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/antlr4_chinese_white/" />
+            <id>https://example.com/posts/antlr4_chinese_white/</id>
+            <updated>2024-01-12T16:10:08&#43;08:00</updated>
+            <published>2024-01-12T16:05:10&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Oracle 是可以支持 中文空格的（\u3000）。因此 shardingSphere 的解析也需要支持。
+查询 antlr4 的定义，首先我们遇到中文空格要像遇到英文空格一样跳过。
+WS : [ \t\r\n\u3000] + -&amp;gt;skip ; 其次还需要将自定义的字符中排除 \u3000 没有找到正确的排除方法。因此考虑在范围定义中跳过 \u3000
+IDENTIFIER_ : [A-Za-z\u0080-\u2FFF\u3001-\uFF0B\uFF0D-\uFFFF]+[A-Za-z_$#0-9\u0080-\u2FFF\u3001-\uFF0B\uFF0D-\uFFFF]* ; 完美解决</summary>
+            
+                <content type="html">&lt;p&gt;Oracle 是可以支持 中文空格的（\u3000）。因此 shardingSphere 的解析也需要支持。&lt;/p&gt;
+&lt;p&gt;查询 antlr4 的定义，首先我们遇到中文空格要像遇到英文空格一样跳过。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;WS
+    : [ \t\r\n\u3000] + -&amp;gt;skip
+    ;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其次还需要将自定义的字符中排除 \u3000
+没有找到正确的排除方法。因此考虑在范围定义中跳过 \u3000&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;IDENTIFIER_
+    : [A-Za-z\u0080-\u2FFF\u3001-\uFF0B\uFF0D-\uFFFF]+[A-Za-z_$#0-9\u0080-\u2FFF\u3001-\uFF0B\uFF0D-\uFFFF]*
+    ;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;完美解决&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">OPE 加密算法</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/encrypt_ope/" />
+            <id>https://example.com/posts/encrypt_ope/</id>
+            <updated>2024-01-10T14:49:22&#43;08:00</updated>
+            <published>2024-01-10T14:45:49&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">OPE 加密算法全称是 Order Preserving Encryption。加密后的内容依然具有原始数据的顺序性，如果实现了该算法后，SQL 可以支持密文的 range 查询和排序。
+https://github.com/aymanmadkour/ope 该开源代码是 ope 的算法实现，可以实现数字，字符串的加密有序性。</summary>
+            
+                <content type="html">&lt;p&gt;OPE 加密算法全称是 Order Preserving Encryption。加密后的内容依然具有原始数据的顺序性，如果实现了该算法后，SQL 可以支持密文的 range 查询和排序。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/aymanmadkour/ope&#34;&gt;https://github.com/aymanmadkour/ope&lt;/a&gt; 该开源代码是 ope 的算法实现，可以实现数字，字符串的加密有序性。&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">jdbc Statement 无法取消的问题</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/statement_cancle/" />
