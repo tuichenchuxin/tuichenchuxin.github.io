@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2024-02-05T18:06:59&#43;08:00</updated>
+    <updated>2024-02-06T17:03:00&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,57 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
+        <entry>
+            <title type="text">远程编译</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/remote_mvn_clean/" />
+            <id>https://example.com/posts/remote_mvn_clean/</id>
+            <updated>2024-02-06T17:02:52&#43;08:00</updated>
+            <published>2024-02-06T17:00:26&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">今天同事用局域网内闲置电脑搞了个远程编译环境。本地脚本如下，效果很好，编译再也不用卡了
+#!/usr/bin/env zsh usage() { echo &amp;#34;Usage: ./rb.sh [-t] [-rf &amp;lt;model&amp;gt;]&amp;#34; 1&amp;gt;&amp;amp;2; exit 1; } arg=&amp;#34;-Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drat.skip=true -Djacoco.skip=true -DskipITs -DskipTests -Prelease&amp;#34; while getopts &amp;#34;tr:&amp;#34; o; do case &amp;#34;${o}&amp;#34; in t) arg=&amp;#34;-Drat.skip=true -Dcheckstyle.skip=false -T1&amp;#34; ;; r) rf=&amp;#34;-rf ${OPTARG}&amp;#34; ;; *) usage ;; esac done shift $((OPTIND-1)) rsync -azh --progress --delete --exclude={&amp;#39;**/target&amp;#39;,&amp;#39;.</summary>
+            
+                <content type="html">&lt;p&gt;今天同事用局域网内闲置电脑搞了个远程编译环境。本地脚本如下，效果很好，编译再也不用卡了&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/usr/bin/env zsh
+usage() { echo &amp;#34;Usage: ./rb.sh [-t] [-rf &amp;lt;model&amp;gt;]&amp;#34; 1&amp;gt;&amp;amp;2; exit 1; }
+arg=&amp;#34;-Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Dspotbugs.skip=true -Drat.skip=true -Djacoco.skip=true -DskipITs -DskipTests -Prelease&amp;#34;
+while getopts &amp;#34;tr:&amp;#34; o; do
+    case &amp;#34;${o}&amp;#34; in
+        t) arg=&amp;#34;-Drat.skip=true -Dcheckstyle.skip=false -T1&amp;#34; ;;
+        r) rf=&amp;#34;-rf ${OPTARG}&amp;#34; ;;
+        *) usage ;;
+    esac
+done
+shift $((OPTIND-1))
+rsync -azh --progress --delete --exclude={&amp;#39;**/target&amp;#39;,&amp;#39;.git&amp;#39;,&amp;#39;.idea&amp;#39;} &amp;#34;$(pwd)&amp;#34; chuxin@llt-mbp.local:~/dev
+rsync -azh --progress ~/.m2/ chuxin@llt-mbp.local:~/.m2/
+# shellcheck disable=SC2087
+ssh -tt -i /Users/chenchuxin/.ssh/id_rsa chuxin@llt-mbp.local &amp;lt;&amp;lt; EOF
+cd ~/dev/${PWD##*/}
+./mvnw clean install $arg $rf
+exit 0
+EOF
+rsync -azh --progress --include=&amp;#39;**/target&amp;#39; chuxin@llt-mbp.local:~/dev/&amp;#34;${PWD##*/}&amp;#34;/ &amp;#34;$(pwd)&amp;#34;
+rsync -azh --progress chuxin@llt-mbp.local:~/.m2/ ~/.m2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;原理其实也很简单，就是使用 rsync 来同步，先将依赖同步过去，编译完后再将文件同步回来&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">读深入理解高并发编程后相关总结</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/read_high_concurrency_programming/" />
