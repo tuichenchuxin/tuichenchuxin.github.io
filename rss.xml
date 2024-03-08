@@ -23,13 +23,13 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Thu, 07 Mar 2024 18:32:22 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 08 Mar 2024 10:34:12 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
         
             <item>
-                <title>记一次线程泄漏调查</title>
+                <title>java.lang.OutOfMemoryError: unable to create native thread</title>
                 <link>https://example.com/posts/thread_leak/</link>
                 <guid isPermaLink="true">https://example.com/posts/thread_leak/</guid>
                 <pubDate>Thu, 07 Mar 2024 18:20:11 &#43;0800</pubDate>
@@ -39,11 +39,12 @@
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
                     <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
-&lt;p&gt;用户执行了几次查询后，就发现线程疯狂飙升，而且内存释放后，线程却还在。&lt;/p&gt;
+&lt;p&gt;用户反馈系统运行一段时间后就出现了如下错误。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;java.lang.RuntimeException: java.lang.OutOfMemoryError: unable to create native thread: possibly out of memory or process/resource limits reached
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;用户执行了几次查询后，就发现线程疯狂飙升，而且jvm 内存释放后，线程却没释放，内存还是不够。&lt;/p&gt;
+&lt;p&gt;这说明，jvm 虽然内存不高，但是由于线程太多，java 线程和操作系统线程有对应关系，相当于操作系统线程占了pod 内的内存，造成内存不够。&lt;/p&gt;
+&lt;p&gt;开始我以为是监控不准，后来进入到 pod 后，发现 jvm 内存确实不高。那么就是线程泄漏。&lt;/p&gt;
 &lt;p&gt;这是用户的 stack 信息，发现 ss-0,ss-1,ss-2 线程个有 400 +&lt;/p&gt;
-&lt;p&gt;其实这里就可以推测出来是创建了 400 + 个线程池，但是没有回收。&lt;/p&gt;
-&lt;p&gt;所以经过一番排查后，终于找到了元凶，就是线程池创建后，没有关闭。。并且由于线程池是局部变量，所以被不停的调用，但一直不释放。&lt;/p&gt;
-&lt;p&gt;这里开始是想着会不会是程序创建了很多线程池后，没有办法创建回收的线程池的线程了。 结果后面惊喜发现有个局部变量的线程池，没回收。哈哈。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;ss-0&amp;#34; #721 daemon prio=5 os_prio=0 cpu=57.90ms elapsed=155563.07s tid=0x00007fc79a22dbd0 nid=0x316 waiting on condition  [0x00007fc5329c8000]
    java.lang.Thread.State: WAITING (parking)
 	at jdk.internal.misc.Unsafe.park(java.base@17.0.2/Native Method)
@@ -97,7 +98,10 @@
 
    Locked ownable synchronizers:
 	- None
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其实这里就可以推测出来是创建了 400 + 个线程池，但是没有回收。&lt;/p&gt;
+&lt;p&gt;所以经过一番排查后，终于找到了元凶，就是线程池创建后，没有关闭。。并且由于线程池是局部变量，所以被不停的调用，但一直不释放。&lt;/p&gt;
+&lt;p&gt;这里开始是想着会不会是程序创建了很多线程池后，没有办法创建回收的线程池的线程了。 结果后面惊喜发现有个局部变量的线程池，没回收。哈哈。&lt;/p&gt;
+</description>
                 
                 
                 
