@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/posts/thread_leak/</loc>
-    <lastmod>2024-03-08T10:34:06+08:00</lastmod>
-  </url><url>
     <loc>https://example.com/posts/</loc>
-    <lastmod>2024-03-08T10:34:06+08:00</lastmod>
+    <lastmod>2024-03-22T10:50:54+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/hikari_result_set/</loc>
+    <lastmod>2024-03-22T10:50:54+08:00</lastmod>
   </url><url>
     <loc>https://example.com/</loc>
+    <lastmod>2024-03-22T10:50:54+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/spring/</loc>
+    <lastmod>2024-03-21T15:30:23+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/mysql/</loc>
+    <lastmod>2024-03-20T10:41:07+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/thread_leak/</loc>
     <lastmod>2024-03-08T10:34:06+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/remote_mvn_clean/</loc>
@@ -24,7 +33,7 @@
     <lastmod>2024-01-10T14:49:22+08:00</lastmod>
   </url><url>
     <loc>https://example.com/categories/</loc>
-    <lastmod>2023-12-21T18:20:57+08:00</lastmod>
+    <lastmod>2024-03-15T17:34:52+08:00</lastmod>
   </url><url>
     <loc>https://example.com/categories/database/</loc>
     <lastmod>2023-12-21T18:20:57+08:00</lastmod>
@@ -39,7 +48,7 @@
     <lastmod>2023-12-07T11:54:54+08:00</lastmod>
   </url><url>
     <loc>https://example.com/categories/tech/</loc>
-    <lastmod>2023-12-20T21:14:19+08:00</lastmod>
+    <lastmod>2024-03-15T17:34:52+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/connection_is_not_avaible/</loc>
     <lastmod>2023-12-21T11:35:22+08:00</lastmod>
@@ -69,7 +78,7 @@
     <lastmod>2023-05-10T13:49:19+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/learn_calcite/</loc>
-    <lastmod>2023-06-28T10:34:45+08:00</lastmod>
+    <lastmod>2024-03-15T17:34:52+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/learnhadoop/</loc>
     <lastmod>2023-06-28T10:37:01+08:00</lastmod>
