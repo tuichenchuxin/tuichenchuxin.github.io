@@ -3,12 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://example.com/posts/</loc>
-    <lastmod>2024-03-22T10:50:54+08:00</lastmod>
+    <lastmod>2024-03-31T17:38:49+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/posts/hikari_result_set/</loc>
-    <lastmod>2024-03-22T10:50:54+08:00</lastmod>
+    <loc>https://example.com/posts/distributed_transactions_in_shardingsphere/</loc>
+    <lastmod>2024-03-31T17:38:49+08:00</lastmod>
   </url><url>
     <loc>https://example.com/</loc>
+    <lastmod>2024-03-31T17:38:49+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/hikari_result_set/</loc>
     <lastmod>2024-03-22T10:50:54+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/spring/</loc>
