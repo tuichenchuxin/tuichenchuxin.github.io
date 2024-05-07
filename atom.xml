@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2024-03-31T17:39:17&#43;08:00</updated>
+    <updated>2024-05-07T16:11:15&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,266 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
+        <entry>
+            <title type="text">分析最近投递的 30 家招聘技术要求中提及的相关技术的次数</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/need_tech/" />
+            <id>https://example.com/posts/need_tech/</id>
+            <updated>2024-05-07T16:11:04&#43;08:00</updated>
+            <published>2024-05-07T15:40:30&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">提及次数排名 Mysql 19 SpringBoot 17 MyBatis 17 Redis 17 Spring 16 Srping Cloud 15 MongoDB 10 SpringMVC 9 Linux系统 9 Kafka 9 Dubbo 6 Docker 6 VUE 4 ES 4 kubernetes 4 RabbitMQ 4 zookeeper 4 TCP/IP 4 Node 3 oracle 3 Http 3 Netty 3 Angular 2 react 2 Nginx 2 Memcached 2 Flink 2</summary>
+            
+                <content type="html">&lt;p&gt;提及次数排名
+Mysql 19
+SpringBoot 17
+MyBatis 17
+Redis 17
+Spring 16
+Srping Cloud 15
+MongoDB 10
+SpringMVC 9
+Linux系统 9
+Kafka 9
+Dubbo 6
+Docker 6
+VUE 4
+ES 4
+kubernetes 4
+RabbitMQ 4
+zookeeper 4
+TCP/IP 4
+Node 3
+oracle 3
+Http 3
+Netty 3
+Angular 2
+react 2
+Nginx 2
+Memcached 2
+Flink 2&lt;/p&gt;
+&lt;h1 id=&#34;spring-相关&#34;&gt;Spring 相关&lt;/h1&gt;
+&lt;p&gt;Spring 16
+Srping Cloud 15
+SpringBoot 17
+SpringMVC 9
+Spring Data&lt;/p&gt;
+&lt;h1 id=&#34;微服务&#34;&gt;微服务&lt;/h1&gt;
+&lt;p&gt;Dubbo 6
+Istio&lt;/p&gt;
+&lt;h1 id=&#34;jdbc-框架&#34;&gt;jdbc 框架&lt;/h1&gt;
+&lt;p&gt;MyBatis 17
+hibernate
+JPA&lt;/p&gt;
+&lt;h1 id=&#34;操作系统&#34;&gt;操作系统&lt;/h1&gt;
+&lt;p&gt;Linux系统 9&lt;/p&gt;
+&lt;h1 id=&#34;前端技术&#34;&gt;前端技术&lt;/h1&gt;
+&lt;p&gt;VUE 4
+Angular 2
+react 2
+Node 3
+Nginx 2
+JQuery
+ExtJS
+ECharts
+JavaScript
+HTML
+CSS&lt;/p&gt;
+&lt;h1 id=&#34;数据库&#34;&gt;数据库&lt;/h1&gt;
+&lt;p&gt;Mysql 19
+MongoDB 10
+oracle 3
+SQLServer
+TiDB&lt;/p&gt;
+&lt;h1 id=&#34;缓存-查询加速&#34;&gt;缓存/ 查询加速&lt;/h1&gt;
+&lt;p&gt;Redis 17
+Memcached 2
+ES 4&lt;/p&gt;
+&lt;h1 id=&#34;云原生&#34;&gt;云原生&lt;/h1&gt;
+&lt;p&gt;kubernetes 4
+Docker 6&lt;/p&gt;
+&lt;h1 id=&#34;消息&#34;&gt;消息&lt;/h1&gt;
+&lt;p&gt;Kafka 9
+RabbitMQ 4
+RocketMQ
+ActiveMQ&lt;/p&gt;
+&lt;h1 id=&#34;协调通信&#34;&gt;协调通信&lt;/h1&gt;
+&lt;p&gt;zookeeper 4
+TCP/IP 4
+Http 3
+Netty 3
+UDP SIP
+RCS
+RTP MQTT
+NB-IoT
+CoAP
+GRPC&lt;/p&gt;
+&lt;h1 id=&#34;大数据&#34;&gt;大数据&lt;/h1&gt;
+&lt;p&gt;Flink 2
+Hadoop
+Hbase
+ClickHouse
+Doris
+Spark&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Oracle 同义词</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/oracle_synonym/" />
+            <id>https://example.com/posts/oracle_synonym/</id>
+            <updated>2024-04-25T16:33:00&#43;08:00</updated>
+            <published>2024-04-17T15:42:13&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">ORACLE 同义词的定义及使用 1 CREATE SYNONYM TEST FOR DM.TM_WGG_ATM_GTW_MON; 同义词就是别名，与视图类似，都是不占实际存储空间，相当于是访问数据库对象的另外一种方式。 公用同义词和私用同义词 同义词的作用 多用户协同开发，不再需要使用 user.tableA 而是直接使用同义词即可。 简化 sql 语句 如何实现不同用户使用相同 SQL 查询 用户 encrypt
+1 2 3 create synonym TEST_SYNONYM FOR AB01; grant select on TEST_SYNONYM to encrypt_1; 用户 encrypt_1
+1 2 ## 创建一个指向 encrypt.</summary>
+            
+                <content type="html">&lt;h1 id=&#34;oracle-同义词的定义及使用&#34;&gt;ORACLE 同义词的定义及使用&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SYNONYM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TEST&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FOR&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DM&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TM_WGG_ATM_GTW_MON&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;同义词就是别名，与视图类似，都是不占实际存储空间，相当于是访问数据库对象的另外一种方式。&lt;/li&gt;
+&lt;li&gt;公用同义词和私用同义词&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;同义词的作用&#34;&gt;同义词的作用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;多用户协同开发，不再需要使用 user.tableA 而是直接使用同义词即可。&lt;/li&gt;
+&lt;li&gt;简化 sql 语句&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;如何实现不同用户使用相同-sql-查询&#34;&gt;如何实现不同用户使用相同 SQL 查询&lt;/h2&gt;
+&lt;p&gt;用户 encrypt&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;synonym&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TEST_SYNONYM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FOR&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AB01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;grant&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;on&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TEST_SYNONYM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encrypt_1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;用户 encrypt_1&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;##&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;创建一个指向&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TEST_SYNONYM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;的同义词&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;synonym&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TEST_SYNONYM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TEST_SYNONYM&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这样两个用户都可以使用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TEST_SYNONYM&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;shardingsphere-中同义词加载的初步想法&#34;&gt;ShardingSphere 中同义词加载的初步想法&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;查询用户 schema 下能够访问到的所有同义词，包含私有和公有的同义词&lt;/li&gt;
+&lt;li&gt;找到同义词指向的对象&lt;/li&gt;
+&lt;li&gt;找到对象指向的对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过如下 SQL 可以找到最终指向的对象。但是如果指向的是其它用户下的 SYNONYM ，似乎查不出来&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;         &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;USER_DEPENDENCIES&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;         &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;REFERENCED_TYPE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;TABLE&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;VIEW&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;START&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WITH&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NAME&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;IN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ENCRYPT_1_B_TEST_1&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;CONNECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;PRIOR&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;REFERENCED_NAME&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NAME&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SYS_CONTEXT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;USERENV&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;CURRENT_SCHEMA&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DUAL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;PRIOR&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;REFERENCED_OWNER&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;         &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ORDER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NAME&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;REFERENCED_NAME&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">RocketMQ</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/rocketmq/" />
+            <id>https://example.com/posts/rocketmq/</id>
+            <updated>2024-04-17T15:40:11&#43;08:00</updated>
+            <published>2024-04-01T20:52:10&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">RocketMQ 初探 4个组件 producer，consumer，broker，nameserver
+查看 RocketMQ 文档 https://rocketmq.apache.org/zh/docs/
+功能特性 普通消息 定时/延时消息 </summary>
+            
+                <content type="html">&lt;h2 id=&#34;rocketmq-初探&#34;&gt;RocketMQ 初探&lt;/h2&gt;
+&lt;p&gt;4个组件 producer，consumer，broker，nameserver&lt;/p&gt;
+&lt;h2 id=&#34;查看-rocketmq-文档&#34;&gt;查看 RocketMQ 文档&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://rocketmq.apache.org/zh/docs/&#34;&gt;https://rocketmq.apache.org/zh/docs/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;功能特性&#34;&gt;功能特性&lt;/h2&gt;
+&lt;h3 id=&#34;普通消息&#34;&gt;普通消息&lt;/h3&gt;
+&lt;h3 id=&#34;定时延时消息&#34;&gt;定时/延时消息&lt;/h3&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">ShardingSphere 中的分布式事务</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/distributed_transactions_in_shardingsphere/" />
@@ -283,14 +543,14 @@ java.sql.SQLException: Streaming result set com.mysql.cj.protocol.a.result.Resul
             <title type="text">Spring 核心知识</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/spring/" />
             <id>https://example.com/posts/spring/</id>
-            <updated>2024-03-21T15:30:23&#43;08:00</updated>
+            <updated>2024-04-19T11:13:13&#43;08:00</updated>
             <published>2024-03-10T12:11:39&#43;08:00</published>
             <author>
                     <name>chuxin chen</name>
                     <uri>https://tuichenchuxin.github.io/</uri>
                     <email>chuxinchen.x@qq.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">注解源码解析 @Configuration 如何扫描注解，并且构建 bean @ComponentScan 定义 filter, 源码查看如何扫描注释，使用过滤规则 @Bean 源码查看如何 parser bean 注解信息，如何 实例化，并调用自定义的 init 和 destroy。 从 IOC 容器中获取 Bean 的过程 @Import 注解与 bean 注解类似，不过使用起来更灵活些 </summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">注解源码解析 @Configuration 如何扫描注解，并且构建 bean @ComponentScan 定义 filter, 源码查看如何扫描注释，使用过滤规则 @Bean 源码查看如何 parser bean 注解信息，如何 实例化，并调用自定义的 init 和 destroy。 从 IOC 容器中获取 Bean 的过程 @Import 注解与 bean 注解类似，不过使用起来更灵活些 @PropertySource 如何解析自定义文件，并加入到 spring 环境中 </summary>
             
                 <content type="html">&lt;h1 id=&#34;注解源码解析&#34;&gt;注解源码解析&lt;/h1&gt;
 &lt;ul&gt;
@@ -299,6 +559,7 @@ java.sql.SQLException: Streaming result set com.mysql.cj.protocol.a.result.Resul
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; @Bean 源码查看如何 parser bean 注解信息，如何 实例化，并调用自定义的 init 和 destroy。&lt;/li&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 从 IOC 容器中获取 Bean 的过程&lt;/li&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; @Import 注解与 bean 注解类似，不过使用起来更灵活些&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; @PropertySource 如何解析自定义文件，并加入到 spring 环境中&lt;/li&gt;
 &lt;/ul&gt;
 </content>
             

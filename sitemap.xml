@@ -3,19 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://example.com/posts/</loc>
-    <lastmod>2024-03-31T17:38:49+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/distributed_transactions_in_shardingsphere/</loc>
-    <lastmod>2024-03-31T17:38:49+08:00</lastmod>
+    <lastmod>2024-05-07T16:11:04+08:00</lastmod>
   </url><url>
     <loc>https://example.com/</loc>
+    <lastmod>2024-05-07T16:11:04+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/need_tech/</loc>
+    <lastmod>2024-05-07T16:11:04+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/oracle_synonym/</loc>
+    <lastmod>2024-04-25T16:33:00+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/rocketmq/</loc>
+    <lastmod>2024-04-17T15:40:11+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/distributed_transactions_in_shardingsphere/</loc>
     <lastmod>2024-03-31T17:38:49+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/hikari_result_set/</loc>
     <lastmod>2024-03-22T10:50:54+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/spring/</loc>
-    <lastmod>2024-03-21T15:30:23+08:00</lastmod>
+    <lastmod>2024-04-19T11:13:13+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/mysql/</loc>
     <lastmod>2024-03-20T10:41:07+08:00</lastmod>
