@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Mon, 13 May 2024 01:16:54 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 13 May 2024 01:19:34 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
@@ -45,6 +45,7 @@
 &lt;p&gt;首先代码下下来看看情况&lt;/p&gt;
 &lt;p&gt;按照这个文档，可以快速创建 topic，然后发消息，并且通过 smdk 来快速创建 smartmodule 并生效&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.fluvio.io/docs/#installing-the-cli&#34;&gt;https://www.fluvio.io/docs/#installing-the-cli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;接下来，看下有没有 good first issue.&lt;/p&gt;
 </description>
                 
                 
