@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.107.0"><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.125.7"><meta name="theme-color" content="#fff" />
     <meta name="color-scheme" content="light dark">
 
     
@@ -61,7 +61,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2023-03-14T09:40:45+08:00",
-        "dateModified": "2023-03-24T10:15:34+08:00",
+        "dateModified": "2024-05-13T00:42:28+08:00",
         "url": "https://example.com/posts/join_learn/",
         "headline": "分布式 join 调研",
         "description": "分布式 join 调研 Citus Data Citus Data 是一个开源的分布式数据库管理系统，它是基于 PostgreSQL 架构之上，能够允许数据库在多个服务器之间进行分布式运算，以便应对大型数据处理和高流量负载的需求。利用 Citus Data 可以为 PostgreSQL 提供横向扩展的能力，使其可以更好地应对应用中的大量数据请求，具有较高的性能和可扩展性。Citus Data 的特点还包括良好的可用性、容错性、可管理性和可扩展性。Citrus Data 可以作为云端数据库的解决方案提供，同时也适用于在本地运行的企业数据库和分析场景中。\n分布式 join 支持方式（数据复制） 单表 join 分表\n下图介绍了 单表和 sharding 表 join 时 citus 的处理方式\n它两种方式来对 local 表和 distributed 表进行关联查询\n将 distributed 表的数据从 workers 节点移动到协调器 将 local 表数据从协调器移动到 workers 节点 两种方式的选择有多种模式可以配置，例如自动模式： 因为一般来说 distributed 表的数据量比较大，所以只有当满足以下条件时才会将数据从 distributed 移动到 local 中",
@@ -116,7 +116,7 @@
 <meta property="og:locale" content="en" /><meta property="og:image" content="https://example.com/img/boxcnGVh9WCfIy5pV4nskl7yQ0f.png" />
 <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2023-03-14T09:40:45&#43;08:00" />
-    <meta property="article:modified_time" content="2023-03-24T10:15:34&#43;08:00" />
+    <meta property="article:modified_time" content="2024-05-13T00:42:28&#43;08:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -251,7 +251,7 @@
     
     
         
-        <time datetime="2023-03-24T10:15:34&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.3.24</time>
+        <time datetime="2024-05-13T00:42:28&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2024.5.13</time>
     
     
     
@@ -364,9 +364,9 @@
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-03-24 10:15:34 CST" style="cursor:help">
+        <span title="Updated @ 2024-05-13 00:42:28 CST" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-03-24</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-03-24</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2024-05-13</text><text x="915" y="140" textLength="650" transform="scale(.1)">2024-05-13</text></g></svg>
         </span></div>
 
 
