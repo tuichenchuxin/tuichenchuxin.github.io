@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2024-05-07T16:11:15&#43;08:00</updated>
+    <updated>2024-05-12T20:11:09&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -17,19 +17,56 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.107.0">Hugo</generator>
         <entry>
+            <title type="text">Fluvio</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/fluvio/" />
+            <id>https://example.com/posts/fluvio/</id>
+            <updated>2024-05-12T20:10:52&#43;08:00</updated>
+            <published>2024-05-09T11:20:29&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">开篇 最近看到了个 rust 开源库 fluvio
+数据流处理平台，初步看起来像 MQ
+https://github.com/infinyon/fluvio
+首先代码下下来看看情况
+按照这个文档，可以快速创建 topic，然后发消息，并且通过 smdk 来快速创建 smartmodule 并生效
+https://www.fluvio.io/docs/#installing-the-cli</summary>
+            
+                <content type="html">&lt;h1 id=&#34;开篇&#34;&gt;开篇&lt;/h1&gt;
+&lt;p&gt;最近看到了个 rust 开源库 fluvio&lt;/p&gt;
+&lt;p&gt;数据流处理平台，初步看起来像 MQ&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/infinyon/fluvio&#34;&gt;https://github.com/infinyon/fluvio&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;首先代码下下来看看情况&lt;/p&gt;
+&lt;p&gt;按照这个文档，可以快速创建 topic，然后发消息，并且通过 smdk 来快速创建 smartmodule 并生效&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.fluvio.io/docs/#installing-the-cli&#34;&gt;https://www.fluvio.io/docs/#installing-the-cli&lt;/a&gt;&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">分析最近投递的 30 家招聘技术要求中提及的相关技术的次数</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/need_tech/" />
             <id>https://example.com/posts/need_tech/</id>
-            <updated>2024-05-07T16:11:04&#43;08:00</updated>
+            <updated>2024-05-09T11:20:02&#43;08:00</updated>
             <published>2024-05-07T15:40:30&#43;08:00</published>
             <author>
                     <name>chuxin chen</name>
                     <uri>https://tuichenchuxin.github.io/</uri>
                     <email>chuxinchen.x@qq.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">提及次数排名 Mysql 19 SpringBoot 17 MyBatis 17 Redis 17 Spring 16 Srping Cloud 15 MongoDB 10 SpringMVC 9 Linux系统 9 Kafka 9 Dubbo 6 Docker 6 VUE 4 ES 4 kubernetes 4 RabbitMQ 4 zookeeper 4 TCP/IP 4 Node 3 oracle 3 Http 3 Netty 3 Angular 2 react 2 Nginx 2 Memcached 2 Flink 2</summary>
-            
-                <content type="html">&lt;p&gt;提及次数排名
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">提及次数排名
 Mysql 19
 SpringBoot 17
 MyBatis 17
@@ -49,77 +86,99 @@ RabbitMQ 4
 zookeeper 4
 TCP/IP 4
 Node 3
-oracle 3
-Http 3
-Netty 3
-Angular 2
-react 2
-Nginx 2
-Memcached 2
-Flink 2&lt;/p&gt;
+oracle 3</summary>
+            
+                <content type="html">&lt;p&gt;提及次数排名&lt;/p&gt;
+&lt;p&gt;Mysql 19&lt;/p&gt;
+&lt;p&gt;SpringBoot 17&lt;/p&gt;
+&lt;p&gt;MyBatis 17&lt;/p&gt;
+&lt;p&gt;Redis 17&lt;/p&gt;
+&lt;p&gt;Spring 16&lt;/p&gt;
+&lt;p&gt;Srping Cloud 15&lt;/p&gt;
+&lt;p&gt;MongoDB 10&lt;/p&gt;
+&lt;p&gt;SpringMVC 9&lt;/p&gt;
+&lt;p&gt;Linux系统 9&lt;/p&gt;
+&lt;p&gt;Kafka 9&lt;/p&gt;
+&lt;p&gt;Dubbo 6&lt;/p&gt;
+&lt;p&gt;Docker 6&lt;/p&gt;
+&lt;p&gt;VUE 4&lt;/p&gt;
+&lt;p&gt;ES 4&lt;/p&gt;
+&lt;p&gt;kubernetes 4&lt;/p&gt;
+&lt;p&gt;RabbitMQ 4&lt;/p&gt;
+&lt;p&gt;zookeeper 4&lt;/p&gt;
+&lt;p&gt;TCP/IP 4&lt;/p&gt;
+&lt;p&gt;Node 3&lt;/p&gt;
+&lt;p&gt;oracle 3&lt;/p&gt;
+&lt;p&gt;Http 3&lt;/p&gt;
+&lt;p&gt;Netty 3&lt;/p&gt;
+&lt;p&gt;Angular 2&lt;/p&gt;
+&lt;p&gt;react 2&lt;/p&gt;
+&lt;p&gt;Nginx 2&lt;/p&gt;
+&lt;p&gt;Memcached 2&lt;/p&gt;
+&lt;p&gt;Flink 2&lt;/p&gt;
 &lt;h1 id=&#34;spring-相关&#34;&gt;Spring 相关&lt;/h1&gt;
-&lt;p&gt;Spring 16
-Srping Cloud 15
-SpringBoot 17
-SpringMVC 9
-Spring Data&lt;/p&gt;
+&lt;p&gt;Spring 16&lt;/p&gt;
+&lt;p&gt;Srping Cloud 15&lt;/p&gt;
+&lt;p&gt;SpringBoot 17&lt;/p&gt;
+&lt;p&gt;SpringMVC 9&lt;/p&gt;
+&lt;p&gt;Spring Data&lt;/p&gt;
 &lt;h1 id=&#34;微服务&#34;&gt;微服务&lt;/h1&gt;
-&lt;p&gt;Dubbo 6
-Istio&lt;/p&gt;
+&lt;p&gt;Dubbo 6&lt;/p&gt;
+&lt;p&gt;Istio&lt;/p&gt;
 &lt;h1 id=&#34;jdbc-框架&#34;&gt;jdbc 框架&lt;/h1&gt;
-&lt;p&gt;MyBatis 17
-hibernate
-JPA&lt;/p&gt;
+&lt;p&gt;MyBatis 17&lt;/p&gt;
+&lt;p&gt;hibernate&lt;/p&gt;
+&lt;p&gt;JPA&lt;/p&gt;
 &lt;h1 id=&#34;操作系统&#34;&gt;操作系统&lt;/h1&gt;
 &lt;p&gt;Linux系统 9&lt;/p&gt;
 &lt;h1 id=&#34;前端技术&#34;&gt;前端技术&lt;/h1&gt;
-&lt;p&gt;VUE 4
-Angular 2
-react 2
-Node 3
-Nginx 2
-JQuery
-ExtJS
-ECharts
-JavaScript
-HTML
-CSS&lt;/p&gt;
+&lt;p&gt;VUE 4&lt;/p&gt;
+&lt;p&gt;Angular 2&lt;/p&gt;
+&lt;p&gt;react 2&lt;/p&gt;
+&lt;p&gt;Node 3&lt;/p&gt;
+&lt;p&gt;Nginx 2&lt;/p&gt;
+&lt;p&gt;JQuery&lt;/p&gt;
+&lt;p&gt;ExtJS&lt;/p&gt;
+&lt;p&gt;ECharts&lt;/p&gt;
+&lt;p&gt;JavaScript&lt;/p&gt;
+&lt;p&gt;HTML&lt;/p&gt;
+&lt;p&gt;CSS&lt;/p&gt;
 &lt;h1 id=&#34;数据库&#34;&gt;数据库&lt;/h1&gt;
-&lt;p&gt;Mysql 19
-MongoDB 10
-oracle 3
-SQLServer
-TiDB&lt;/p&gt;
+&lt;p&gt;Mysql 19&lt;/p&gt;
+&lt;p&gt;MongoDB 10&lt;/p&gt;
+&lt;p&gt;oracle 3&lt;/p&gt;
+&lt;p&gt;SQLServer&lt;/p&gt;
+&lt;p&gt;TiDB&lt;/p&gt;
 &lt;h1 id=&#34;缓存-查询加速&#34;&gt;缓存/ 查询加速&lt;/h1&gt;
-&lt;p&gt;Redis 17
-Memcached 2
-ES 4&lt;/p&gt;
+&lt;p&gt;Redis 17&lt;/p&gt;
+&lt;p&gt;Memcached 2&lt;/p&gt;
+&lt;p&gt;ES 4&lt;/p&gt;
 &lt;h1 id=&#34;云原生&#34;&gt;云原生&lt;/h1&gt;
-&lt;p&gt;kubernetes 4
-Docker 6&lt;/p&gt;
+&lt;p&gt;kubernetes 4&lt;/p&gt;
+&lt;p&gt;Docker 6&lt;/p&gt;
 &lt;h1 id=&#34;消息&#34;&gt;消息&lt;/h1&gt;
-&lt;p&gt;Kafka 9
-RabbitMQ 4
-RocketMQ
-ActiveMQ&lt;/p&gt;
+&lt;p&gt;Kafka 9&lt;/p&gt;
+&lt;p&gt;RabbitMQ 4&lt;/p&gt;
+&lt;p&gt;RocketMQ&lt;/p&gt;
+&lt;p&gt;ActiveMQ&lt;/p&gt;
 &lt;h1 id=&#34;协调通信&#34;&gt;协调通信&lt;/h1&gt;
-&lt;p&gt;zookeeper 4
-TCP/IP 4
-Http 3
-Netty 3
-UDP SIP
-RCS
-RTP MQTT
-NB-IoT
-CoAP
-GRPC&lt;/p&gt;
+&lt;p&gt;zookeeper 4&lt;/p&gt;
+&lt;p&gt;TCP/IP 4&lt;/p&gt;
+&lt;p&gt;Http 3&lt;/p&gt;
+&lt;p&gt;Netty 3&lt;/p&gt;
+&lt;p&gt;UDP SIP&lt;/p&gt;
+&lt;p&gt;RCS&lt;/p&gt;
+&lt;p&gt;RTP MQTT&lt;/p&gt;
+&lt;p&gt;NB-IoT&lt;/p&gt;
+&lt;p&gt;CoAP&lt;/p&gt;
+&lt;p&gt;GRPC&lt;/p&gt;
 &lt;h1 id=&#34;大数据&#34;&gt;大数据&lt;/h1&gt;
-&lt;p&gt;Flink 2
-Hadoop
-Hbase
-ClickHouse
-Doris
-Spark&lt;/p&gt;
+&lt;p&gt;Flink 2&lt;/p&gt;
+&lt;p&gt;Hadoop&lt;/p&gt;
+&lt;p&gt;Hbase&lt;/p&gt;
+&lt;p&gt;ClickHouse&lt;/p&gt;
+&lt;p&gt;Doris&lt;/p&gt;
+&lt;p&gt;Spark&lt;/p&gt;
 </content>
             
             
