@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2024-05-13T01:19:34&#43;08:00</updated>
+    <updated>2024-05-14T20:44:02&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">Fluvio</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/fluvio/" />
             <id>https://example.com/posts/fluvio/</id>
-            <updated>2024-05-13T01:19:03&#43;08:00</updated>
+            <updated>2024-05-14T20:43:33&#43;08:00</updated>
             <published>2024-05-09T11:20:29&#43;08:00</published>
             <author>
                     <name>chuxin chen</name>
@@ -33,7 +33,9 @@ https://github.com/infinyon/fluvio
 首先代码下下来看看情况
 按照这个文档，可以快速创建 topic，然后发消息，并且通过 smdk 来快速创建 smartmodule 并生效
 https://www.fluvio.io/docs/#installing-the-cli
-接下来，看下有没有 good first issue.</summary>
+接下来，看下有没有 good first issue.
+看了半天，感觉暂缓吧～
+先自己写两个项目。</summary>
             
                 <content type="html">&lt;h1 id=&#34;开篇&#34;&gt;开篇&lt;/h1&gt;
 &lt;p&gt;最近看到了个 rust 开源库 fluvio&lt;/p&gt;
@@ -43,6 +45,8 @@ https://www.fluvio.io/docs/#installing-the-cli
 &lt;p&gt;按照这个文档，可以快速创建 topic，然后发消息，并且通过 smdk 来快速创建 smartmodule 并生效&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.fluvio.io/docs/#installing-the-cli&#34;&gt;https://www.fluvio.io/docs/#installing-the-cli&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;接下来，看下有没有 good first issue.&lt;/p&gt;
+&lt;p&gt;看了半天，感觉暂缓吧～&lt;/p&gt;
+&lt;p&gt;先自己写两个项目。&lt;/p&gt;
 </content>
             
             
