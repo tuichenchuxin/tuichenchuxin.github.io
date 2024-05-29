@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2024-05-14T20:44:02&#43;08:00</updated>
+    <updated>2024-05-29T18:19:03&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,103 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.125.7">Hugo</generator>
+        <entry>
+            <title type="text">接口管理工具调研</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/interface_management_tool/" />
+            <id>https://example.com/posts/interface_management_tool/</id>
+            <updated>2024-05-29T18:18:46&#43;08:00</updated>
+            <published>2024-05-27T09:25:11&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">背景 由于后端接口众多，接口文档的维护不好，因此需要调研相关接口管理工具，来规范化接口文档，提高开发和沟通效率。
+工具 Swagger 介绍 swagger 通过代码注解将相关注释内容通过 swagger-ui 体现到接口文档上，文档会随着项目启动而实时变化。 国内目前多数使用的为 springfox-swagger2（最近版本停留在 2020-07 月 https://github.com/springfox/springfox） 最新的版本已经改为 springdoc（https://github.com/springdoc/springdoc-openapi） 使用 由于国内主要使用的 springfox-swagger2， 所以这里就主要介绍下 swagger2 注解的使用。
+https://juejin.cn/post/6993166706398986277
+Smart-doc 介绍 Smart-doc 是基于java 标准注释来生成对应的文档接口 运行时代码无 smart-doc 相关内容，需要利用 mvn 插件生成对应接口文档 文档不会在项目启动时实时更新，但是可以在编译期更新 Github: https://github.com/TongchengOpenSource/smart-doc 使用 https://smart-doc-group.github.io/#/zh-cn/start/guide
+集成 https://smart-doc-group.github.io/#/zh-cn/start/quickstart
+优劣势分析 Swagger: 优点：使用广泛，代码中已经集成，方便前端调试 缺点：需要侵入代码，通过运行时反射机制实现，代码库不会更新</summary>
+            
+                <content type="html">&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;由于后端接口众多，接口文档的维护不好，因此需要调研相关接口管理工具，来规范化接口文档，提高开发和沟通效率。&lt;/p&gt;
+&lt;h1 id=&#34;工具&#34;&gt;工具&lt;/h1&gt;
+&lt;h2 id=&#34;swagger&#34;&gt;Swagger&lt;/h2&gt;
+&lt;h3 id=&#34;介绍&#34;&gt;介绍&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;swagger 通过代码注解将相关注释内容通过 swagger-ui 体现到接口文档上，文档会随着项目启动而实时变化。&lt;/li&gt;
+&lt;li&gt;国内目前多数使用的为 springfox-swagger2（最近版本停留在 2020-07 月 &lt;a href=&#34;https://github.com/springfox/springfox&#34;&gt;https://github.com/springfox/springfox&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;最新的版本已经改为 springdoc（https://github.com/springdoc/springdoc-openapi）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;使用&#34;&gt;使用&lt;/h3&gt;
+&lt;p&gt;由于国内主要使用的 springfox-swagger2， 所以这里就主要介绍下 swagger2 注解的使用。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://juejin.cn/post/6993166706398986277&#34;&gt;https://juejin.cn/post/6993166706398986277&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;smart-doc&#34;&gt;Smart-doc&lt;/h2&gt;
+&lt;h3 id=&#34;介绍-1&#34;&gt;介绍&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Smart-doc 是基于java 标准注释来生成对应的文档接口&lt;/li&gt;
+&lt;li&gt;运行时代码无 smart-doc 相关内容，需要利用 mvn 插件生成对应接口文档&lt;/li&gt;
+&lt;li&gt;文档不会在项目启动时实时更新，但是可以在编译期更新&lt;/li&gt;
+&lt;li&gt;Github: &lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc&#34;&gt;https://github.com/TongchengOpenSource/smart-doc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;使用-1&#34;&gt;使用&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://smart-doc-group.github.io/#/zh-cn/start/guide&#34;&gt;https://smart-doc-group.github.io/#/zh-cn/start/guide&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;集成&#34;&gt;集成&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://smart-doc-group.github.io/#/zh-cn/start/quickstart&#34;&gt;https://smart-doc-group.github.io/#/zh-cn/start/quickstart&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;优劣势分析&#34;&gt;优劣势分析&lt;/h2&gt;
+&lt;p&gt;Swagger:
+优点：使用广泛，代码中已经集成，方便前端调试
+缺点：需要侵入代码，通过运行时反射机制实现，代码库不会更新&lt;/p&gt;
+&lt;p&gt;Smart-doc:
+优点：无代码侵入，运行时不受影响（可以理解为分析和生成文档的工具），只写注释即可，开源库更新及时
+缺点：调试能力稍弱于 swagger&lt;/p&gt;
+&lt;h1 id=&#34;问题记录&#34;&gt;问题记录&lt;/h1&gt;
+&lt;p&gt;无论 swagger 还是 smart-doc 都无法创建我们项目内部封装的 rpc 接口。&lt;/p&gt;
+&lt;p&gt;幸运的是，通过 github 联系上了 smart-doc 的相关 Maintainer shalousun，在他的提议下，我按照他的建议提了个 PR 来支持普通的 service 接口。&lt;/p&gt;
+&lt;p&gt;通过 @javadoc 注解来标注该 service 接口需要显示出来。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc/pull/797&#34;&gt;https://github.com/TongchengOpenSource/smart-doc/pull/797&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;希望这个 pr 最终能够被合并进去。&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">MongoDB</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/mongodb/" />
+            <id>https://example.com/posts/mongodb/</id>
+            <updated>2024-05-23T13:52:00&#43;08:00</updated>
+            <published>2024-05-23T13:51:50&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
+            
+                <content type="html"></content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Fluvio</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/fluvio/" />
@@ -5899,16 +5996,21 @@ RelationIsVisible(Oid relid)
             <title type="text">Pisanix protocol</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/join-pisanix/" />
             <id>https://example.com/posts/join-pisanix/</id>
-            <updated>2024-05-13T00:42:28&#43;08:00</updated>
+            <updated>2024-05-23T13:49:49&#43;08:00</updated>
             <published>2022-09-21T10:02:13&#43;08:00</published>
             <author>
                     <name>chuxin chen</name>
                     <uri>https://tuichenchuxin.github.io/</uri>
                     <email>chuxinchen.x@qq.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">最近想写一下 mysql 前后端协议。
+看看能否参照 pisanix 来写一个简单版本的协议。
+发现一个同事写的最小化 MySQL Rust 代理实现</summary>
             
-                <content type="html"></content>
+                <content type="html">&lt;p&gt;最近想写一下 mysql 前后端协议。&lt;/p&gt;
+&lt;p&gt;看看能否参照 pisanix 来写一个简单版本的协议。&lt;/p&gt;
+&lt;p&gt;发现一个同事写的最小化 MySQL Rust 代理实现&lt;/p&gt;
+</content>
             
             
             
