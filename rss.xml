@@ -23,10 +23,45 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Wed, 29 May 2024 18:19:03 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 30 May 2024 17:31:14 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
+        
+            <item>
+                <title>smart-doc 支持普通 service 接口或者公司内部 rpc 微服务接口</title>
+                <link>https://example.com/posts/smart_doc/</link>
+                <guid isPermaLink="true">https://example.com/posts/smart_doc/</guid>
+                <pubDate>Thu, 30 May 2024 17:24:35 &#43;0800</pubDate>
+                
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;p&gt;最近调研了接口文档生成工具，发现了 smart-doc，但是不支持公司内部的微服务，于是在 issue 上相同问题的内容下提问了下&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc/issues/683&#34;&gt;https://github.com/TongchengOpenSource/smart-doc/issues/683&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;没想到社区很快回复了，并列出了可行思路。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc/discussions/795&#34;&gt;https://github.com/TongchengOpenSource/smart-doc/discussions/795&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我看了下思路，又看了下代码，发现实现起来比想象的要简单很多。&lt;/p&gt;
+&lt;p&gt;于是捣鼓了半天，提交了代码&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc/pull/797&#34;&gt;https://github.com/TongchengOpenSource/smart-doc/pull/797&lt;/a&gt;
+&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70&#34;&gt;https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;很快经过 review 修改后合并了。&lt;/p&gt;
+&lt;p&gt;哈哈，开心。&lt;/p&gt;
+&lt;p&gt;以后只要增加 @javadoc 注释，就可以支持普通 service 接口了。&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>接口管理工具调研</title>

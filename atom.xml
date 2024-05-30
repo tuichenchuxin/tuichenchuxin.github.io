@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2024-05-29T18:19:03&#43;08:00</updated>
+    <updated>2024-05-30T17:31:14&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,53 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.125.7">Hugo</generator>
+        <entry>
+            <title type="text">smart-doc 支持普通 service 接口或者公司内部 rpc 微服务接口</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/smart_doc/" />
+            <id>https://example.com/posts/smart_doc/</id>
+            <updated>2024-05-30T17:31:07&#43;08:00</updated>
+            <published>2024-05-30T17:24:35&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">最近调研了接口文档生成工具，发现了 smart-doc，但是不支持公司内部的微服务，于是在 issue 上相同问题的内容下提问了下
+https://github.com/TongchengOpenSource/smart-doc/issues/683
+没想到社区很快回复了，并列出了可行思路。
+https://github.com/TongchengOpenSource/smart-doc/discussions/795
+我看了下思路，又看了下代码，发现实现起来比想象的要简单很多。
+于是捣鼓了半天，提交了代码
+https://github.com/TongchengOpenSource/smart-doc/pull/797 https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70
+很快经过 review 修改后合并了。
+哈哈，开心。
+以后只要增加 @javadoc 注释，就可以支持普通 service 接口了。</summary>
+            
+                <content type="html">&lt;p&gt;最近调研了接口文档生成工具，发现了 smart-doc，但是不支持公司内部的微服务，于是在 issue 上相同问题的内容下提问了下&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc/issues/683&#34;&gt;https://github.com/TongchengOpenSource/smart-doc/issues/683&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;没想到社区很快回复了，并列出了可行思路。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc/discussions/795&#34;&gt;https://github.com/TongchengOpenSource/smart-doc/discussions/795&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我看了下思路，又看了下代码，发现实现起来比想象的要简单很多。&lt;/p&gt;
+&lt;p&gt;于是捣鼓了半天，提交了代码&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc/pull/797&#34;&gt;https://github.com/TongchengOpenSource/smart-doc/pull/797&lt;/a&gt;
+&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70&#34;&gt;https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;很快经过 review 修改后合并了。&lt;/p&gt;
+&lt;p&gt;哈哈，开心。&lt;/p&gt;
+&lt;p&gt;以后只要增加 @javadoc 注释，就可以支持普通 service 接口了。&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">接口管理工具调研</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/interface_management_tool/" />
