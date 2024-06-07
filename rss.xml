@@ -8,7 +8,7 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>tuichenchuxin&#39;s blog</title>
-        <link>https://example.com/</link>
+        <link>https://tuichenchuxin.github.io/</link>
         <description>MemE is a powerful and highly customizable GoHugo theme for personal blogs.</description>
         <generator>Hugo 0.125.7 https://gohugo.io/</generator>
         
@@ -23,15 +23,15 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Fri, 07 Jun 2024 11:39:28 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 07 Jun 2024 11:49:20 &#43;0800</lastBuildDate>
         
-            <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
+            <atom:link rel="self" type="application/rss&#43;xml" href="https://tuichenchuxin.github.io/rss.xml" />
         
         
             <item>
                 <title>Async-profiler</title>
-                <link>https://example.com/posts/asyncprofiler/</link>
-                <guid isPermaLink="true">https://example.com/posts/asyncprofiler/</guid>
+                <link>https://tuichenchuxin.github.io/posts/asyncprofiler/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/asyncprofiler/</guid>
                 <pubDate>Thu, 06 Jun 2024 13:59:29 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -54,8 +54,8 @@
         
             <item>
                 <title>Pinpoint 使用</title>
-                <link>https://example.com/posts/pinpoint/</link>
-                <guid isPermaLink="true">https://example.com/posts/pinpoint/</guid>
+                <link>https://tuichenchuxin.github.io/posts/pinpoint/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/pinpoint/</guid>
                 <pubDate>Wed, 05 Jun 2024 17:37:21 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -78,8 +78,8 @@
         
             <item>
                 <title>smart-doc 支持普通 service 接口或者公司内部 rpc 微服务接口</title>
-                <link>https://example.com/posts/smart_doc/</link>
-                <guid isPermaLink="true">https://example.com/posts/smart_doc/</guid>
+                <link>https://tuichenchuxin.github.io/posts/smart_doc/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/smart_doc/</guid>
                 <pubDate>Thu, 30 May 2024 17:24:35 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -114,8 +114,8 @@
         
             <item>
                 <title>接口管理工具调研</title>
-                <link>https://example.com/posts/interface_management_tool/</link>
-                <guid isPermaLink="true">https://example.com/posts/interface_management_tool/</guid>
+                <link>https://tuichenchuxin.github.io/posts/interface_management_tool/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/interface_management_tool/</guid>
                 <pubDate>Mon, 27 May 2024 09:25:11 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -176,8 +176,8 @@
         
             <item>
                 <title>MongoDB</title>
-                <link>https://example.com/posts/mongodb/</link>
-                <guid isPermaLink="true">https://example.com/posts/mongodb/</guid>
+                <link>https://tuichenchuxin.github.io/posts/mongodb/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/mongodb/</guid>
                 <pubDate>Thu, 23 May 2024 13:51:50 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -202,8 +202,8 @@
         
             <item>
                 <title>Fluvio</title>
-                <link>https://example.com/posts/fluvio/</link>
-                <guid isPermaLink="true">https://example.com/posts/fluvio/</guid>
+                <link>https://tuichenchuxin.github.io/posts/fluvio/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/fluvio/</guid>
                 <pubDate>Thu, 09 May 2024 11:20:29 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -236,8 +236,8 @@
         
             <item>
                 <title>分析最近投递的 30 家招聘技术要求中提及的相关技术的次数</title>
-                <link>https://example.com/posts/need_tech/</link>
-                <guid isPermaLink="true">https://example.com/posts/need_tech/</guid>
+                <link>https://tuichenchuxin.github.io/posts/need_tech/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/need_tech/</guid>
                 <pubDate>Tue, 07 May 2024 15:40:30 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -351,8 +351,8 @@
         
             <item>
                 <title>Oracle 同义词</title>
-                <link>https://example.com/posts/oracle_synonym/</link>
-                <guid isPermaLink="true">https://example.com/posts/oracle_synonym/</guid>
+                <link>https://tuichenchuxin.github.io/posts/oracle_synonym/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/oracle_synonym/</guid>
                 <pubDate>Wed, 17 Apr 2024 15:42:13 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -452,8 +452,8 @@
         
             <item>
                 <title>RocketMQ</title>
-                <link>https://example.com/posts/rocketmq/</link>
-                <guid isPermaLink="true">https://example.com/posts/rocketmq/</guid>
+                <link>https://tuichenchuxin.github.io/posts/rocketmq/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/rocketmq/</guid>
                 <pubDate>Mon, 01 Apr 2024 20:52:10 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -483,8 +483,8 @@
         
             <item>
                 <title>ShardingSphere 中的分布式事务</title>
-                <link>https://example.com/posts/distributed_transactions_in_shardingsphere/</link>
-                <guid isPermaLink="true">https://example.com/posts/distributed_transactions_in_shardingsphere/</guid>
+                <link>https://tuichenchuxin.github.io/posts/distributed_transactions_in_shardingsphere/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/distributed_transactions_in_shardingsphere/</guid>
                 <pubDate>Thu, 28 Mar 2024 15:53:24 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -598,8 +598,8 @@ TM 发现大家都完成了之后，发起提交命令，如果有人失败了�
         
             <item>
                 <title>Streaming result set com.mysql.cj.protocol.a.result.ResultsetRowsStreaming@3e72fd68 is still active.</title>
-                <link>https://example.com/posts/hikari_result_set/</link>
-                <guid isPermaLink="true">https://example.com/posts/hikari_result_set/</guid>
+                <link>https://tuichenchuxin.github.io/posts/hikari_result_set/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/hikari_result_set/</guid>
                 <pubDate>Fri, 22 Mar 2024 08:53:52 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -739,8 +739,8 @@ TM 发现大家都完成了之后，发起提交命令，如果有人失败了�
         
             <item>
                 <title>Spring 核心知识</title>
-                <link>https://example.com/posts/spring/</link>
-                <guid isPermaLink="true">https://example.com/posts/spring/</guid>
+                <link>https://tuichenchuxin.github.io/posts/spring/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/spring/</guid>
                 <pubDate>Sun, 10 Mar 2024 12:11:39 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -772,8 +772,8 @@ TM 发现大家都完成了之后，发起提交命令，如果有人失败了�
         
             <item>
                 <title>Mysql基础知识学习</title>
-                <link>https://example.com/posts/mysql/</link>
-                <guid isPermaLink="true">https://example.com/posts/mysql/</guid>
+                <link>https://tuichenchuxin.github.io/posts/mysql/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/mysql/</guid>
                 <pubDate>Fri, 08 Mar 2024 12:18:12 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -815,8 +815,8 @@ B+tree 相比 Hash 结构和 B-tree，支持范围查询&lt;/p&gt;
         
             <item>
                 <title>java.lang.OutOfMemoryError: unable to create native thread</title>
-                <link>https://example.com/posts/thread_leak/</link>
-                <guid isPermaLink="true">https://example.com/posts/thread_leak/</guid>
+                <link>https://tuichenchuxin.github.io/posts/thread_leak/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/thread_leak/</guid>
                 <pubDate>Thu, 07 Mar 2024 18:20:11 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -902,8 +902,8 @@ B+tree 相比 Hash 结构和 B-tree，支持范围查询&lt;/p&gt;
         
             <item>
                 <title>远程编译</title>
-                <link>https://example.com/posts/remote_mvn_clean/</link>
-                <guid isPermaLink="true">https://example.com/posts/remote_mvn_clean/</guid>
+                <link>https://tuichenchuxin.github.io/posts/remote_mvn_clean/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/remote_mvn_clean/</guid>
                 <pubDate>Tue, 06 Feb 2024 17:00:26 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -949,8 +949,8 @@ rsync -azh --progress chuxin@llt-mbp.local:~/.m2/ ~/.m2
         
             <item>
                 <title>读深入理解高并发编程后相关总结</title>
-                <link>https://example.com/posts/read_high_concurrency_programming/</link>
-                <guid isPermaLink="true">https://example.com/posts/read_high_concurrency_programming/</guid>
+                <link>https://tuichenchuxin.github.io/posts/read_high_concurrency_programming/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/read_high_concurrency_programming/</guid>
                 <pubDate>Wed, 31 Jan 2024 15:13:06 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -2282,8 +2282,8 @@ AQS 内部是使用 CLH 双向队列。&lt;/p&gt;
         
             <item>
                 <title>Antlr4 支持中文空格</title>
-                <link>https://example.com/posts/antlr4_chinese_white/</link>
-                <guid isPermaLink="true">https://example.com/posts/antlr4_chinese_white/</guid>
+                <link>https://tuichenchuxin.github.io/posts/antlr4_chinese_white/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/antlr4_chinese_white/</guid>
                 <pubDate>Fri, 12 Jan 2024 16:05:10 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -2317,8 +2317,8 @@ AQS 内部是使用 CLH 双向队列。&lt;/p&gt;
         
             <item>
                 <title>OPE 加密算法</title>
-                <link>https://example.com/posts/encrypt_ope/</link>
-                <guid isPermaLink="true">https://example.com/posts/encrypt_ope/</guid>
+                <link>https://tuichenchuxin.github.io/posts/encrypt_ope/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/encrypt_ope/</guid>
                 <pubDate>Wed, 10 Jan 2024 14:45:49 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -2343,8 +2343,8 @@ AQS 内部是使用 CLH 双向队列。&lt;/p&gt;
         
             <item>
                 <title>jdbc Statement 无法取消的问题</title>
-                <link>https://example.com/posts/statement_cancle/</link>
-                <guid isPermaLink="true">https://example.com/posts/statement_cancle/</guid>
+                <link>https://tuichenchuxin.github.io/posts/statement_cancle/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/statement_cancle/</guid>
                 <pubDate>Thu, 21 Dec 2023 18:06:56 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -2500,7 +2500,7 @@ debug 时，idea 会调用 toString 也会上锁，所以卡住。
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/database/">Database</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/database/">Database</category>
                                 
                             
                         
@@ -2512,8 +2512,8 @@ debug 时，idea 会调用 toString 也会上锁，所以卡住。
         
             <item>
                 <title>探索 HikariCP</title>
-                <link>https://example.com/posts/hikaricp/</link>
-                <guid isPermaLink="true">https://example.com/posts/hikaricp/</guid>
+                <link>https://tuichenchuxin.github.io/posts/hikaricp/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/hikaricp/</guid>
                 <pubDate>Fri, 15 Dec 2023 09:14:20 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -2769,8 +2769,8 @@ Error occurred during initialization of boot layer FindException: Module not fou
         
             <item>
                 <title>rust 学习</title>
-                <link>https://example.com/posts/learn_rust/</link>
-                <guid isPermaLink="true">https://example.com/posts/learn_rust/</guid>
+                <link>https://tuichenchuxin.github.io/posts/learn_rust/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/learn_rust/</guid>
                 <pubDate>Thu, 07 Dec 2023 08:51:39 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -2782,13 +2782,13 @@ Error occurred during initialization of boot layer FindException: Module not fou
 &lt;p&gt;通读之后开始学习 &lt;a href=&#34;https://github.com/rust-lang/rustlings/&#34;&gt;https://github.com/rust-lang/rustlings/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;中间参与了一个开源项目 &lt;a href=&#34;https://github.com/database-mesh/pisanix/tree/master&#34;&gt;https://github.com/database-mesh/pisanix/tree/master&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;最近开始学习 &lt;a href=&#34;https://exercism.org/tracks/rust&#34;&gt;https://exercism.org/tracks/rust&lt;/a&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115016.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115026.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115032.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115044.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115050.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115056.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115101.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115016.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115026.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115032.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115044.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115050.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115056.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115101.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 </description>
                 
                 
@@ -2801,7 +2801,7 @@ Error occurred during initialization of boot layer FindException: Module not fou
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -2813,8 +2813,8 @@ Error occurred during initialization of boot layer FindException: Module not fou
         
             <item>
                 <title>Connection is not avaible</title>
-                <link>https://example.com/posts/connection_is_not_avaible/</link>
-                <guid isPermaLink="true">https://example.com/posts/connection_is_not_avaible/</guid>
+                <link>https://tuichenchuxin.github.io/posts/connection_is_not_avaible/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/connection_is_not_avaible/</guid>
                 <pubDate>Thu, 09 Nov 2023 16:03:41 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -2901,8 +2901,8 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
         
             <item>
                 <title>使用idea创建的 jar 文件都是 .java 而不是 .class</title>
-                <link>https://example.com/posts/use_idea_to_generate_jar/</link>
-                <guid isPermaLink="true">https://example.com/posts/use_idea_to_generate_jar/</guid>
+                <link>https://tuichenchuxin.github.io/posts/use_idea_to_generate_jar/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/use_idea_to_generate_jar/</guid>
                 <pubDate>Wed, 01 Nov 2023 15:38:48 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -2910,11 +2910,11 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
                     <description>&lt;p&gt;通过如下步骤打包后发现 jar 包中的文件都是 .java 文件，而不是 .class 文件
-&lt;img src=&#34;https://example.com/img/20231101-155254.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231101-155302.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231101-155306.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231101-155254.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231101-155302.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231101-155306.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;经过了一下午的尝试，发现手动创建包，然后指定 .class 文件可以成功打包。
-&lt;img src=&#34;https://example.com/img/20231101-180739.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231101-180739.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;不过没有特别需求还是直接用 maven 吧，简单些，无需添加任何插件，直接 mvn clean install 即可。&lt;/p&gt;
 </description>
                 
@@ -2932,8 +2932,8 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
         
             <item>
                 <title>如果 result set 仅有一个结果集，是否可以用 if(resultset.next()) ?</title>
-                <link>https://example.com/posts/resultset_next/</link>
-                <guid isPermaLink="true">https://example.com/posts/resultset_next/</guid>
+                <link>https://tuichenchuxin.github.io/posts/resultset_next/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/resultset_next/</guid>
                 <pubDate>Mon, 16 Oct 2023 15:13:38 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3017,8 +3017,8 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
         
             <item>
                 <title>是否可以在 jdbc 查询数据的同时获取本次查询的数据量？</title>
-                <link>https://example.com/posts/result_set_type/</link>
-                <guid isPermaLink="true">https://example.com/posts/result_set_type/</guid>
+                <link>https://tuichenchuxin.github.io/posts/result_set_type/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/result_set_type/</guid>
                 <pubDate>Fri, 13 Oct 2023 14:19:38 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3120,8 +3120,8 @@ Oracle
         
             <item>
                 <title>Oracle merge insert 问题</title>
-                <link>https://example.com/posts/oracle_merge/</link>
-                <guid isPermaLink="true">https://example.com/posts/oracle_merge/</guid>
+                <link>https://tuichenchuxin.github.io/posts/oracle_merge/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/oracle_merge/</guid>
                 <pubDate>Fri, 22 Sep 2023 15:45:09 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3201,8 +3201,8 @@ ORA-00001: unique constraint (ENCRYPT.SYS_C007033) violated&lt;/p&gt;
         
             <item>
                 <title>No suitable driver 问题调查</title>
-                <link>https://example.com/posts/driverclassname/</link>
-                <guid isPermaLink="true">https://example.com/posts/driverclassname/</guid>
+                <link>https://tuichenchuxin.github.io/posts/driverclassname/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/driverclassname/</guid>
                 <pubDate>Wed, 23 Aug 2023 17:55:43 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3241,7 +3241,7 @@ DriverManager 加载多个驱动过程中，如果有任何一个失败，都不
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -3253,8 +3253,8 @@ DriverManager 加载多个驱动过程中，如果有任何一个失败，都不
         
             <item>
                 <title>使用 sqlline 连接 sharding_jdbc</title>
-                <link>https://example.com/posts/use_sql_line/</link>
-                <guid isPermaLink="true">https://example.com/posts/use_sql_line/</guid>
+                <link>https://tuichenchuxin.github.io/posts/use_sql_line/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/use_sql_line/</guid>
                 <pubDate>Fri, 30 Jun 2023 16:02:42 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3304,8 +3304,8 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
         
             <item>
                 <title>Open_dal</title>
-                <link>https://example.com/posts/open_dal/</link>
-                <guid isPermaLink="true">https://example.com/posts/open_dal/</guid>
+                <link>https://tuichenchuxin.github.io/posts/open_dal/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/open_dal/</guid>
                 <pubDate>Mon, 19 Jun 2023 21:14:19 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3329,7 +3329,7 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -3341,8 +3341,8 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
         
             <item>
                 <title>分布式 join 实现</title>
-                <link>https://example.com/posts/distributed-join/</link>
-                <guid isPermaLink="true">https://example.com/posts/distributed-join/</guid>
+                <link>https://tuichenchuxin.github.io/posts/distributed-join/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/distributed-join/</guid>
                 <pubDate>Wed, 10 May 2023 11:28:36 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3358,7 +3358,7 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
 &lt;/ul&gt;
 &lt;p&gt;对于分析型的 SQL 而言，不需要考虑事务和性能的话，可以采用数据挪动的方式来实现。&lt;/p&gt;
 &lt;p&gt;如下图所示，列出了可能的实现方式。
-&lt;img src=&#34;https://example.com/img/20230510-113802.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230510-113802.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;该方案的具体实现需要考虑 2 点。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;语义分析 （考虑通过 calcite 或者自行解析提取条件）
@@ -3381,7 +3381,7 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -3393,8 +3393,8 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
         
             <item>
                 <title>calcite 学习</title>
-                <link>https://example.com/posts/learn_calcite/</link>
-                <guid isPermaLink="true">https://example.com/posts/learn_calcite/</guid>
+                <link>https://tuichenchuxin.github.io/posts/learn_calcite/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/learn_calcite/</guid>
                 <pubDate>Mon, 10 Apr 2023 18:05:59 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3415,7 +3415,7 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
 &lt;p&gt;calcite 是动态数据的管理框架。我理解，就是数据库的计算层，去除掉了存储的部分。
 calcite 可以接入任何形式的数据，只需要我们将数据注册成表的形式，那么就可以使用 SQL 来对它进行查询。&lt;/p&gt;
 &lt;h3 id=&#34;calcite-的大体架构&#34;&gt;calcite 的大体架构&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230417-172948.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230417-172948.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;calcite-如何跟-ss-整合&#34;&gt;calcite 如何跟 SS 整合&lt;/h3&gt;
 &lt;p&gt;ShardingSphere 可以支持分库分表，所以也自然会有跨实例查询的 SQL。 例如跨实例的 join。这些 SQL 是没办法直接下推到数据库去执行的，因此利用 calcite 来实现复杂子查询或者是跨实例 join。
 我们可以从一个跨实例 join 的 select debug 来查看整合 calcite 的方式。
@@ -3470,7 +3470,7 @@ HepPlanner&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -3482,8 +3482,8 @@ HepPlanner&lt;/p&gt;
         
             <item>
                 <title>Learnhadoop</title>
-                <link>https://example.com/posts/learnhadoop/</link>
-                <guid isPermaLink="true">https://example.com/posts/learnhadoop/</guid>
+                <link>https://tuichenchuxin.github.io/posts/learnhadoop/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/learnhadoop/</guid>
                 <pubDate>Thu, 23 Mar 2023 18:24:20 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3502,7 +3502,7 @@ HepPlanner&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -3514,8 +3514,8 @@ HepPlanner&lt;/p&gt;
         
             <item>
                 <title>LearnSpark</title>
-                <link>https://example.com/posts/learnspark/</link>
-                <guid isPermaLink="true">https://example.com/posts/learnspark/</guid>
+                <link>https://tuichenchuxin.github.io/posts/learnspark/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/learnspark/</guid>
                 <pubDate>Thu, 23 Mar 2023 18:23:59 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3534,7 +3534,7 @@ HepPlanner&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -3546,8 +3546,8 @@ HepPlanner&lt;/p&gt;
         
             <item>
                 <title>Polardb-x 的 join 实现</title>
-                <link>https://example.com/posts/polardbxjoin/</link>
-                <guid isPermaLink="true">https://example.com/posts/polardbxjoin/</guid>
+                <link>https://tuichenchuxin.github.io/posts/polardbxjoin/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/polardbxjoin/</guid>
                 <pubDate>Thu, 16 Mar 2023 09:37:34 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3586,7 +3586,7 @@ HepPlanner&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o_orderkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BETWEEN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1001&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1005&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-112228.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230316-112228.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;依赖全局索引的 Join 则更为复杂一些，回忆下 MySQL 的 BKA Join，需要进行两次 lookup：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;第一次用 Join key 查询全局索引表（用于 Join）&lt;/li&gt;
@@ -3608,7 +3608,7 @@ HepPlanner&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_custkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BETWEEN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-113634.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230316-113634.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;文档信息提取-1&#34;&gt;文档信息提取&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://help.aliyun.com/document_detail/316601.html&#34;&gt;https://help.aliyun.com/document_detail/316601.html&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nested-loop-join-nljoin&#34;&gt;Nested-Loop Join (NLJoin)&lt;/h2&gt;
@@ -3649,14 +3649,14 @@ HepPlanner&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;关于-join-顺序以及各种-join-的使用场景&#34;&gt;关于 Join 顺序以及各种 join 的使用场景&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-121006.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230316-121006.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;文档信息提取-2&#34;&gt;文档信息提取&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/379967662&#34;&gt;https://zhuanlan.zhihu.com/p/379967662&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;面对 OLTP 场景，可以使用大表和小表进行 join ，使用前文提到的 Lookup Join 算法
 但是对于 OLAP 的场景，我们可能就需要将数据从内存拉出来进行计算。&lt;/p&gt;
 &lt;p&gt;等值 JOIN 那么一般就是 hash-join 和 sort-merge join 两种，Hash join 根据是否支持大数据量，又分为 内存 Hash-join 和 落盘版的 Hash-join&lt;/p&gt;
 &lt;h2 id=&#34;内存版-hash-join-的实现&#34;&gt;内存版 Hash join 的实现&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230320-105410.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230320-105410.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;根据统计信息选取较小的表根据 join 条件对给定的列 build hash table，然后流式遍历，去 hash table 里面找 key，如果一致，那么就拿出一整行，然后直接向下游输出，这个过程又叫 probe table&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;//build Table
 for row in t1:
@@ -3671,13 +3671,13 @@ for row in t2:
        join(t1_row, row) 
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;polardb-x 与一般的 hash join 最大的不同，是采用了内存友好的 vector 重新实现了哈希表，对 CPU CACHE 更友好，可以提高 JOIN 性能。
-&lt;img src=&#34;https://example.com/img/20230320-113142.jpg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230320-113142.jpg&#34; alt=&#34;&#34;&gt;
 具体实现没太明白。。。大概是搞了一些缓存索引结构？&lt;/p&gt;
 &lt;p&gt;如果数据量太大，无法全部放到内存中的时候，那么就需要使用 HybridHashJoin 算法。&lt;/p&gt;
 &lt;h2 id=&#34;hybirdhashjoin&#34;&gt;HybirdHashJoin&lt;/h2&gt;
 &lt;p&gt;Hybird hash join 从我的角度理解，就是将原表按照关联的键做 partition，然后分别在每个分区做 hash join.
-&lt;img src=&#34;https://example.com/img/20230320-134504.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230320-134700.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230320-134504.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230320-134700.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;sortmergejoin&#34;&gt;SortMergeJoin&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sort t1, sort t2
 R1 = t1.next()
@@ -3709,8 +3709,8 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
         
             <item>
                 <title>分布式 join 调研</title>
-                <link>https://example.com/posts/join_learn/</link>
-                <guid isPermaLink="true">https://example.com/posts/join_learn/</guid>
+                <link>https://tuichenchuxin.github.io/posts/join_learn/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/join_learn/</guid>
                 <pubDate>Tue, 14 Mar 2023 09:40:45 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -3723,8 +3723,8 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
 &lt;h3 id=&#34;分布式-join-支持方式数据复制&#34;&gt;分布式 join 支持方式（数据复制）&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;单表 join 分表&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;下图介绍了 单表和 sharding 表 join 时 citus 的处理方式&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnGVh9WCfIy5pV4nskl7yQ0f.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnXX78e9lopW8ZMOHexDTUde.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnGVh9WCfIy5pV4nskl7yQ0f.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnXX78e9lopW8ZMOHexDTUde.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;它两种方式来对 local 表和 distributed 表进行关联查询&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;将 distributed 表的数据从 workers 节点移动到协调器&lt;/li&gt;
@@ -3743,9 +3743,9 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
 &lt;li&gt;Never: Citus will give an error for local and distributed table JOINs, same as before Citus 10.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;分表 join 分表&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnPaTkhM59GdF17WcZKt4VDb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnPaTkhM59GdF17WcZKt4VDb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;这里展示的是表的分片数量相同，并且关联条件是分片键的场景，类似于 binding table&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnOOEB7jSahFYYdDeaEtDLVc.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnOOEB7jSahFYYdDeaEtDLVc.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;该图展示了 citus 的 join 方式，有本地 join，refrence table join （就是广播表），还有 repartition joins，里面提到会使用数据混洗的方式，性能不高。另外这个方式需要开关打开。&lt;/p&gt;
 &lt;p&gt;根据作者对于 repartition joins &lt;a href=&#34;https://github.com/citusdata/citus/issues/2321&#34;&gt;https://github.com/citusdata/citus/issues/2321&lt;/a&gt;
 的回复来看，目前该功能只能用于某些场景并且不建议默认打开使用。&lt;/p&gt;
@@ -3755,13 +3755,13 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
 &lt;p&gt;没有找到官方明确的说法，但是从一些公开的演讲中发现了一些信息。 它实现分布式 join 的方式也是两种，一种是在内存中计算，另外一种就是数据复制，不过它的复制是通过 MySQL binlog。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.infoq.com/presentations/vitess/&#34;&gt;https://www.infoq.com/presentations/vitess/&lt;/a&gt;
 &lt;a href=&#34;https://vitess.io/docs/16.0/reference/vreplication/vreplication/&#34;&gt;https://vitess.io/docs/16.0/reference/vreplication/vreplication/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcn0B79XuBN3axMKHc27YiXhb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcn0B79XuBN3axMKHc27YiXhb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;presto&#34;&gt;Presto&lt;/h1&gt;
 &lt;p&gt;Presto 是一个分布式 SQL 查询引擎，可以在云计算和大数据领域广泛应用。Presto 主要用于处理大数据查询和分析，它支持从多个数据源中进行高速查询，包括 Hadoop，MySQL，Cassandra，PostgreSQL 等。 Presto 的设计目的是为了在处理大量数据时提供快速的查询和分析功能。Presto 支持 SQL 查询和复杂的分析，可以处理 PB 级别的数据，并且可以在数秒内返回查询结果。Presto 的一个优点是它可以与多个数据存储系统集成，而不需要将数据迁移到一个中心位置，从而降低数据分析的成本和复杂性。它主要处理 &lt;strong&gt;OLAP&lt;/strong&gt; 场景。&lt;/p&gt;
 &lt;p&gt;有点儿像 calcite。&lt;/p&gt;
 &lt;h3 id=&#34;分布式-join-支持方式内存计算--数据复制-1&#34;&gt;分布式 join 支持方式（内存计算 + 数据复制）&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnyD1UNyJyN9Lht9zalrhhbb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnlOGMHjwidZsVntFXicqEKh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnyD1UNyJyN9Lht9zalrhhbb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnlOGMHjwidZsVntFXicqEKh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;从上述文档可以看到 presto 是基于代价的查询优化器。一般也是两种方式实现分布式 join&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Partitioned: each node participating in the query builds a hash table from only a fraction of the data&lt;/li&gt;
@@ -3787,7 +3787,7 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -3799,8 +3799,8 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
         
             <item>
                 <title>ShardingSphere 元数据能力增强解读与实战</title>
-                <link>https://example.com/posts/shardingsphere_meta_learn_action/</link>
-                <guid isPermaLink="true">https://example.com/posts/shardingsphere_meta_learn_action/</guid>
+                <link>https://tuichenchuxin.github.io/posts/shardingsphere_meta_learn_action/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/shardingsphere_meta_learn_action/</guid>
                 <pubDate>Mon, 06 Mar 2023 09:14:47 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -4536,7 +4536,7 @@ actual_database_name: ds_1
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -4548,8 +4548,8 @@ actual_database_name: ds_1
         
             <item>
                 <title>DataTTL 相关调研</title>
-                <link>https://example.com/posts/datattl/</link>
-                <guid isPermaLink="true">https://example.com/posts/datattl/</guid>
+                <link>https://tuichenchuxin.github.io/posts/datattl/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/datattl/</guid>
                 <pubDate>Mon, 06 Feb 2023 11:46:34 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -4672,7 +4672,7 @@ actual_database_name: ds_1
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -4684,8 +4684,8 @@ actual_database_name: ds_1
         
             <item>
                 <title>ShardingSphere 内置数据库设计</title>
-                <link>https://example.com/posts/shardingspheresysdatabase/</link>
-                <guid isPermaLink="true">https://example.com/posts/shardingspheresysdatabase/</guid>
+                <link>https://tuichenchuxin.github.io/posts/shardingspheresysdatabase/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/shardingspheresysdatabase/</guid>
                 <pubDate>Wed, 23 Nov 2022 10:02:24 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -5172,14 +5172,14 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
 &lt;h2 id=&#34;cockroachdb&#34;&gt;CockroachDB&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Cockroach db 的内置元数据库
-&lt;img src=&#34;https://example.com/img/cockroachmeta.jpg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/cockroachmeta.jpg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
 &lt;li&gt;Cockroach 的底层存储结构如下：
-&lt;img src=&#34;https://example.com/img/cockroachsave.jpeg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/cockroachsave.jpeg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;内置元数据设计&#34;&gt;内置元数据设计&lt;/h1&gt;
 &lt;h2 id=&#34;方案表结构和存储分开yaml-模拟表结构&#34;&gt;方案：表结构和存储分开，yaml 模拟表结构&lt;/h2&gt;
 &lt;h3 id=&#34;流程图&#34;&gt;流程图&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/sysdataflow.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/sysdataflow.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;zk-结构&#34;&gt;Zk 结构&lt;/h3&gt;
 &lt;p&gt;以 分片表数据量统计表 为例&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;create table sharding_table_statistics (
@@ -5193,7 +5193,7 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
 )
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对应 zk 存储结构
 红色为修改，黄色为新增，蓝色为 PG 特有（pg 同一个实例上的库是不共享元数据信息的，所以 pg 的 shardingsphere schema 增加在用户创建的逻辑库下，当然 postgres 库下也会模拟一个 shardingsphere schema）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/newSysDataZk.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/newSysDataZk.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;初始化&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;通过 yaml 模拟生成表结构（同现有 information_schema 流程）&lt;/li&gt;
@@ -5621,7 +5621,7 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -5633,8 +5633,8 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
         
             <item>
                 <title>ShardingSphere PostgreSQL openGauss \d 支持方案</title>
-                <link>https://example.com/posts/shardingsphere_sys_data_d/</link>
-                <guid isPermaLink="true">https://example.com/posts/shardingsphere_sys_data_d/</guid>
+                <link>https://tuichenchuxin.github.io/posts/shardingsphere_sys_data_d/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/shardingsphere_sys_data_d/</guid>
                 <pubDate>Fri, 04 Nov 2022 18:09:40 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -5683,7 +5683,7 @@ ORDER BY 1,2;
 &lt;p&gt;利用之前的&lt;a href=&#34;https://tuichenchuxin.github.io/posts/shardingspheresysdatabase/&#34;&gt;ShardingSphere 内置数据库设计&lt;/a&gt;
 在系统库中增加对应的表，表结构和字段类型同原生的数据库一致，并做&lt;strong&gt;数据收集并装饰&lt;/strong&gt;，通过 federation 执行&lt;strong&gt;内存查询&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;治理中心结构&#34;&gt;治理中心结构&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/pgdzk.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/pgdzk.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;表的数据收集&#34;&gt;表的数据收集&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SELECT 
   -- 数据库收集值
@@ -5866,7 +5866,7 @@ RelationIsVisible(Oid relid)
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -5878,8 +5878,8 @@ RelationIsVisible(Oid relid)
         
             <item>
                 <title>Pisanix protocol</title>
-                <link>https://example.com/posts/join-pisanix/</link>
-                <guid isPermaLink="true">https://example.com/posts/join-pisanix/</guid>
+                <link>https://tuichenchuxin.github.io/posts/join-pisanix/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/join-pisanix/</guid>
                 <pubDate>Wed, 21 Sep 2022 10:02:13 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -5901,7 +5901,7 @@ RelationIsVisible(Oid relid)
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -5913,8 +5913,8 @@ RelationIsVisible(Oid relid)
         
             <item>
                 <title>Docker</title>
-                <link>https://example.com/posts/docker/</link>
-                <guid isPermaLink="true">https://example.com/posts/docker/</guid>
+                <link>https://tuichenchuxin.github.io/posts/docker/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/docker/</guid>
                 <pubDate>Wed, 22 Jun 2022 18:12:49 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -5938,7 +5938,7 @@ RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -5950,8 +5950,8 @@ RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &
         
             <item>
                 <title>Add Yat Test for ShardingSphere</title>
-                <link>https://example.com/posts/add-yat-test-for-shardingsphere/</link>
-                <guid isPermaLink="true">https://example.com/posts/add-yat-test-for-shardingsphere/</guid>
+                <link>https://tuichenchuxin.github.io/posts/add-yat-test-for-shardingsphere/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/add-yat-test-for-shardingsphere/</guid>
                 <pubDate>Wed, 22 Jun 2022 17:44:41 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -6013,7 +6013,7 @@ Run test suite finished
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -6025,8 +6025,8 @@ Run test suite finished
         
             <item>
                 <title>Polar Db</title>
-                <link>https://example.com/posts/polar-db/</link>
-                <guid isPermaLink="true">https://example.com/posts/polar-db/</guid>
+                <link>https://tuichenchuxin.github.io/posts/polar-db/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/polar-db/</guid>
                 <pubDate>Tue, 14 Jun 2022 18:09:13 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -6161,7 +6161,7 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -6173,8 +6173,8 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
         
             <item>
                 <title>How to Modify Pr</title>
-                <link>https://example.com/posts/modifypr/</link>
-                <guid isPermaLink="true">https://example.com/posts/modifypr/</guid>
+                <link>https://tuichenchuxin.github.io/posts/modifypr/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/modifypr/</guid>
                 <pubDate>Thu, 12 May 2022 17:56:24 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -6214,7 +6214,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -6226,8 +6226,8 @@ $ git push sirmin HEAD:sirmin/resultSet
         
             <item>
                 <title>mac docker 安装 oracle 11g</title>
-                <link>https://example.com/posts/installoracle11g/</link>
-                <guid isPermaLink="true">https://example.com/posts/installoracle11g/</guid>
+                <link>https://tuichenchuxin.github.io/posts/installoracle11g/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/installoracle11g/</guid>
                 <pubDate>Mon, 25 Apr 2022 18:12:49 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -6266,7 +6266,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -6278,8 +6278,8 @@ $ git push sirmin HEAD:sirmin/resultSet
         
             <item>
                 <title>Freemarker 的使用</title>
-                <link>https://example.com/posts/use_free_marker/</link>
-                <guid isPermaLink="true">https://example.com/posts/use_free_marker/</guid>
+                <link>https://tuichenchuxin.github.io/posts/use_free_marker/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/use_free_marker/</guid>
                 <pubDate>Mon, 25 Apr 2022 11:22:13 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -6412,7 +6412,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -6424,8 +6424,8 @@ $ git push sirmin HEAD:sirmin/resultSet
         
             <item>
                 <title>How To Debug PgAdmin4</title>
-                <link>https://example.com/posts/howtodebugpgadmin4/</link>
-                <guid isPermaLink="true">https://example.com/posts/howtodebugpgadmin4/</guid>
+                <link>https://tuichenchuxin.github.io/posts/howtodebugpgadmin4/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/howtodebugpgadmin4/</guid>
                 <pubDate>Thu, 14 Apr 2022 11:37:36 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -6461,7 +6461,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -6473,8 +6473,8 @@ $ git push sirmin HEAD:sirmin/resultSet
         
             <item>
                 <title>PgAmdin4 展示 DDL 语句逻辑分析</title>
-                <link>https://example.com/posts/analysispgamdin4ddl/</link>
-                <guid isPermaLink="true">https://example.com/posts/analysispgamdin4ddl/</guid>
+                <link>https://tuichenchuxin.github.io/posts/analysispgamdin4ddl/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/analysispgamdin4ddl/</guid>
                 <pubDate>Wed, 13 Apr 2022 19:31:40 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -7235,7 +7235,7 @@ ORDER BY
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -7247,8 +7247,8 @@ ORDER BY
         
             <item>
                 <title>How to get postgres create table sql</title>
-                <link>https://example.com/posts/get_postgres_create_table_sql/</link>
-                <guid isPermaLink="true">https://example.com/posts/get_postgres_create_table_sql/</guid>
+                <link>https://tuichenchuxin.github.io/posts/get_postgres_create_table_sql/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/get_postgres_create_table_sql/</guid>
                 <pubDate>Fri, 08 Apr 2022 14:09:16 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -7730,7 +7730,7 @@ ORDER BY
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -7742,8 +7742,8 @@ ORDER BY
         
             <item>
                 <title>guava EventBus 使用以及注意点</title>
-                <link>https://example.com/posts/second/</link>
-                <guid isPermaLink="true">https://example.com/posts/second/</guid>
+                <link>https://tuichenchuxin.github.io/posts/second/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/second/</guid>
                 <pubDate>Wed, 06 Apr 2022 10:39:09 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -8079,7 +8079,7 @@ ORDER BY
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         
@@ -8091,8 +8091,8 @@ ORDER BY
         
             <item>
                 <title>ShardingSphere Hint 实用指南</title>
-                <link>https://example.com/posts/my-first-post/</link>
-                <guid isPermaLink="true">https://example.com/posts/my-first-post/</guid>
+                <link>https://tuichenchuxin.github.io/posts/my-first-post/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/my-first-post/</guid>
                 <pubDate>Fri, 01 Apr 2022 19:33:02 &#43;0800</pubDate>
                 
                     <author>chuxinchen.x@qq.com (chuxin chen)</author>
@@ -8590,7 +8590,7 @@ SELECT * FROM t_order;&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://example.com/categories/tech/">Tech</category>
+                                    <category domain="https://tuichenchuxin.github.io/categories/tech/">Tech</category>
                                 
                             
                         

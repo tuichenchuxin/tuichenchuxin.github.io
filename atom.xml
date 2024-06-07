@@ -4,13 +4,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2024-06-07T11:39:28&#43;08:00</updated>
-    <id>https://example.com/</id>
-    <link rel="alternate" type="text/html" href="https://example.com/" />
-    <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
+    <updated>2024-06-07T11:49:20&#43;08:00</updated>
+    <id>https://tuichenchuxin.github.io/</id>
+    <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/" />
+    <link rel="self" type="application/atom&#43;xml" href="https://tuichenchuxin.github.io/atom.xml" />
     <author>
             <name>chuxin chen</name>
-            <uri>https://example.com/</uri>
+            <uri>https://tuichenchuxin.github.io/</uri>
             
                 <email>chuxinchen.x@qq.com</email>
             </author>
@@ -18,8 +18,8 @@
     <generator uri="https://gohugo.io/" version="0.125.7">Hugo</generator>
         <entry>
             <title type="text">Async-profiler</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/asyncprofiler/" />
-            <id>https://example.com/posts/asyncprofiler/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/asyncprofiler/" />
+            <id>https://tuichenchuxin.github.io/posts/asyncprofiler/</id>
             <updated>2024-06-06T13:59:42&#43;08:00</updated>
             <published>2024-06-06T13:59:29&#43;08:00</published>
             <author>
@@ -45,8 +45,8 @@
     
         <entry>
             <title type="text">Pinpoint 使用</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/pinpoint/" />
-            <id>https://example.com/posts/pinpoint/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/pinpoint/" />
+            <id>https://tuichenchuxin.github.io/posts/pinpoint/</id>
             <updated>2024-06-07T11:37:18&#43;08:00</updated>
             <published>2024-06-05T17:37:21&#43;08:00</published>
             <author>
@@ -72,8 +72,8 @@
     
         <entry>
             <title type="text">smart-doc 支持普通 service 接口或者公司内部 rpc 微服务接口</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/smart_doc/" />
-            <id>https://example.com/posts/smart_doc/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/smart_doc/" />
+            <id>https://tuichenchuxin.github.io/posts/smart_doc/</id>
             <updated>2024-06-07T11:37:29&#43;08:00</updated>
             <published>2024-05-30T17:24:35&#43;08:00</published>
             <author>
@@ -120,8 +120,8 @@ https://github.com/TongchengOpenSource/smart-doc/pull/797 https://github.com/Ton
     
         <entry>
             <title type="text">接口管理工具调研</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/interface_management_tool/" />
-            <id>https://example.com/posts/interface_management_tool/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/interface_management_tool/" />
+            <id>https://tuichenchuxin.github.io/posts/interface_management_tool/</id>
             <updated>2024-05-29T18:18:46&#43;08:00</updated>
             <published>2024-05-27T09:25:11&#43;08:00</published>
             <author>
@@ -190,8 +190,8 @@ Smart-doc 介绍 Smart-doc 是基于java 标准注释来生成对应的文档接
     
         <entry>
             <title type="text">MongoDB</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/mongodb/" />
-            <id>https://example.com/posts/mongodb/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/mongodb/" />
+            <id>https://tuichenchuxin.github.io/posts/mongodb/</id>
             <updated>2024-06-07T11:37:13&#43;08:00</updated>
             <published>2024-05-23T13:51:50&#43;08:00</published>
             <author>
@@ -219,8 +219,8 @@ Smart-doc 介绍 Smart-doc 是基于java 标准注释来生成对应的文档接
     
         <entry>
             <title type="text">Fluvio</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/fluvio/" />
-            <id>https://example.com/posts/fluvio/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/fluvio/" />
+            <id>https://tuichenchuxin.github.io/posts/fluvio/</id>
             <updated>2024-05-14T20:43:33&#43;08:00</updated>
             <published>2024-05-09T11:20:29&#43;08:00</published>
             <author>
@@ -264,8 +264,8 @@ https://www.fluvio.io/docs/#installing-the-cli
     
         <entry>
             <title type="text">分析最近投递的 30 家招聘技术要求中提及的相关技术的次数</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/need_tech/" />
-            <id>https://example.com/posts/need_tech/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/need_tech/" />
+            <id>https://tuichenchuxin.github.io/posts/need_tech/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-05-07T15:40:30&#43;08:00</published>
             <author>
@@ -402,8 +402,8 @@ oracle 3</summary>
     
         <entry>
             <title type="text">Oracle 同义词</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/oracle_synonym/" />
-            <id>https://example.com/posts/oracle_synonym/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/oracle_synonym/" />
+            <id>https://tuichenchuxin.github.io/posts/oracle_synonym/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-04-17T15:42:13&#43;08:00</published>
             <author>
@@ -508,8 +508,8 @@ oracle 3</summary>
     
         <entry>
             <title type="text">RocketMQ</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/rocketmq/" />
-            <id>https://example.com/posts/rocketmq/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/rocketmq/" />
+            <id>https://tuichenchuxin.github.io/posts/rocketmq/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-04-01T20:52:10&#43;08:00</published>
             <author>
@@ -544,8 +544,8 @@ oracle 3</summary>
     
         <entry>
             <title type="text">ShardingSphere 中的分布式事务</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/distributed_transactions_in_shardingsphere/" />
-            <id>https://example.com/posts/distributed_transactions_in_shardingsphere/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/distributed_transactions_in_shardingsphere/" />
+            <id>https://tuichenchuxin.github.io/posts/distributed_transactions_in_shardingsphere/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-03-28T15:53:24&#43;08:00</published>
             <author>
@@ -662,8 +662,8 @@ TM 发现大家都完成了之后，发起提交命令，如果有人失败了�
     
         <entry>
             <title type="text">Streaming result set com.mysql.cj.protocol.a.result.ResultsetRowsStreaming@3e72fd68 is still active.</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/hikari_result_set/" />
-            <id>https://example.com/posts/hikari_result_set/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/hikari_result_set/" />
+            <id>https://tuichenchuxin.github.io/posts/hikari_result_set/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-03-22T08:53:52&#43;08:00</published>
             <author>
@@ -807,8 +807,8 @@ java.sql.SQLException: Streaming result set com.mysql.cj.protocol.a.result.Resul
     
         <entry>
             <title type="text">Spring 核心知识</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/spring/" />
-            <id>https://example.com/posts/spring/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/spring/" />
+            <id>https://tuichenchuxin.github.io/posts/spring/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-03-10T12:11:39&#43;08:00</published>
             <author>
@@ -843,8 +843,8 @@ java.sql.SQLException: Streaming result set com.mysql.cj.protocol.a.result.Resul
     
         <entry>
             <title type="text">Mysql基础知识学习</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/mysql/" />
-            <id>https://example.com/posts/mysql/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/mysql/" />
+            <id>https://tuichenchuxin.github.io/posts/mysql/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-03-08T12:18:12&#43;08:00</published>
             <author>
@@ -897,8 +897,8 @@ B+tree 相比 Hash 结构和 B-tree，支持范围查询&lt;/p&gt;
     
         <entry>
             <title type="text">java.lang.OutOfMemoryError: unable to create native thread</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/thread_leak/" />
-            <id>https://example.com/posts/thread_leak/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/thread_leak/" />
+            <id>https://tuichenchuxin.github.io/posts/thread_leak/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-03-07T18:20:11&#43;08:00</published>
             <author>
@@ -992,8 +992,8 @@ java.lang.RuntimeException: java.lang.OutOfMemoryError: unable to create native 
     
         <entry>
             <title type="text">远程编译</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/remote_mvn_clean/" />
-            <id>https://example.com/posts/remote_mvn_clean/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/remote_mvn_clean/" />
+            <id>https://tuichenchuxin.github.io/posts/remote_mvn_clean/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-02-06T17:00:26&#43;08:00</published>
             <author>
@@ -1043,8 +1043,8 @@ rsync -azh --progress chuxin@llt-mbp.local:~/.m2/ ~/.m2
     
         <entry>
             <title type="text">读深入理解高并发编程后相关总结</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/read_high_concurrency_programming/" />
-            <id>https://example.com/posts/read_high_concurrency_programming/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/read_high_concurrency_programming/" />
+            <id>https://tuichenchuxin.github.io/posts/read_high_concurrency_programming/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-01-31T15:13:06&#43;08:00</published>
             <author>
@@ -2382,8 +2382,8 @@ AQS 内部是使用 CLH 双向队列。&lt;/p&gt;
     
         <entry>
             <title type="text">Antlr4 支持中文空格</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/antlr4_chinese_white/" />
-            <id>https://example.com/posts/antlr4_chinese_white/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/antlr4_chinese_white/" />
+            <id>https://tuichenchuxin.github.io/posts/antlr4_chinese_white/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-01-12T16:05:10&#43;08:00</published>
             <author>
@@ -2423,8 +2423,8 @@ IDENTIFIER_ : [A-Za-z\u0080-\u2FFF\u3001-\uFF0B\uFF0D-\uFFFF]+[A-Za-z_$#0-9\u008
     
         <entry>
             <title type="text">OPE 加密算法</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/encrypt_ope/" />
-            <id>https://example.com/posts/encrypt_ope/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/encrypt_ope/" />
+            <id>https://tuichenchuxin.github.io/posts/encrypt_ope/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2024-01-10T14:45:49&#43;08:00</published>
             <author>
@@ -2453,8 +2453,8 @@ https://github.com/aymanmadkour/ope 该开源代码是 ope 的算法实现，可
     
         <entry>
             <title type="text">jdbc Statement 无法取消的问题</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/statement_cancle/" />
-            <id>https://example.com/posts/statement_cancle/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/statement_cancle/" />
+            <id>https://tuichenchuxin.github.io/posts/statement_cancle/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-12-21T18:06:56&#43;08:00</published>
             <author>
@@ -2616,7 +2616,7 @@ debug 时，idea 会调用 toString 也会上锁，所以卡住。
                             
                             
                             
-                                <category scheme="https://example.com/categories/database/" term="Database" label="Database" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/database/" term="Database" label="Database" />
                             
                         
                     
@@ -2628,8 +2628,8 @@ debug 时，idea 会调用 toString 也会上锁，所以卡住。
     
         <entry>
             <title type="text">探索 HikariCP</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/hikaricp/" />
-            <id>https://example.com/posts/hikaricp/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/hikaricp/" />
+            <id>https://tuichenchuxin.github.io/posts/hikaricp/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-12-15T09:14:20&#43;08:00</published>
             <author>
@@ -2893,8 +2893,8 @@ Error occurred during initialization of boot layer FindException: Module not fou
     
         <entry>
             <title type="text">rust 学习</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/learn_rust/" />
-            <id>https://example.com/posts/learn_rust/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/learn_rust/" />
+            <id>https://tuichenchuxin.github.io/posts/learn_rust/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-12-07T08:51:39&#43;08:00</published>
             <author>
@@ -2912,13 +2912,13 @@ Error occurred during initialization of boot layer FindException: Module not fou
 &lt;p&gt;通读之后开始学习 &lt;a href=&#34;https://github.com/rust-lang/rustlings/&#34;&gt;https://github.com/rust-lang/rustlings/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;中间参与了一个开源项目 &lt;a href=&#34;https://github.com/database-mesh/pisanix/tree/master&#34;&gt;https://github.com/database-mesh/pisanix/tree/master&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;最近开始学习 &lt;a href=&#34;https://exercism.org/tracks/rust&#34;&gt;https://exercism.org/tracks/rust&lt;/a&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115016.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115026.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115032.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115044.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115050.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115056.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231207-115101.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115016.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115026.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115032.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115044.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115050.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115056.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115101.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 </content>
             
             
@@ -2931,7 +2931,7 @@ Error occurred during initialization of boot layer FindException: Module not fou
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -2943,8 +2943,8 @@ Error occurred during initialization of boot layer FindException: Module not fou
     
         <entry>
             <title type="text">Connection is not avaible</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/connection_is_not_avaible/" />
-            <id>https://example.com/posts/connection_is_not_avaible/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/connection_is_not_avaible/" />
+            <id>https://tuichenchuxin.github.io/posts/connection_is_not_avaible/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-11-09T16:03:41&#43;08:00</published>
             <author>
@@ -3038,8 +3038,8 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
     
         <entry>
             <title type="text">使用idea创建的 jar 文件都是 .java 而不是 .class</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/use_idea_to_generate_jar/" />
-            <id>https://example.com/posts/use_idea_to_generate_jar/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/use_idea_to_generate_jar/" />
+            <id>https://tuichenchuxin.github.io/posts/use_idea_to_generate_jar/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-11-01T15:38:48&#43;08:00</published>
             <author>
@@ -3050,11 +3050,11 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">通过如下步骤打包后发现 jar 包中的文件都是 .java 文件，而不是 .class 文件 经过了一下午的尝试，发现手动创建包，然后指定 .class 文件可以成功打包。 不过没有特别需求还是直接用 maven 吧，简单些，无需添加任何插件，直接 mvn clean install 即可。</summary>
             
                 <content type="html">&lt;p&gt;通过如下步骤打包后发现 jar 包中的文件都是 .java 文件，而不是 .class 文件
-&lt;img src=&#34;https://example.com/img/20231101-155254.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231101-155302.jpeg&#34; alt=&#34;&#34;&gt;
-&lt;img src=&#34;https://example.com/img/20231101-155306.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231101-155254.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231101-155302.jpeg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231101-155306.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;经过了一下午的尝试，发现手动创建包，然后指定 .class 文件可以成功打包。
-&lt;img src=&#34;https://example.com/img/20231101-180739.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20231101-180739.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;不过没有特别需求还是直接用 maven 吧，简单些，无需添加任何插件，直接 mvn clean install 即可。&lt;/p&gt;
 </content>
             
@@ -3072,8 +3072,8 @@ spring.datasource.dynamic.datasource.sharding0.hikari.max-pool-size = 30
     
         <entry>
             <title type="text">如果 result set 仅有一个结果集，是否可以用 if(resultset.next()) ?</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/resultset_next/" />
-            <id>https://example.com/posts/resultset_next/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/resultset_next/" />
+            <id>https://tuichenchuxin.github.io/posts/resultset_next/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-10-16T15:13:38&#43;08:00</published>
             <author>
@@ -3161,8 +3161,8 @@ java.sql.SQLException: Streaming result set com.mysql.jdbc.RowDataDynamic@4b76a9
     
         <entry>
             <title type="text">是否可以在 jdbc 查询数据的同时获取本次查询的数据量？</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/result_set_type/" />
-            <id>https://example.com/posts/result_set_type/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/result_set_type/" />
+            <id>https://tuichenchuxin.github.io/posts/result_set_type/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-10-13T14:19:38&#43;08:00</published>
             <author>
@@ -3269,8 +3269,8 @@ Oracle
     
         <entry>
             <title type="text">Oracle merge insert 问题</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/oracle_merge/" />
-            <id>https://example.com/posts/oracle_merge/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/oracle_merge/" />
+            <id>https://tuichenchuxin.github.io/posts/oracle_merge/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-09-22T15:45:09&#43;08:00</published>
             <author>
@@ -3353,8 +3353,8 @@ ORA-00001: unique constraint (ENCRYPT.SYS_C007033) violated&lt;/p&gt;
     
         <entry>
             <title type="text">No suitable driver 问题调查</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/driverclassname/" />
-            <id>https://example.com/posts/driverclassname/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/driverclassname/" />
+            <id>https://tuichenchuxin.github.io/posts/driverclassname/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-08-23T17:55:43&#43;08:00</published>
             <author>
@@ -3399,7 +3399,7 @@ DriverManager 加载多个驱动过程中，如果有任何一个失败，都不
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -3411,8 +3411,8 @@ DriverManager 加载多个驱动过程中，如果有任何一个失败，都不
     
         <entry>
             <title type="text">使用 sqlline 连接 sharding_jdbc</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/use_sql_line/" />
-            <id>https://example.com/posts/use_sql_line/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/use_sql_line/" />
+            <id>https://tuichenchuxin.github.io/posts/use_sql_line/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-06-30T16:02:42&#43;08:00</published>
             <author>
@@ -3468,8 +3468,8 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
     
         <entry>
             <title type="text">Open_dal</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/open_dal/" />
-            <id>https://example.com/posts/open_dal/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/open_dal/" />
+            <id>https://tuichenchuxin.github.io/posts/open_dal/</id>
             <updated>2023-12-20T21:14:19&#43;08:00</updated>
             <published>2023-06-19T21:14:19&#43;08:00</published>
             <author>
@@ -3497,7 +3497,7 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -3509,8 +3509,8 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
     
         <entry>
             <title type="text">分布式 join 实现</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/distributed-join/" />
-            <id>https://example.com/posts/distributed-join/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/distributed-join/" />
+            <id>https://tuichenchuxin.github.io/posts/distributed-join/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-05-10T11:28:36&#43;08:00</published>
             <author>
@@ -3533,7 +3533,7 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
 &lt;/ul&gt;
 &lt;p&gt;对于分析型的 SQL 而言，不需要考虑事务和性能的话，可以采用数据挪动的方式来实现。&lt;/p&gt;
 &lt;p&gt;如下图所示，列出了可能的实现方式。
-&lt;img src=&#34;https://example.com/img/20230510-113802.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230510-113802.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;该方案的具体实现需要考虑 2 点。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;语义分析 （考虑通过 calcite 或者自行解析提取条件）
@@ -3556,7 +3556,7 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -3568,8 +3568,8 @@ exec java -cp &amp;#34;$BINPATH/../target/*&amp;#34;:&amp;#34;/Users/chenchuxin/
     
         <entry>
             <title type="text">calcite 学习</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/learn_calcite/" />
-            <id>https://example.com/posts/learn_calcite/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/learn_calcite/" />
+            <id>https://tuichenchuxin.github.io/posts/learn_calcite/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-04-10T18:05:59&#43;08:00</published>
             <author>
@@ -3594,7 +3594,7 @@ calcite 的大体架构 calcite 如何跟 SS 整合 ShardingSphere 可以支持�
 &lt;p&gt;calcite 是动态数据的管理框架。我理解，就是数据库的计算层，去除掉了存储的部分。
 calcite 可以接入任何形式的数据，只需要我们将数据注册成表的形式，那么就可以使用 SQL 来对它进行查询。&lt;/p&gt;
 &lt;h3 id=&#34;calcite-的大体架构&#34;&gt;calcite 的大体架构&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230417-172948.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230417-172948.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;calcite-如何跟-ss-整合&#34;&gt;calcite 如何跟 SS 整合&lt;/h3&gt;
 &lt;p&gt;ShardingSphere 可以支持分库分表，所以也自然会有跨实例查询的 SQL。 例如跨实例的 join。这些 SQL 是没办法直接下推到数据库去执行的，因此利用 calcite 来实现复杂子查询或者是跨实例 join。
 我们可以从一个跨实例 join 的 select debug 来查看整合 calcite 的方式。
@@ -3649,7 +3649,7 @@ HepPlanner&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -3661,8 +3661,8 @@ HepPlanner&lt;/p&gt;
     
         <entry>
             <title type="text">Learnhadoop</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/learnhadoop/" />
-            <id>https://example.com/posts/learnhadoop/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/learnhadoop/" />
+            <id>https://tuichenchuxin.github.io/posts/learnhadoop/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-03-23T18:24:20&#43;08:00</published>
             <author>
@@ -3684,7 +3684,7 @@ HepPlanner&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -3696,8 +3696,8 @@ HepPlanner&lt;/p&gt;
     
         <entry>
             <title type="text">LearnSpark</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/learnspark/" />
-            <id>https://example.com/posts/learnspark/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/learnspark/" />
+            <id>https://tuichenchuxin.github.io/posts/learnspark/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-03-23T18:23:59&#43;08:00</published>
             <author>
@@ -3719,7 +3719,7 @@ HepPlanner&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -3731,8 +3731,8 @@ HepPlanner&lt;/p&gt;
     
         <entry>
             <title type="text">Polardb-x 的 join 实现</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/polardbxjoin/" />
-            <id>https://example.com/posts/polardbxjoin/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/polardbxjoin/" />
+            <id>https://tuichenchuxin.github.io/posts/polardbxjoin/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-03-16T09:37:34&#43;08:00</published>
             <author>
@@ -3776,7 +3776,7 @@ lookup join Lookup Join 的执行过程如下（非索引回表情形）：</sum
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o_orderkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BETWEEN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1001&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1005&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-112228.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230316-112228.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;依赖全局索引的 Join 则更为复杂一些，回忆下 MySQL 的 BKA Join，需要进行两次 lookup：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;第一次用 Join key 查询全局索引表（用于 Join）&lt;/li&gt;
@@ -3798,7 +3798,7 @@ lookup join Lookup Join 的执行过程如下（非索引回表情形）：</sum
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_custkey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BETWEEN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-113634.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230316-113634.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;文档信息提取-1&#34;&gt;文档信息提取&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://help.aliyun.com/document_detail/316601.html&#34;&gt;https://help.aliyun.com/document_detail/316601.html&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nested-loop-join-nljoin&#34;&gt;Nested-Loop Join (NLJoin)&lt;/h2&gt;
@@ -3839,14 +3839,14 @@ lookup join Lookup Join 的执行过程如下（非索引回表情形）：</sum
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;关于-join-顺序以及各种-join-的使用场景&#34;&gt;关于 Join 顺序以及各种 join 的使用场景&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230316-121006.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230316-121006.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;文档信息提取-2&#34;&gt;文档信息提取&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/379967662&#34;&gt;https://zhuanlan.zhihu.com/p/379967662&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;面对 OLTP 场景，可以使用大表和小表进行 join ，使用前文提到的 Lookup Join 算法
 但是对于 OLAP 的场景，我们可能就需要将数据从内存拉出来进行计算。&lt;/p&gt;
 &lt;p&gt;等值 JOIN 那么一般就是 hash-join 和 sort-merge join 两种，Hash join 根据是否支持大数据量，又分为 内存 Hash-join 和 落盘版的 Hash-join&lt;/p&gt;
 &lt;h2 id=&#34;内存版-hash-join-的实现&#34;&gt;内存版 Hash join 的实现&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230320-105410.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230320-105410.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;根据统计信息选取较小的表根据 join 条件对给定的列 build hash table，然后流式遍历，去 hash table 里面找 key，如果一致，那么就拿出一整行，然后直接向下游输出，这个过程又叫 probe table&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;//build Table
 for row in t1:
@@ -3861,13 +3861,13 @@ for row in t2:
        join(t1_row, row) 
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;polardb-x 与一般的 hash join 最大的不同，是采用了内存友好的 vector 重新实现了哈希表，对 CPU CACHE 更友好，可以提高 JOIN 性能。
-&lt;img src=&#34;https://example.com/img/20230320-113142.jpg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230320-113142.jpg&#34; alt=&#34;&#34;&gt;
 具体实现没太明白。。。大概是搞了一些缓存索引结构？&lt;/p&gt;
 &lt;p&gt;如果数据量太大，无法全部放到内存中的时候，那么就需要使用 HybridHashJoin 算法。&lt;/p&gt;
 &lt;h2 id=&#34;hybirdhashjoin&#34;&gt;HybirdHashJoin&lt;/h2&gt;
 &lt;p&gt;Hybird hash join 从我的角度理解，就是将原表按照关联的键做 partition，然后分别在每个分区做 hash join.
-&lt;img src=&#34;https://example.com/img/20230320-134504.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/20230320-134700.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230320-134504.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/20230320-134700.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;sortmergejoin&#34;&gt;SortMergeJoin&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sort t1, sort t2
 R1 = t1.next()
@@ -3899,8 +3899,8 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
     
         <entry>
             <title type="text">分布式 join 调研</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/join_learn/" />
-            <id>https://example.com/posts/join_learn/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/join_learn/" />
+            <id>https://tuichenchuxin.github.io/posts/join_learn/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-03-14T09:40:45&#43;08:00</published>
             <author>
@@ -3920,8 +3920,8 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
 &lt;h3 id=&#34;分布式-join-支持方式数据复制&#34;&gt;分布式 join 支持方式（数据复制）&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;单表 join 分表&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;下图介绍了 单表和 sharding 表 join 时 citus 的处理方式&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnGVh9WCfIy5pV4nskl7yQ0f.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnXX78e9lopW8ZMOHexDTUde.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnGVh9WCfIy5pV4nskl7yQ0f.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnXX78e9lopW8ZMOHexDTUde.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;它两种方式来对 local 表和 distributed 表进行关联查询&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;将 distributed 表的数据从 workers 节点移动到协调器&lt;/li&gt;
@@ -3940,9 +3940,9 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
 &lt;li&gt;Never: Citus will give an error for local and distributed table JOINs, same as before Citus 10.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;分表 join 分表&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnPaTkhM59GdF17WcZKt4VDb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnPaTkhM59GdF17WcZKt4VDb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;这里展示的是表的分片数量相同，并且关联条件是分片键的场景，类似于 binding table&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnOOEB7jSahFYYdDeaEtDLVc.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnOOEB7jSahFYYdDeaEtDLVc.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;该图展示了 citus 的 join 方式，有本地 join，refrence table join （就是广播表），还有 repartition joins，里面提到会使用数据混洗的方式，性能不高。另外这个方式需要开关打开。&lt;/p&gt;
 &lt;p&gt;根据作者对于 repartition joins &lt;a href=&#34;https://github.com/citusdata/citus/issues/2321&#34;&gt;https://github.com/citusdata/citus/issues/2321&lt;/a&gt;
 的回复来看，目前该功能只能用于某些场景并且不建议默认打开使用。&lt;/p&gt;
@@ -3952,13 +3952,13 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
 &lt;p&gt;没有找到官方明确的说法，但是从一些公开的演讲中发现了一些信息。 它实现分布式 join 的方式也是两种，一种是在内存中计算，另外一种就是数据复制，不过它的复制是通过 MySQL binlog。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.infoq.com/presentations/vitess/&#34;&gt;https://www.infoq.com/presentations/vitess/&lt;/a&gt;
 &lt;a href=&#34;https://vitess.io/docs/16.0/reference/vreplication/vreplication/&#34;&gt;https://vitess.io/docs/16.0/reference/vreplication/vreplication/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcn0B79XuBN3axMKHc27YiXhb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcn0B79XuBN3axMKHc27YiXhb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;presto&#34;&gt;Presto&lt;/h1&gt;
 &lt;p&gt;Presto 是一个分布式 SQL 查询引擎，可以在云计算和大数据领域广泛应用。Presto 主要用于处理大数据查询和分析，它支持从多个数据源中进行高速查询，包括 Hadoop，MySQL，Cassandra，PostgreSQL 等。 Presto 的设计目的是为了在处理大量数据时提供快速的查询和分析功能。Presto 支持 SQL 查询和复杂的分析，可以处理 PB 级别的数据，并且可以在数秒内返回查询结果。Presto 的一个优点是它可以与多个数据存储系统集成，而不需要将数据迁移到一个中心位置，从而降低数据分析的成本和复杂性。它主要处理 &lt;strong&gt;OLAP&lt;/strong&gt; 场景。&lt;/p&gt;
 &lt;p&gt;有点儿像 calcite。&lt;/p&gt;
 &lt;h3 id=&#34;分布式-join-支持方式内存计算--数据复制-1&#34;&gt;分布式 join 支持方式（内存计算 + 数据复制）&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnyD1UNyJyN9Lht9zalrhhbb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/boxcnlOGMHjwidZsVntFXicqEKh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnyD1UNyJyN9Lht9zalrhhbb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/boxcnlOGMHjwidZsVntFXicqEKh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;从上述文档可以看到 presto 是基于代价的查询优化器。一般也是两种方式实现分布式 join&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Partitioned: each node participating in the query builds a hash table from only a fraction of the data&lt;/li&gt;
@@ -3984,7 +3984,7 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -3996,8 +3996,8 @@ while (R1 != null &amp;amp;&amp;amp; R2 != null) {
     
         <entry>
             <title type="text">ShardingSphere 元数据能力增强解读与实战</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/shardingsphere_meta_learn_action/" />
-            <id>https://example.com/posts/shardingsphere_meta_learn_action/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/shardingsphere_meta_learn_action/" />
+            <id>https://tuichenchuxin.github.io/posts/shardingsphere_meta_learn_action/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-03-06T09:14:47&#43;08:00</published>
             <author>
@@ -4739,7 +4739,7 @@ actual_database_name: ds_1
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -4751,8 +4751,8 @@ actual_database_name: ds_1
     
         <entry>
             <title type="text">DataTTL 相关调研</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/datattl/" />
-            <id>https://example.com/posts/datattl/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/datattl/" />
+            <id>https://tuichenchuxin.github.io/posts/datattl/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2023-02-06T11:46:34&#43;08:00</published>
             <author>
@@ -4882,7 +4882,7 @@ actual_database_name: ds_1
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -4894,8 +4894,8 @@ actual_database_name: ds_1
     
         <entry>
             <title type="text">ShardingSphere 内置数据库设计</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/shardingspheresysdatabase/" />
-            <id>https://example.com/posts/shardingspheresysdatabase/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/shardingspheresysdatabase/" />
+            <id>https://tuichenchuxin.github.io/posts/shardingspheresysdatabase/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-11-23T10:02:24&#43;08:00</published>
             <author>
@@ -5388,14 +5388,14 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
 &lt;h2 id=&#34;cockroachdb&#34;&gt;CockroachDB&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Cockroach db 的内置元数据库
-&lt;img src=&#34;https://example.com/img/cockroachmeta.jpg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/cockroachmeta.jpg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
 &lt;li&gt;Cockroach 的底层存储结构如下：
-&lt;img src=&#34;https://example.com/img/cockroachsave.jpeg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;img src=&#34;https://tuichenchuxin.github.io/img/cockroachsave.jpeg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;内置元数据设计&#34;&gt;内置元数据设计&lt;/h1&gt;
 &lt;h2 id=&#34;方案表结构和存储分开yaml-模拟表结构&#34;&gt;方案：表结构和存储分开，yaml 模拟表结构&lt;/h2&gt;
 &lt;h3 id=&#34;流程图&#34;&gt;流程图&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/sysdataflow.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/sysdataflow.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;zk-结构&#34;&gt;Zk 结构&lt;/h3&gt;
 &lt;p&gt;以 分片表数据量统计表 为例&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;create table sharding_table_statistics (
@@ -5409,7 +5409,7 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
 )
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对应 zk 存储结构
 红色为修改，黄色为新增，蓝色为 PG 特有（pg 同一个实例上的库是不共享元数据信息的，所以 pg 的 shardingsphere schema 增加在用户创建的逻辑库下，当然 postgres 库下也会模拟一个 shardingsphere schema）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/newSysDataZk.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/newSysDataZk.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;初始化&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;通过 yaml 模拟生成表结构（同现有 information_schema 流程）&lt;/li&gt;
@@ -5837,7 +5837,7 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -5849,8 +5849,8 @@ PolarDB-X 一致性共识协议 (X-Paxos)-阿里云开发者社区&lt;/p&gt;
     
         <entry>
             <title type="text">ShardingSphere PostgreSQL openGauss \d 支持方案</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/shardingsphere_sys_data_d/" />
-            <id>https://example.com/posts/shardingsphere_sys_data_d/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/shardingsphere_sys_data_d/" />
+            <id>https://tuichenchuxin.github.io/posts/shardingsphere_sys_data_d/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-11-04T18:09:40&#43;08:00</published>
             <author>
@@ -5903,7 +5903,7 @@ ORDER BY 1,2;
 &lt;p&gt;利用之前的&lt;a href=&#34;https://tuichenchuxin.github.io/posts/shardingspheresysdatabase/&#34;&gt;ShardingSphere 内置数据库设计&lt;/a&gt;
 在系统库中增加对应的表，表结构和字段类型同原生的数据库一致，并做&lt;strong&gt;数据收集并装饰&lt;/strong&gt;，通过 federation 执行&lt;strong&gt;内存查询&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;治理中心结构&#34;&gt;治理中心结构&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/img/pgdzk.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/pgdzk.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;表的数据收集&#34;&gt;表的数据收集&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SELECT 
   -- 数据库收集值
@@ -6086,7 +6086,7 @@ RelationIsVisible(Oid relid)
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -6098,8 +6098,8 @@ RelationIsVisible(Oid relid)
     
         <entry>
             <title type="text">Pisanix protocol</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/join-pisanix/" />
-            <id>https://example.com/posts/join-pisanix/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/join-pisanix/" />
+            <id>https://tuichenchuxin.github.io/posts/join-pisanix/</id>
             <updated>2024-05-23T13:49:49&#43;08:00</updated>
             <published>2022-09-21T10:02:13&#43;08:00</published>
             <author>
@@ -6126,7 +6126,7 @@ RelationIsVisible(Oid relid)
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -6138,8 +6138,8 @@ RelationIsVisible(Oid relid)
     
         <entry>
             <title type="text">Docker</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/docker/" />
-            <id>https://example.com/posts/docker/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/docker/" />
+            <id>https://tuichenchuxin.github.io/posts/docker/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-06-22T18:12:49&#43;08:00</published>
             <author>
@@ -6167,7 +6167,7 @@ RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -6179,8 +6179,8 @@ RUN echo &amp;#39;&amp;lt;h1&amp;gt;Hello, Docker!&amp;lt;/h1&amp;gt;&amp;#39; &
     
         <entry>
             <title type="text">Add Yat Test for ShardingSphere</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/add-yat-test-for-shardingsphere/" />
-            <id>https://example.com/posts/add-yat-test-for-shardingsphere/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/add-yat-test-for-shardingsphere/" />
+            <id>https://tuichenchuxin.github.io/posts/add-yat-test-for-shardingsphere/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-06-22T17:44:41&#43;08:00</published>
             <author>
@@ -6249,7 +6249,7 @@ Run test suite finished
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -6261,8 +6261,8 @@ Run test suite finished
     
         <entry>
             <title type="text">Polar Db</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/polar-db/" />
-            <id>https://example.com/posts/polar-db/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/polar-db/" />
+            <id>https://tuichenchuxin.github.io/posts/polar-db/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-06-14T18:09:13&#43;08:00</published>
             <author>
@@ -6403,7 +6403,7 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -6415,8 +6415,8 @@ mysql -h127.0.0.1 -P4886 -uroot -padmin -D polardbx_meta_db_polardbx -e &amp;#34
     
         <entry>
             <title type="text">How to Modify Pr</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/modifypr/" />
-            <id>https://example.com/posts/modifypr/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/modifypr/" />
+            <id>https://tuichenchuxin.github.io/posts/modifypr/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-05-12T17:56:24&#43;08:00</published>
             <author>
@@ -6462,7 +6462,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -6474,8 +6474,8 @@ $ git push sirmin HEAD:sirmin/resultSet
     
         <entry>
             <title type="text">mac docker 安装 oracle 11g</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/installoracle11g/" />
-            <id>https://example.com/posts/installoracle11g/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/installoracle11g/" />
+            <id>https://tuichenchuxin.github.io/posts/installoracle11g/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-04-25T18:12:49&#43;08:00</published>
             <author>
@@ -6517,7 +6517,7 @@ $ git push sirmin HEAD:sirmin/resultSet
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -6529,8 +6529,8 @@ $ git push sirmin HEAD:sirmin/resultSet
     
         <entry>
             <title type="text">Freemarker 的使用</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/use_free_marker/" />
-            <id>https://example.com/posts/use_free_marker/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/use_free_marker/" />
+            <id>https://tuichenchuxin.github.io/posts/use_free_marker/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-04-25T11:22:13&#43;08:00</published>
             <author>
@@ -6669,7 +6669,7 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -6681,8 +6681,8 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
     
         <entry>
             <title type="text">How To Debug PgAdmin4</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/howtodebugpgadmin4/" />
-            <id>https://example.com/posts/howtodebugpgadmin4/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/howtodebugpgadmin4/" />
+            <id>https://tuichenchuxin.github.io/posts/howtodebugpgadmin4/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-04-14T11:37:36&#43;08:00</published>
             <author>
@@ -6722,7 +6722,7 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -6734,8 +6734,8 @@ Freemarker 的使用 编写 ftl 模版 以生成 postgres 查询的 sql 语句�
     
         <entry>
             <title type="text">PgAmdin4 展示 DDL 语句逻辑分析</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/analysispgamdin4ddl/" />
-            <id>https://example.com/posts/analysispgamdin4ddl/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/analysispgamdin4ddl/" />
+            <id>https://tuichenchuxin.github.io/posts/analysispgamdin4ddl/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-04-13T19:31:40&#43;08:00</published>
             <author>
@@ -7499,7 +7499,7 @@ ORDER BY
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -7511,8 +7511,8 @@ ORDER BY
     
         <entry>
             <title type="text">How to get postgres create table sql</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/get_postgres_create_table_sql/" />
-            <id>https://example.com/posts/get_postgres_create_table_sql/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/get_postgres_create_table_sql/" />
+            <id>https://tuichenchuxin.github.io/posts/get_postgres_create_table_sql/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-04-08T14:09:16&#43;08:00</published>
             <author>
@@ -7999,7 +7999,7 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -8011,8 +8011,8 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
     
         <entry>
             <title type="text">guava EventBus 使用以及注意点</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/second/" />
-            <id>https://example.com/posts/second/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/second/" />
+            <id>https://tuichenchuxin.github.io/posts/second/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-04-06T10:39:09&#43;08:00</published>
             <author>
@@ -8352,7 +8352,7 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
@@ -8364,8 +8364,8 @@ docker run -it --rm postgres pg_dump -h host.docker.internal -p 5432 -U postgres
     
         <entry>
             <title type="text">ShardingSphere Hint 实用指南</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/my-first-post/" />
-            <id>https://example.com/posts/my-first-post/</id>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/my-first-post/" />
+            <id>https://tuichenchuxin.github.io/posts/my-first-post/</id>
             <updated>2024-05-13T00:42:28&#43;08:00</updated>
             <published>2022-04-01T19:33:02&#43;08:00</published>
             <author>
@@ -8866,7 +8866,7 @@ SELECT * FROM t_order;&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://example.com/categories/tech/" term="Tech" label="Tech" />
+                                <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
                     
