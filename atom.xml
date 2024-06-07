@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2024-05-30T17:31:14&#43;08:00</updated>
+    <updated>2024-06-07T11:38:05&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -17,10 +17,64 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.125.7">Hugo</generator>
         <entry>
+            <title type="text">Async-profiler</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/asyncprofiler/" />
+            <id>https://example.com/posts/asyncprofiler/</id>
+            <updated>2024-06-06T13:59:42&#43;08:00</updated>
+            <published>2024-06-06T13:59:29&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
+            
+                <content type="html"></content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Pinpoint 使用</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/pinpoint/" />
+            <id>https://example.com/posts/pinpoint/</id>
+            <updated>2024-06-07T11:37:18&#43;08:00</updated>
+            <published>2024-06-05T17:37:21&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
+            
+                <content type="html"></content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">smart-doc 支持普通 service 接口或者公司内部 rpc 微服务接口</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/smart_doc/" />
             <id>https://example.com/posts/smart_doc/</id>
-            <updated>2024-05-30T17:31:07&#43;08:00</updated>
+            <updated>2024-06-07T11:37:29&#43;08:00</updated>
             <published>2024-05-30T17:24:35&#43;08:00</published>
             <author>
                     <name>chuxin chen</name>
@@ -33,7 +87,7 @@ https://github.com/TongchengOpenSource/smart-doc/issues/683
 https://github.com/TongchengOpenSource/smart-doc/discussions/795
 我看了下思路，又看了下代码，发现实现起来比想象的要简单很多。
 于是捣鼓了半天，提交了代码
-https://github.com/TongchengOpenSource/smart-doc/pull/797 https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70
+https://github.com/TongchengOpenSource/smart-doc/pull/797 https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70 https://github.com/smart-doc-group/smart-doc-group.github.io/pull/87
 很快经过 review 修改后合并了。
 哈哈，开心。
 以后只要增加 @javadoc 注释，就可以支持普通 service 接口了。</summary>
@@ -45,7 +99,8 @@ https://github.com/TongchengOpenSource/smart-doc/pull/797 https://github.com/Ton
 &lt;p&gt;我看了下思路，又看了下代码，发现实现起来比想象的要简单很多。&lt;/p&gt;
 &lt;p&gt;于是捣鼓了半天，提交了代码&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc/pull/797&#34;&gt;https://github.com/TongchengOpenSource/smart-doc/pull/797&lt;/a&gt;
-&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70&#34;&gt;https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70&#34;&gt;https://github.com/TongchengOpenSource/smart-doc-maven-plugin/pull/70&lt;/a&gt;
+&lt;a href=&#34;https://github.com/smart-doc-group/smart-doc-group.github.io/pull/87&#34;&gt;https://github.com/smart-doc-group/smart-doc-group.github.io/pull/87&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;很快经过 review 修改后合并了。&lt;/p&gt;
 &lt;p&gt;哈哈，开心。&lt;/p&gt;
 &lt;p&gt;以后只要增加 @javadoc 注释，就可以支持普通 service 接口了。&lt;/p&gt;
@@ -137,16 +192,18 @@ Smart-doc 介绍 Smart-doc 是基于java 标准注释来生成对应的文档接
             <title type="text">MongoDB</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/mongodb/" />
             <id>https://example.com/posts/mongodb/</id>
-            <updated>2024-05-23T13:52:00&#43;08:00</updated>
+            <updated>2024-06-07T11:37:13&#43;08:00</updated>
             <published>2024-05-23T13:51:50&#43;08:00</published>
             <author>
                     <name>chuxin chen</name>
                     <uri>https://tuichenchuxin.github.io/</uri>
                     <email>chuxinchen.x@qq.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"></summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">初探 MongoDB 感觉上存的主要是对象，也可以理解为文档信息</summary>
             
-                <content type="html"></content>
+                <content type="html">&lt;h1 id=&#34;初探&#34;&gt;初探&lt;/h1&gt;
+&lt;p&gt;MongoDB 感觉上存的主要是对象，也可以理解为文档信息&lt;/p&gt;
+</content>
             
             
             
