@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://tuichenchuxin.github.io/posts/httpservletrequest/</loc>
-    <lastmod>2024-08-16T17:40:20+08:00</lastmod>
-  </url><url>
     <loc>https://tuichenchuxin.github.io/posts/</loc>
-    <lastmod>2024-08-16T17:40:20+08:00</lastmod>
+    <lastmod>2024-08-23T11:44:35+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/</loc>
+    <lastmod>2024-08-23T11:44:35+08:00</lastmod>
+  </url><url>
+    <loc>https://tuichenchuxin.github.io/posts/data_not_same/</loc>
+    <lastmod>2024-08-23T11:44:35+08:00</lastmod>
+  </url><url>
+    <loc>https://tuichenchuxin.github.io/posts/httpservletrequest/</loc>
     <lastmod>2024-08-16T17:40:20+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/posts/asyncprofiler/</loc>
