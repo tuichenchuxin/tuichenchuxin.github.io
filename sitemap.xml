@@ -3,12 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://tuichenchuxin.github.io/posts/</loc>
-    <lastmod>2024-10-30T17:47:17+08:00</lastmod>
-  </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/slf4j_console_log_missing/</loc>
-    <lastmod>2024-10-30T17:47:17+08:00</lastmod>
+    <lastmod>2024-11-07T12:07:19+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/</loc>
+    <lastmod>2024-11-07T12:07:19+08:00</lastmod>
+  </url><url>
+    <loc>https://tuichenchuxin.github.io/posts/test_error/</loc>
+    <lastmod>2024-11-07T12:07:19+08:00</lastmod>
+  </url><url>
+    <loc>https://tuichenchuxin.github.io/posts/test_occasional_failure/</loc>
+    <lastmod>2024-11-06T18:16:16+08:00</lastmod>
+  </url><url>
+    <loc>https://tuichenchuxin.github.io/posts/slf4j_console_log_missing/</loc>
     <lastmod>2024-10-30T17:47:17+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/posts/pinpoint_error/</loc>

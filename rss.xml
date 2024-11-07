@@ -23,10 +23,168 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Wed, 30 Oct 2024 17:47:27 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 07 Nov 2024 12:07:29 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://tuichenchuxin.github.io/rss.xml" />
         
+        
+            <item>
+                <title>本地测试可以运行，但是环境上 mockito java.lang.VerifyError</title>
+                <link>https://tuichenchuxin.github.io/posts/test_error/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/test_error/</guid>
+                <pubDate>Wed, 06 Nov 2024 18:16:08 &#43;0800</pubDate>
+                
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;h1 id=&#34;问题描述&#34;&gt;问题描述&lt;/h1&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.digiwin.athena.datamap.service.inner.DataMapPickService.
+
+If you&amp;#39;re not sure why you&amp;#39;re getting this error, please open an issue on GitHub.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.11-b03
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_11-b12
+JVM info           : mixed mode
+OS name            : Mac OS X
+OS version         : 10.16
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+Caused by: java.lang.IllegalArgumentException: Could not create type
+Caused by: java.lang.VerifyError
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一直报错，但是本地却没有。&lt;/p&gt;
+&lt;h1 id=&#34;调查过程&#34;&gt;调查过程&lt;/h1&gt;
+&lt;p&gt;查询发现 Caused by: java.lang.VerifyError 可能是由于 jvm 验证到内存和class 可能不同，报出来的问题。&lt;/p&gt;
+&lt;p&gt;于是下载对应版本，本地复现，确实能复现该问题。&lt;/p&gt;
+&lt;p&gt;那么是哪个类不一致呢。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;org.mockito.exceptions.base.MockitoException: 
+Mockito cannot mock this class: class org.springframework.data.mongodb.core.MongoTemplate.
+
+If you&amp;#39;re not sure why you&amp;#39;re getting this error, please open an issue on GitHub.
+
+
+Java               : 1.8
+JVM vendor name    : Oracle Corporation
+JVM vendor version : 25.11-b03
+JVM name           : Java HotSpot(TM) 64-Bit Server VM
+JVM version        : 1.8.0_11-b12
+JVM info           : mixed mode
+OS name            : Mac OS X
+OS version         : 10.16
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : java.lang.IllegalArgumentException: Could not create type
+
+	at org.mockito.junit.jupiter.MockitoExtension.beforeEach(MockitoExtension.java:153)
+	at java.util.ArrayList.forEach(ArrayList.java:1234)
+	at java.util.ArrayList.forEach(ArrayList.java:1234)
+	Suppressed: java.lang.NullPointerException
+		at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:184)
+		... 2 more
+Caused by: java.lang.IllegalArgumentException: Could not create type
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:170)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:399)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:190)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:410)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.mockClass(TypeCachingBytecodeGenerator.java:40)
+	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.createMockType(InlineDelegateByteBuddyMockMaker.java:396)
+	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.doCreateMock(InlineDelegateByteBuddyMockMaker.java:355)
+	at org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.createMock(InlineDelegateByteBuddyMockMaker.java:334)
+	at org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.createMock(InlineByteBuddyMockMaker.java:56)
+	at org.mockito.internal.util.MockUtil.createMock(MockUtil.java:99)
+	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:88)
+	at org.mockito.Mockito.mock(Mockito.java:2037)
+	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:74)
+	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:28)
+	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:25)
+	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:44)
+	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:72)
+	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:73)
+	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:47)
+	at org.mockito.MockitoAnnotations.openMocks(MockitoAnnotations.java:81)
+	at org.mockito.internal.framework.DefaultMockitoSession.&amp;lt;init&amp;gt;(DefaultMockitoSession.java:43)
+	at org.mockito.internal.session.DefaultMockitoSessionBuilder.startMocking(DefaultMockitoSessionBuilder.java:83)
+	... 3 more
+Caused by: java.lang.VerifyError
+	at sun.instrument.InstrumentationImpl.retransformClasses0(Native Method)
+	at sun.instrument.InstrumentationImpl.retransformClasses(InstrumentationImpl.java:144)
+	at org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.triggerRetransformation(InlineBytecodeGenerator.java:280)
+	at org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.mockClass(InlineBytecodeGenerator.java:217)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.lambda$mockClass$0(TypeCachingBytecodeGenerator.java:47)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator$$Lambda$342/1424439581.call(Unknown Source)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:168)
+	... 24 more
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;debug 也没有太多的发现。&lt;/p&gt;
+&lt;p&gt;如果去掉这个依赖，就可以规避这个问题。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    &amp;lt;dependency&amp;gt;
+      &amp;lt;groupId&amp;gt;org.mockito&amp;lt;/groupId&amp;gt;
+      &amp;lt;artifactId&amp;gt;mockito-inline&amp;lt;/artifactId&amp;gt;
+      &amp;lt;version&amp;gt;${mockito.version}&amp;lt;/version&amp;gt;
+      &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 mockito github 上也找到了类似的 issue&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;https://github.com/mockito/mockito/issues/2079
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不过没有后续了。&lt;/p&gt;
+&lt;h1 id=&#34;暂时结论&#34;&gt;暂时结论&lt;/h1&gt;
+&lt;p&gt;先去掉 mockito-inline jar 包了，不用 mockStatic 方式。&lt;/p&gt;
+&lt;p&gt;定位起来这个问题比较麻烦，盲点比较多，mockito 框架可以进入我的待贡献清单了。&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>单元测试单独运行ok, mvn test 却失败</title>
+                <link>https://tuichenchuxin.github.io/posts/test_occasional_failure/</link>
+                <guid isPermaLink="true">https://tuichenchuxin.github.io/posts/test_occasional_failure/</guid>
+                <pubDate>Wed, 06 Nov 2024 11:37:11 &#43;0800</pubDate>
+                
+                    <author>chuxinchen.x@qq.com (chuxin chen)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;h1 id=&#34;现象&#34;&gt;现象&lt;/h1&gt;
+&lt;p&gt;单独运行单元测试都是通过的，但是 mvn test 一起运行时就报错了。&lt;/p&gt;
+&lt;h1 id=&#34;调查过程&#34;&gt;调查过程&lt;/h1&gt;
+&lt;p&gt;开启 debug 模式，执行mvn test 时，发现 threadLocal 对象的值来自于其它 case.&lt;/p&gt;
+&lt;p&gt;由于同一个模块执行 test 时是单线程串行的。所以应该是 treadLocal 泄漏。&lt;/p&gt;
+&lt;p&gt;从而发现是测试用例没有清理 treadLocal.&lt;/p&gt;
+&lt;p&gt;增加清理逻辑后正常。&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Slf4j 控制台日志丢失问题调查</title>
