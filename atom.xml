@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">tuichenchuxin&#39;s blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2024-11-07T15:26:15&#43;08:00</updated>
+    <updated>2024-12-11T18:07:17&#43;08:00</updated>
     <id>https://tuichenchuxin.github.io/</id>
     <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://tuichenchuxin.github.io/atom.xml" />
@@ -16,6 +16,120 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.125.7">Hugo</generator>
+        <entry>
+            <title type="text">idea 修改配置，模拟分析 OOM</title>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/oom_analysis/" />
+            <id>https://tuichenchuxin.github.io/posts/oom_analysis/</id>
+            <updated>2024-12-11T18:07:07&#43;08:00</updated>
+            <published>2024-12-11T16:26:15&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">背景 写了个功能，线上一跑，pod 就重启了。估计是 OOM 了。
+调查过程 于是本地准备模拟一下场景，分析下大对象。
+修改运行时参数
+-Xms200m -Xmx200m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/Users/chenchuxin/Documents/dgw/km-deployer-service/ 这样可以得到 hprof 文件，idea 就可以分析
+很容易发现大对象是 bson 文件，看起来是 1000 一批还是太多了，因为是 document 对象，所以可能存储很多内容。
+调下批次处理数量就可以了。</summary>
+            
+                <content type="html">&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;写了个功能，线上一跑，pod 就重启了。估计是 OOM 了。&lt;/p&gt;
+&lt;h1 id=&#34;调查过程&#34;&gt;调查过程&lt;/h1&gt;
+&lt;p&gt;于是本地准备模拟一下场景，分析下大对象。&lt;/p&gt;
+&lt;p&gt;修改运行时参数&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-Xms200m
+-Xmx200m
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=/Users/chenchuxin/Documents/dgw/km-deployer-service/
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/DA2B35CED19477FA7744087DC1F0444A.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这样可以得到 hprof 文件，idea 就可以分析&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tuichenchuxin.github.io/img/759F5584B8D11999A990F25B4EC66029.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;很容易发现大对象是 bson 文件，看起来是 1000 一批还是太多了，因为是 document 对象，所以可能存储很多内容。&lt;/p&gt;
+&lt;p&gt;调下批次处理数量就可以了。&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Calcite支持benchmark函数</title>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/calcite_benchmark/" />
+            <id>https://tuichenchuxin.github.io/posts/calcite_benchmark/</id>
+            <updated>2024-12-11T15:10:56&#43;08:00</updated>
+            <published>2024-11-29T11:38:14&#43;08:00</published>
+            <author>
+                    <name>chuxin chen</name>
+                    <uri>https://tuichenchuxin.github.io/</uri>
+                    <email>chuxinchen.x@qq.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">需求 想支持下 https://dev.mysql.com/doc/refman/8.4/en/information-functions.html#function_benchmark
+1 2 3 4 5 6 7 mysql&amp;gt; SELECT BENCHMARK(1000000,AES_ENCRYPT(&amp;#39;hello&amp;#39;,&amp;#39;goodbye&amp;#39;)); +---------------------------------------------------+ | BENCHMARK(1000000,AES_ENCRYPT(&amp;#39;hello&amp;#39;,&amp;#39;goodbye&amp;#39;)) | +---------------------------------------------------+ | 0 | +---------------------------------------------------+ 1 row in set (4.74 sec) 得先了解下嵌套函数的实现
+又折腾了一周 polardbx 的启动，终于能启动了。
+试一下 它是否能支持。 嗯，暂不支持，不过错误提示的挺好的。
+mysql&amp;gt; SELECT BENCHMARK(1000000,AES_ENCRYPT(&amp;#39;hello&amp;#39;,&amp;#39;goodbye&amp;#39;)); ERROR 4998 (HY000): [1900df69ae400000][192.168.200.77:8527][sharding_db]ERR-CODE: [PXC-4998][ERR_NOT_SUPPORT] function BENCHMARK not support yet!</summary>
+            
+                <content type="html">&lt;h1 id=&#34;需求&#34;&gt;需求&lt;/h1&gt;
+&lt;p&gt;想支持下 &lt;a href=&#34;https://dev.mysql.com/doc/refman/8.4/en/information-functions.html#function_benchmark&#34;&gt;https://dev.mysql.com/doc/refman/8.4/en/information-functions.html#function_benchmark&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BENCHMARK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AES_ENCRYPT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;goodbye&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;---------------------------------------------------+
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BENCHMARK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AES_ENCRYPT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;goodbye&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;---------------------------------------------------+
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;                                                 &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;---------------------------------------------------+
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;74&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;得先了解下嵌套函数的实现&lt;/p&gt;
+&lt;p&gt;又折腾了一周 polardbx 的启动，终于能启动了。&lt;/p&gt;
+&lt;p&gt;试一下 它是否能支持。
+嗯，暂不支持，不过错误提示的挺好的。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mysql&amp;gt; SELECT BENCHMARK(1000000,AES_ENCRYPT(&amp;#39;hello&amp;#39;,&amp;#39;goodbye&amp;#39;));
+ERROR 4998 (HY000): [1900df69ae400000][192.168.200.77:8527][sharding_db]ERR-CODE: [PXC-4998][ERR_NOT_SUPPORT] function BENCHMARK not support yet!
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接下来做些啥呢？ 看看嵌套函数咋实现的。&lt;/p&gt;
+&lt;p&gt;这个嵌套函数可以实现&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mysql&amp;gt; select GREATEST(max(1),min(2));
++--------------------------+
+| GREATEST(max(1), min(2)) |
++--------------------------+
+|                        2 |
++--------------------------+
+1 row in set (0.18 sec)
+&lt;/code&gt;&lt;/pre&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">本地测试可以运行，但是环境上 mockito java.lang.VerifyError</title>
             <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/test_error/" />
@@ -5221,7 +5335,7 @@ Error occurred during initialization of boot layer FindException: Module not fou
             <title type="text">rust 学习</title>
             <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/learn_rust/" />
             <id>https://tuichenchuxin.github.io/posts/learn_rust/</id>
-            <updated>2024-05-13T00:42:28&#43;08:00</updated>
+            <updated>2024-11-29T11:37:33&#43;08:00</updated>
             <published>2023-12-07T08:51:39&#43;08:00</published>
             <author>
                     <name>chuxin chen</name>
@@ -5231,7 +5345,8 @@ Error occurred during initialization of boot layer FindException: Module not fou
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">最开始是通过官方网站上这本书来学习 https://doc.rust-lang.org/book/
 通读之后开始学习 https://github.com/rust-lang/rustlings/
 中间参与了一个开源项目 https://github.com/database-mesh/pisanix/tree/master
-最近开始学习 https://exercism.org/tracks/rust </summary>
+最近开始学习 https://exercism.org/tracks/rust 最近 rust 学习又有了一些新突破
+从零手写文本编辑器 https://www.flenker.blog/hecto/ 这个教程里分成了多个 commit 带着你一步步的完成编辑器，看着自己的代码逐步变成可以使用的文本编辑器，真的很不错哦。</summary>
             
                 <content type="html">&lt;p&gt;最开始是通过官方网站上这本书来学习
 &lt;a href=&#34;https://doc.rust-lang.org/book/&#34;&gt;https://doc.rust-lang.org/book/&lt;/a&gt;&lt;/p&gt;
@@ -5245,6 +5360,8 @@ Error occurred during initialization of boot layer FindException: Module not fou
 &lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115050.jpeg&#34; alt=&#34;&#34;&gt;
 &lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115056.jpeg&#34; alt=&#34;&#34;&gt;
 &lt;img src=&#34;https://tuichenchuxin.github.io/img/20231207-115101.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最近 rust 学习又有了一些新突破&lt;/p&gt;
+&lt;p&gt;从零手写文本编辑器 &lt;a href=&#34;https://www.flenker.blog/hecto/&#34;&gt;https://www.flenker.blog/hecto/&lt;/a&gt; 这个教程里分成了多个 commit 带着你一步步的完成编辑器，看着自己的代码逐步变成可以使用的文本编辑器，真的很不错哦。&lt;/p&gt;
 </content>
             
             

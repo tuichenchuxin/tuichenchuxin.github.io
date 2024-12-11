@@ -2,11 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://tuichenchuxin.github.io/posts/oom_analysis/</loc>
+    <lastmod>2024-12-11T18:07:07+08:00</lastmod>
+  </url><url>
     <loc>https://tuichenchuxin.github.io/posts/</loc>
-    <lastmod>2024-11-07T15:26:05+08:00</lastmod>
+    <lastmod>2024-12-11T18:07:07+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/</loc>
-    <lastmod>2024-11-07T15:26:05+08:00</lastmod>
+    <lastmod>2024-12-11T18:07:07+08:00</lastmod>
+  </url><url>
+    <loc>https://tuichenchuxin.github.io/posts/calcite_benchmark/</loc>
+    <lastmod>2024-12-11T15:10:56+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/posts/test_error/</loc>
     <lastmod>2024-11-07T15:26:05+08:00</lastmod>
@@ -84,7 +90,7 @@
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/categories/</loc>
-    <lastmod>2024-05-23T13:49:49+08:00</lastmod>
+    <lastmod>2024-11-29T11:37:33+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/categories/database/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
@@ -96,10 +102,10 @@
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/posts/learn_rust/</loc>
-    <lastmod>2024-05-13T00:42:28+08:00</lastmod>
+    <lastmod>2024-11-29T11:37:33+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/categories/tech/</loc>
-    <lastmod>2024-05-23T13:49:49+08:00</lastmod>
+    <lastmod>2024-11-29T11:37:33+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/posts/connection_is_not_avaible/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
