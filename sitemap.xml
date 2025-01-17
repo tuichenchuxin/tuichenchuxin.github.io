@@ -2,201 +2,204 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://tuichenchuxin.github.io/posts/oom_analysis/</loc>
+    <loc>https://example.com/posts/arthas_use/</loc>
+    <lastmod>2025-01-07T08:59:57+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/</loc>
+    <lastmod>2025-01-16T10:16:23+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/</loc>
+    <lastmod>2025-01-16T10:16:23+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/oom_analysis/</loc>
     <lastmod>2024-12-11T18:07:07+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/</loc>
-    <lastmod>2024-12-11T18:07:07+08:00</lastmod>
+    <loc>https://example.com/posts/calcite_benchmark/</loc>
+    <lastmod>2025-01-16T10:16:23+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/</loc>
-    <lastmod>2024-12-11T18:07:07+08:00</lastmod>
-  </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/calcite_benchmark/</loc>
-    <lastmod>2024-12-11T15:10:56+08:00</lastmod>
-  </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/test_error/</loc>
+    <loc>https://example.com/posts/test_error/</loc>
     <lastmod>2024-11-07T15:26:05+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/test_occasional_failure/</loc>
+    <loc>https://example.com/posts/test_occasional_failure/</loc>
     <lastmod>2024-11-06T18:16:16+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/slf4j_console_log_missing/</loc>
+    <loc>https://example.com/posts/slf4j_console_log_missing/</loc>
     <lastmod>2024-10-30T17:47:17+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/pinpoint_error/</loc>
+    <loc>https://example.com/posts/pinpoint_error/</loc>
     <lastmod>2024-10-09T17:08:41+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/not_effect_multilan/</loc>
+    <loc>https://example.com/posts/not_effect_multilan/</loc>
     <lastmod>2024-10-09T17:08:14+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/data_not_same/</loc>
+    <loc>https://example.com/posts/data_not_same/</loc>
     <lastmod>2024-08-23T11:44:35+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/httpservletrequest/</loc>
+    <loc>https://example.com/posts/httpservletrequest/</loc>
     <lastmod>2024-08-16T17:40:20+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/asyncprofiler/</loc>
+    <loc>https://example.com/posts/asyncprofiler/</loc>
     <lastmod>2024-06-06T13:59:42+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/pinpoint/</loc>
+    <loc>https://example.com/posts/pinpoint/</loc>
     <lastmod>2024-06-07T11:37:18+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/smart_doc/</loc>
+    <loc>https://example.com/posts/smart_doc/</loc>
     <lastmod>2024-06-07T11:37:29+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/interface_management_tool/</loc>
+    <loc>https://example.com/posts/interface_management_tool/</loc>
     <lastmod>2024-05-29T18:18:46+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/mongodb/</loc>
+    <loc>https://example.com/posts/mongodb/</loc>
     <lastmod>2024-06-07T11:37:13+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/fluvio/</loc>
+    <loc>https://example.com/posts/fluvio/</loc>
     <lastmod>2024-05-14T20:43:33+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/need_tech/</loc>
+    <loc>https://example.com/posts/need_tech/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/oracle_synonym/</loc>
+    <loc>https://example.com/posts/oracle_synonym/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/rocketmq/</loc>
+    <loc>https://example.com/posts/rocketmq/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/distributed_transactions_in_shardingsphere/</loc>
+    <loc>https://example.com/posts/distributed_transactions_in_shardingsphere/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/hikari_result_set/</loc>
+    <loc>https://example.com/posts/hikari_result_set/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/spring/</loc>
+    <loc>https://example.com/posts/spring/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/mysql/</loc>
+    <loc>https://example.com/posts/mysql/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/thread_leak/</loc>
+    <loc>https://example.com/posts/thread_leak/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/remote_mvn_clean/</loc>
+    <loc>https://example.com/posts/remote_mvn_clean/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/read_high_concurrency_programming/</loc>
+    <loc>https://example.com/posts/read_high_concurrency_programming/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/antlr4_chinese_white/</loc>
+    <loc>https://example.com/posts/antlr4_chinese_white/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/encrypt_ope/</loc>
+    <loc>https://example.com/posts/encrypt_ope/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/categories/</loc>
+    <loc>https://example.com/categories/</loc>
     <lastmod>2024-11-29T11:37:33+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/categories/database/</loc>
+    <loc>https://example.com/categories/database/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/statement_cancle/</loc>
+    <loc>https://example.com/posts/statement_cancle/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/hikaricp/</loc>
+    <loc>https://example.com/posts/hikaricp/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/learn_rust/</loc>
+    <loc>https://example.com/posts/learn_rust/</loc>
     <lastmod>2024-11-29T11:37:33+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/categories/tech/</loc>
+    <loc>https://example.com/categories/tech/</loc>
     <lastmod>2024-11-29T11:37:33+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/connection_is_not_avaible/</loc>
+    <loc>https://example.com/posts/connection_is_not_avaible/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/use_idea_to_generate_jar/</loc>
+    <loc>https://example.com/posts/use_idea_to_generate_jar/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/resultset_next/</loc>
+    <loc>https://example.com/posts/resultset_next/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/result_set_type/</loc>
+    <loc>https://example.com/posts/result_set_type/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/oracle_merge/</loc>
+    <loc>https://example.com/posts/oracle_merge/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/driverclassname/</loc>
+    <loc>https://example.com/posts/driverclassname/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/use_sql_line/</loc>
+    <loc>https://example.com/posts/use_sql_line/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/open_dal/</loc>
+    <loc>https://example.com/posts/open_dal/</loc>
     <lastmod>2023-12-20T21:14:19+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/distributed-join/</loc>
+    <loc>https://example.com/posts/distributed-join/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/learn_calcite/</loc>
+    <loc>https://example.com/posts/learn_calcite/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/learnhadoop/</loc>
+    <loc>https://example.com/posts/learnhadoop/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/learnspark/</loc>
+    <loc>https://example.com/posts/learnspark/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/polardbxjoin/</loc>
+    <loc>https://example.com/posts/polardbxjoin/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/join_learn/</loc>
+    <loc>https://example.com/posts/join_learn/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/shardingsphere_meta_learn_action/</loc>
+    <loc>https://example.com/posts/shardingsphere_meta_learn_action/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/datattl/</loc>
+    <loc>https://example.com/posts/datattl/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/shardingspheresysdatabase/</loc>
+    <loc>https://example.com/posts/shardingspheresysdatabase/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/shardingsphere_sys_data_d/</loc>
+    <loc>https://example.com/posts/shardingsphere_sys_data_d/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/join-pisanix/</loc>
+    <loc>https://example.com/posts/join-pisanix/</loc>
     <lastmod>2024-05-23T13:49:49+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/docker/</loc>
+    <loc>https://example.com/posts/docker/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/add-yat-test-for-shardingsphere/</loc>
+    <loc>https://example.com/posts/add-yat-test-for-shardingsphere/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/polar-db/</loc>
+    <loc>https://example.com/posts/polar-db/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/modifypr/</loc>
+    <loc>https://example.com/posts/modifypr/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/installoracle11g/</loc>
+    <loc>https://example.com/posts/installoracle11g/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/use_free_marker/</loc>
+    <loc>https://example.com/posts/use_free_marker/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/howtodebugpgadmin4/</loc>
+    <loc>https://example.com/posts/howtodebugpgadmin4/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/analysispgamdin4ddl/</loc>
+    <loc>https://example.com/posts/analysispgamdin4ddl/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/get_postgres_create_table_sql/</loc>
+    <loc>https://example.com/posts/get_postgres_create_table_sql/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/second/</loc>
+    <loc>https://example.com/posts/second/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/posts/my-first-post/</loc>
+    <loc>https://example.com/posts/my-first-post/</loc>
     <lastmod>2024-05-13T00:42:28+08:00</lastmod>
   </url><url>
-    <loc>https://tuichenchuxin.github.io/tags/</loc>
+    <loc>https://example.com/tags/</loc>
   </url>
 </urlset>
