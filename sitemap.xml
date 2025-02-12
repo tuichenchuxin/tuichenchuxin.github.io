@@ -2,14 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://tuichenchuxin.github.io/posts/arthas_use/</loc>
-    <lastmod>2025-01-07T08:59:57+08:00</lastmod>
-  </url><url>
     <loc>https://tuichenchuxin.github.io/</loc>
-    <lastmod>2025-01-16T10:16:23+08:00</lastmod>
+    <lastmod>2025-02-12T10:17:47+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/posts/</loc>
-    <lastmod>2025-01-16T10:16:23+08:00</lastmod>
+    <lastmod>2025-02-12T10:17:47+08:00</lastmod>
+  </url><url>
+    <loc>https://tuichenchuxin.github.io/posts/deepseek/</loc>
+    <lastmod>2025-02-12T10:17:47+08:00</lastmod>
+  </url><url>
+    <loc>https://tuichenchuxin.github.io/posts/calcite_pr/</loc>
+    <lastmod>2025-02-12T10:17:36+08:00</lastmod>
+  </url><url>
+    <loc>https://tuichenchuxin.github.io/posts/arthas_use/</loc>
+    <lastmod>2025-01-07T08:59:57+08:00</lastmod>
   </url><url>
     <loc>https://tuichenchuxin.github.io/posts/oom_analysis/</loc>
     <lastmod>2024-12-11T18:07:07+08:00</lastmod>
