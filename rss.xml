@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Fri, 14 Feb 2025 11:07:38 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 20 Feb 2025 09:11:02 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://tuichenchuxin.github.io/rss.xml" />
         
@@ -206,6 +206,23 @@ project = CALCITE AND resolution = Unresolved AND labels in (newbie,easy-fix) OR
 |           | mongo       | absEntityDict                 | TABLE        |         |          |            |           |
 |           | mongo       | actionBindingTag              | TABLE        |         |          |            |           |
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这下就可以愉快的测试了&lt;/p&gt;
+&lt;p&gt;试了下第一个 sql&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;0: jdbc:calcite:model=/Users/chenchuxin/Docum&amp;gt; select * from mechanism;
+0: jdbc:calcite:model=/Users/chenchuxin/Docum&amp;gt; Error: Error while executing SQL &amp;#34;select * from mechanism&amp;#34;: From line 1, column 15 to line 1, column 23: Object &amp;#39;MECHANISM&amp;#39; not found within &amp;#39;mongo&amp;#39;; did you mean &amp;#39;mechanism&amp;#39;? (state=,code=0)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;奇怪，咋 select * 都不行，是支持的不完善么。&lt;/p&gt;
+&lt;p&gt;试了下&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;select * from &amp;#34;mechanism&amp;#34;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;发现也是报错，但是表是找到了，debug 发现应该是元数据字段读取的有问题。&lt;/p&gt;
+&lt;p&gt;经过一圈 debug 和查看源码的测试用例，发现mongodb 默认加了 _MAP 字段&lt;/p&gt;
+&lt;p&gt;因此可以按照如下方式查询，哈哈，可以成功啦。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;0: jdbc:calcite:model=/Users/chenchuxin/Docum&amp;gt; select cast(_MAP[&amp;#39;name&amp;#39;] AS varchar(20)) AS name from &amp;#34;mechanism&amp;#34;;
++----------------------------------------------------------------------------------------------------------------------+
+|                                                              NAME                                                    |
++----------------------------------------------------------------------------------------------------------------------+
+| 专案机变更追踪机制                                                                                                            |
+| 分阶段出图应因机制                                                                                                            |
+| 旧料耗用机制                                                                                                               |
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当然 deepseek 还给了其它方式，例如在配置中添加字段映射。&lt;/p&gt;
 </description>
                 
                 
