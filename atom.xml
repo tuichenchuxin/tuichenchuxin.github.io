@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">Hugo Theme MemE</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2025-03-07T10:09:59&#43;08:00</updated>
+    <updated>2025-03-10T18:00:40&#43;08:00</updated>
     <id>https://tuichenchuxin.github.io/</id>
     <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://tuichenchuxin.github.io/atom.xml" />
@@ -14432,6 +14432,467 @@ SELECT * FROM t_order;&lt;/p&gt;
                                 <category scheme="https://tuichenchuxin.github.io/categories/tech/" term="Tech" label="Tech" />
                             
                         
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text"></title>
+            <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/birthday/" />
+            <id>https://tuichenchuxin.github.io/posts/birthday/</id>
+            <updated>2025-03-10T17:52:36&#43;08:00</updated>
+            <published>0001-01-01T00:00:00&#43;00:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+&lt;title&gt;老婆生日终极狂欢夜！&lt;/title&gt;
+&lt;style&gt;
+/* 土味美学 */
+body {
+  background: linear-gradient(45deg, #ff00ff, #ff1493, #00ffff);
+  font-family: &#39;Comic Sans MS&#39;, cursive;
+  overflow: auto;
+  margin: 0;
+}
+
+.title {
+  font-size: 48px;
+  color: gold;
+  text-shadow: 3px 3px red;
+  animation: blink 0.5s infinite;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* 黄金按钮 */
+.button {
+  background: linear-gradient(to bottom, #ffd700, #daa520);
+  border: 3px solid #8b4513;
+  padding: 20px 40px;
+  font-size: 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 20px;
+  transition: transform 0.3s;
+  position: relative;
+  z-index: 2;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(to bottom, #daa520, #ffd700);
+}
+
+/* 盲盒效果 */
+.box {
+  background: rgba(255,255,255,0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px hotpink;
+  margin: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+#result {
+  font-size: 36px;
+  color: #ff0066;
+  text-shadow: 2px 2px yellow;
+}
+
+/* 全屏特效画布 */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;canvas id=&#34;fireworks&#34;&gt;&lt;/canvas&gt;
+&lt;center&gt;
+
+&lt;!-- 土酷标题 --&gt;
+&lt;h1 class=&#34;title&#34;&gt;❤️ 热烈庆祝老婆大人诞辰 ❤️&lt;/h1&gt;
+
+&lt;!-- 晚餐盲盒 --&gt;
+&lt;div class=&#34;box&#34;&gt;
+  &lt;h2&gt;✨ 神秘晚餐盲盒 ✨&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;pickDinner()&#34;&gt;点击抽取今日御膳&lt;/button&gt;
+  &lt;div id=&#34;dinnerResult&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 幸运抽奖 --&gt;
+&lt;div class=&#34;box&#34; style=&#34;background: rgba(0,255,255,0.9);&#34;&gt;
+  &lt;h2&gt;🎁 至尊生日大奖 🎁&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;pickPrize()&#34;&gt;点击抽取皇家大礼&lt;/button&gt;
+  &lt;div id=&#34;prizeResult&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 土味特效 --&gt;
+&lt;marquee scrollamount=&#34;20&#34; style=&#34;position:relative;z-index:2&#34;&gt;🎉🎂🍰🎈💐💃🕺🎊&lt;/marquee&gt;
+
+&lt;script&gt;
+// ====================== 特效系统 ======================
+const canvas = document.getElementById(&#39;fireworks&#39;)
+const ctx = canvas.getContext(&#39;2d&#39;)
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+class Particle {
+  constructor(x, y, color) {
+    this.x = x
+    this.y = y
+    this.color = color
+    this.angle = Math.random() * Math.PI * 2
+    this.speed = Math.random() * 10 + 5
+    this.friction = 0.95
+    this.gravity = 0.3
+  }
+  
+  update() {
+    this.speed *= this.friction
+    this.x += Math.cos(this.angle) * this.speed
+    this.y += Math.sin(this.angle) * this.speed + this.gravity
+  }
+  
+  draw() {
+    ctx.fillStyle = this.color
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2)
+    ctx.fill()
+  }
+}
+
+let particles = []
+
+function createFirework(x, y) {
+  const colors = [&#39;#ff0000&#39;, &#39;#ffd700&#39;, &#39;#00ff00&#39;, &#39;#ff1493&#39;]
+  for(let i=0; i&lt;50; i++) {
+    const p = new Particle(x, y, colors[Math.floor(Math.random()*4)])
+    particles.push(p)
+  }
+}
+
+function animate() {
+  ctx.fillStyle = &#39;rgba(0,0,0,0.1)&#39;
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  
+  particles.forEach((p,i) =&gt; {
+    p.update()
+    p.draw()
+    if(p.speed &lt; 0.5) particles.splice(i,1)
+  })
+  
+  // 随机生成背景小烟花
+  if(Math.random() &lt; 0.1) {
+    createFirework(
+      Math.random()*canvas.width,
+      Math.random()*canvas.height
+    )
+  }
+  
+  requestAnimationFrame(animate)
+}
+
+// 启动动画
+animate()
+
+// 窗口大小变化适配
+window.addEventListener(&#39;resize&#39;, () =&gt; {
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+})
+
+// ====================== 业务逻辑 ======================
+const dinners = [
+  &#34;法式烛光晚餐 + 爱心牛排&#34;,
+  &#34;麻辣火锅狂欢宴 + 冰镇啤酒&#34;,
+  &#34;日料omakase + 清酒畅饮&#34;,
+  &#34;烧烤大排档 + 扎啤无限续杯&#34;,
+  &#34;私房菜套餐 + 网红甜品&#34;
+]
+
+const prizes = [
+  &#34;全年家务豁免权券&#34;,
+  &#34;三亚双人豪华游&#34;,
+  &#34;新款包包任选权&#34;,
+  &#34;亲亲抱抱举高高券&#34;,
+  &#34;霸道总裁体验卡（24小时）&#34;
+]
+
+function pickDinner() {
+  const result = document.getElementById(&#34;dinnerResult&#34;)
+  result.innerHTML = &#34;🏮 御膳房烹饪中...&#34; 
+  setTimeout(() =&gt; {
+    result.innerHTML = &#34;🎉 钦定御膳：&lt;br&gt;&#34; + 
+      dinners[Math.floor(Math.random()*dinners.length)] + 
+      &#34;&lt;br&gt;&lt;img src=&#39;https://img.icons8.com/color/96/000000/meal.png&#39;&gt;&#34;
+  }, 1500)
+}
+
+function pickPrize() {
+  const result = document.getElementById(&#34;prizeResult&#34;)
+  result.innerHTML = &#34;⚡️ 正在召唤锦鲤...&#34; 
+  setTimeout(() =&gt; {
+    // 触发大礼花特效
+    createFirework(canvas.width/2, canvas.height/2)
+    // 播放音效
+    new Audio(&#39;https://actions.google.com/sounds/v1/crowds/cheer.ogg&#39;).play()
+    
+    result.innerHTML = &#34;🎁 至尊大奖：&lt;br&gt;&#34; + 
+      prizes[Math.floor(Math.random()*prizes.length)] + 
+      &#34;&lt;br&gt;&lt;img src=&#39;https://img.icons8.com/color/96/000000/gift.png&#39;&gt;&#34;
+  }, 2000)
+}
+&lt;/script&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</summary>
+            
+                <content type="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+&lt;title&gt;老婆生日终极狂欢夜！&lt;/title&gt;
+&lt;style&gt;
+/* 土味美学 */
+body {
+  background: linear-gradient(45deg, #ff00ff, #ff1493, #00ffff);
+  font-family: &#39;Comic Sans MS&#39;, cursive;
+  overflow: auto;
+  margin: 0;
+}
+
+.title {
+  font-size: 48px;
+  color: gold;
+  text-shadow: 3px 3px red;
+  animation: blink 0.5s infinite;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* 黄金按钮 */
+.button {
+  background: linear-gradient(to bottom, #ffd700, #daa520);
+  border: 3px solid #8b4513;
+  padding: 20px 40px;
+  font-size: 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 20px;
+  transition: transform 0.3s;
+  position: relative;
+  z-index: 2;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(to bottom, #daa520, #ffd700);
+}
+
+/* 盲盒效果 */
+.box {
+  background: rgba(255,255,255,0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px hotpink;
+  margin: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+#result {
+  font-size: 36px;
+  color: #ff0066;
+  text-shadow: 2px 2px yellow;
+}
+
+/* 全屏特效画布 */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;canvas id=&#34;fireworks&#34;&gt;&lt;/canvas&gt;
+&lt;center&gt;
+
+&lt;!-- 土酷标题 --&gt;
+&lt;h1 class=&#34;title&#34;&gt;❤️ 热烈庆祝老婆大人诞辰 ❤️&lt;/h1&gt;
+
+&lt;!-- 晚餐盲盒 --&gt;
+&lt;div class=&#34;box&#34;&gt;
+  &lt;h2&gt;✨ 神秘晚餐盲盒 ✨&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;pickDinner()&#34;&gt;点击抽取今日御膳&lt;/button&gt;
+  &lt;div id=&#34;dinnerResult&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 幸运抽奖 --&gt;
+&lt;div class=&#34;box&#34; style=&#34;background: rgba(0,255,255,0.9);&#34;&gt;
+  &lt;h2&gt;🎁 至尊生日大奖 🎁&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;pickPrize()&#34;&gt;点击抽取皇家大礼&lt;/button&gt;
+  &lt;div id=&#34;prizeResult&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 土味特效 --&gt;
+&lt;marquee scrollamount=&#34;20&#34; style=&#34;position:relative;z-index:2&#34;&gt;🎉🎂🍰🎈💐💃🕺🎊&lt;/marquee&gt;
+
+&lt;script&gt;
+// ====================== 特效系统 ======================
+const canvas = document.getElementById(&#39;fireworks&#39;)
+const ctx = canvas.getContext(&#39;2d&#39;)
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+class Particle {
+  constructor(x, y, color) {
+    this.x = x
+    this.y = y
+    this.color = color
+    this.angle = Math.random() * Math.PI * 2
+    this.speed = Math.random() * 10 + 5
+    this.friction = 0.95
+    this.gravity = 0.3
+  }
+  
+  update() {
+    this.speed *= this.friction
+    this.x += Math.cos(this.angle) * this.speed
+    this.y += Math.sin(this.angle) * this.speed + this.gravity
+  }
+  
+  draw() {
+    ctx.fillStyle = this.color
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2)
+    ctx.fill()
+  }
+}
+
+let particles = []
+
+function createFirework(x, y) {
+  const colors = [&#39;#ff0000&#39;, &#39;#ffd700&#39;, &#39;#00ff00&#39;, &#39;#ff1493&#39;]
+  for(let i=0; i&lt;50; i++) {
+    const p = new Particle(x, y, colors[Math.floor(Math.random()*4)])
+    particles.push(p)
+  }
+}
+
+function animate() {
+  ctx.fillStyle = &#39;rgba(0,0,0,0.1)&#39;
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  
+  particles.forEach((p,i) =&gt; {
+    p.update()
+    p.draw()
+    if(p.speed &lt; 0.5) particles.splice(i,1)
+  })
+  
+  // 随机生成背景小烟花
+  if(Math.random() &lt; 0.1) {
+    createFirework(
+      Math.random()*canvas.width,
+      Math.random()*canvas.height
+    )
+  }
+  
+  requestAnimationFrame(animate)
+}
+
+// 启动动画
+animate()
+
+// 窗口大小变化适配
+window.addEventListener(&#39;resize&#39;, () =&gt; {
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+})
+
+// ====================== 业务逻辑 ======================
+const dinners = [
+  &#34;法式烛光晚餐 + 爱心牛排&#34;,
+  &#34;麻辣火锅狂欢宴 + 冰镇啤酒&#34;,
+  &#34;日料omakase + 清酒畅饮&#34;,
+  &#34;烧烤大排档 + 扎啤无限续杯&#34;,
+  &#34;私房菜套餐 + 网红甜品&#34;
+]
+
+const prizes = [
+  &#34;全年家务豁免权券&#34;,
+  &#34;三亚双人豪华游&#34;,
+  &#34;新款包包任选权&#34;,
+  &#34;亲亲抱抱举高高券&#34;,
+  &#34;霸道总裁体验卡（24小时）&#34;
+]
+
+function pickDinner() {
+  const result = document.getElementById(&#34;dinnerResult&#34;)
+  result.innerHTML = &#34;🏮 御膳房烹饪中...&#34; 
+  setTimeout(() =&gt; {
+    result.innerHTML = &#34;🎉 钦定御膳：&lt;br&gt;&#34; + 
+      dinners[Math.floor(Math.random()*dinners.length)] + 
+      &#34;&lt;br&gt;&lt;img src=&#39;https://img.icons8.com/color/96/000000/meal.png&#39;&gt;&#34;
+  }, 1500)
+}
+
+function pickPrize() {
+  const result = document.getElementById(&#34;prizeResult&#34;)
+  result.innerHTML = &#34;⚡️ 正在召唤锦鲤...&#34; 
+  setTimeout(() =&gt; {
+    // 触发大礼花特效
+    createFirework(canvas.width/2, canvas.height/2)
+    // 播放音效
+    new Audio(&#39;https://actions.google.com/sounds/v1/crowds/cheer.ogg&#39;).play()
+    
+    result.innerHTML = &#34;🎁 至尊大奖：&lt;br&gt;&#34; + 
+      prizes[Math.floor(Math.random()*prizes.length)] + 
+      &#34;&lt;br&gt;&lt;img src=&#39;https://img.icons8.com/color/96/000000/gift.png&#39;&gt;&#34;
+  }, 2000)
+}
+&lt;/script&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+            
+            
+            
+            
+            
+                
                     
                 
                     
