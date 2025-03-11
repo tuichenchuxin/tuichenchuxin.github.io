@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">Hugo Theme MemE</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2025-03-11T17:19:13&#43;08:00</updated>
+    <updated>2025-03-11T18:04:41&#43;08:00</updated>
     <id>https://tuichenchuxin.github.io/</id>
     <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://tuichenchuxin.github.io/atom.xml" />
@@ -14443,7 +14443,7 @@ SELECT * FROM t_order;&lt;/p&gt;
             <title type="text"></title>
             <link rel="alternate" type="text/html" href="https://tuichenchuxin.github.io/posts/birthday/" />
             <id>https://tuichenchuxin.github.io/posts/birthday/</id>
-            <updated>2025-03-11T17:18:26&#43;08:00</updated>
+            <updated>2025-03-11T18:04:25&#43;08:00</updated>
             <published>0001-01-01T00:00:00&#43;00:00</published>
             <author>
                     <name>reuixiy</name>
@@ -14453,131 +14453,155 @@ SELECT * FROM t_order;&lt;/p&gt;
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
-&lt;title&gt;老婆生日终极狂欢夜！&lt;/title&gt;
+&lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+&lt;title&gt;老婆生日终极狂欢夜PLUS版！&lt;/title&gt;
 &lt;style&gt;
-/* 土味美学 */
+/* 新丑风升级版 */
 body {
-  background: linear-gradient(45deg, #ff00ff, #ff1493, #00ffff);
-  font-family: &#39;Comic Sans MS&#39;, cursive;
+  background: linear-gradient(45deg, #ff00ff, #ff1493, #00ffff) fixed;
+  font-family: &#39;华文彩云&#39;, &#39;Comic Sans MS&#39;, cursive;
   overflow: auto;
   margin: 0;
-}
-
-.title {
-  font-size: 48px;
-  color: gold;
-  text-shadow: 3px 3px red;
-  animation: blink 0.5s infinite;
   position: relative;
-  z-index: 2;
 }
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* 黄金按钮 */
-.button {
-  background: linear-gradient(to bottom, #ffd700, #daa520);
-  border: 3px solid #8b4513;
-  padding: 20px 40px;
-  font-size: 24px;
-  border-radius: 50px;
-  cursor: pointer;
-  margin: 20px;
-  transition: transform 0.3s;
-  position: relative;
-  z-index: 2;
-}
-
-.button:hover {
-  transform: scale(1.1);
-  background: linear-gradient(to bottom, #daa520, #ffd700);
-}
-
-/* 盲盒效果 */
-.box {
-  background: rgba(255,255,255,0.9);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px hotpink;
-  margin: 20px;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-#result {
-  font-size: 36px;
-  color: #ff0066;
-  text-shadow: 2px 2px yellow;
-}
-
-/* 全屏特效画布 */
-#fireworks {
+body::after {
+  content: &#34;&#34;;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
   pointer-events: none;
+}
+
+/* 3D浮雕标题 */
+.title {
+  font-size: 68px;
+  color: gold;
+  text-shadow: 
+    0 0 20px #ff00ff,
+    3px 3px 0 #ffd700,
+    -3px -3px 0 #00ffff,
+    0 0 50px red;
+  -webkit-text-stroke: 3px #8b0000;
+  animation: blink 0.5s infinite, swing 3s ease-in-out infinite;
+  transform-origin: top center;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0.5 } }
+@keyframes swing {
+  0%,100% { transform: rotate(-5deg) }
+  50% { transform: rotate(5deg) }
+}
+
+/* 霓虹灯按钮 */
+.button {
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  border: 5px solid #8b4513;
+  padding: 25px 50px;
+  font-size: 36px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 20px;
+  transition: 0.3s;
+  position: relative;
+  animation: neon 1.5s ease-in-out infinite alternate;
+  box-shadow: 0 0 30px hotpink;
+}
+.button:hover {
+  transform: scale(1.2) rotate(5deg);
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+}
+
+@keyframes neon {
+  from { box-shadow: 0 0 30px #ff00ff, 0 0 60px #00ffff; }
+  to { box-shadow: 0 0 60px #00ffff, 0 0 90px #ff00ff; }
+}
+
+/* 动态盲盒 */
+.box {
+  background: repeating-linear-gradient(
+    45deg,
+    #ffd700,
+    #ffd700 10px,
+    #ff1493 10px,
+    #ff1493 20px
+  );
+  padding: 30px;
+  border: 5px dashed #8b0000;
+  border-radius: 50px;
+  margin: 30px;
+  animation: boxRotate 10s linear infinite;
+  position: relative;
+}
+
+@keyframes boxRotate {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+/* 钞票雨特效 */
+@keyframes fall {
+  to { top: 120vh; transform: rotate(360deg); }
 }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
+  &lt;audio id=&#34;bgm&#34; muted loop&gt;
+    &lt;source src=&#34;https://music.163.com/song/media/outer/url?id=1363948882.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
+  &lt;/audio&gt;
+
 &lt;canvas id=&#34;fireworks&#34;&gt;&lt;/canvas&gt;
 &lt;center&gt;
 
-&lt;!-- 土酷标题 --&gt;
-&lt;h1 class=&#34;title&#34;&gt;❤️ 祝菜宝同志生日快乐 ❤️&lt;/h1&gt;
-&lt;h1 class=&#34;title&#34;&gt;这是专属你的土味炫酷抽奖专栏&lt;/h1&gt;
+&lt;!-- 动态玫瑰花 --&gt;
+&lt;img src=&#34;https://img.icons8.com/color/96/000000/rose.png&#34; 
+     style=&#34;position:fixed;top:20px;left:20px;animation:rose 5s linear infinite&#34;&gt;
+&lt;img src=&#34;https://img.icons8.com/color/96/000000/rose.png&#34; 
+     style=&#34;position:fixed;top:20px;right:20px;animation:rose 5s linear infinite reverse&#34;&gt;
+
+&lt;h1 class=&#34;title&#34;&gt;❤️ 菜宝同志万岁万岁万万岁 ❤️&lt;/h1&gt;
+&lt;h1 class=&#34;title&#34;&gt;皇家御赐土味大礼包&lt;/h1&gt;
 
 &lt;!-- 晚餐盲盒 --&gt;
 &lt;div class=&#34;box&#34;&gt;
-  &lt;h2&gt;✨ 神秘晚餐盲盒 ✨&lt;/h2&gt;
-  &lt;button class=&#34;button&#34; onclick=&#34;pickDinner()&#34;&gt;点击抽取今日御膳&lt;/button&gt;
+  &lt;h2 style=&#34;font-size:48px;color:#8b0000&#34;&gt;✨ 御膳房神秘盲盒 ✨&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;pickDinner();createMoneyFall()&#34;&gt;点击抽取今日御膳&lt;/button&gt;
   &lt;div id=&#34;dinnerResult&#34;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- 幸运抽奖 --&gt;
-&lt;div class=&#34;box&#34; style=&#34;background: rgba(0,255,255,0.9);&#34;&gt;
-  &lt;h2&gt;🎁 至尊生日大奖 🎁&lt;/h2&gt;
-  &lt;button class=&#34;button&#34; onclick=&#34;pickPrize()&#34;&gt;点击抽取皇家大礼&lt;/button&gt;
+&lt;!-- 至尊大奖 --&gt;
+&lt;div class=&#34;box&#34; style=&#34;background:repeating-linear-gradient(-45deg,#00ffff,#00ffff 10px,#ff00ff 10px,#ff00ff 20px)&#34;&gt;
+  &lt;h2 style=&#34;font-size:48px;color:#8b0000&#34;&gt;🎁 皇家恩赐大奖 🎁&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;pickPrize();createMoneyFall()&#34;&gt;点击抽取帝王恩典&lt;/button&gt;
   &lt;div id=&#34;prizeResult&#34;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- 在奖品按钮下方添加 --&gt;
-&lt;div class=&#34;box&#34; style=&#34;background:rgba(255,192,203,0.9)&#34;&gt;
-  &lt;h2&gt;💌 甜蜜承诺书&lt;/h2&gt;
-  &lt;button class=&#34;button&#34; onclick=&#34;showPromise()&#34;&gt;点击生成爱情契约&lt;/button&gt;
+&lt;!-- 爱情契约 --&gt;
+&lt;div class=&#34;box&#34; style=&#34;background:repeating-radial-gradient(circle,#ffd700,#ffd700 10px,#ff1493 10px,#ff1493 20px)&#34;&gt;
+  &lt;h2 style=&#34;font-size:48px;color:#8b0000&#34;&gt;💌 钦定爱情圣旨&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;showPromise();createMoneyFall();showCelebrity();&#34;&gt;点击生成皇家契约&lt;/button&gt;
   &lt;div id=&#34;promiseResult&#34;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;script&gt;
-// 新增承诺书功能
-const promises = [
-  &#34;承包365天美食制作&#34;,
-  &#34;无条件陪逛商场特权&#34;,
-  &#34;深夜美食自由通行证&#34;
-]
-
-function showPromise() {
-  const result = document.getElementById(&#34;promiseResult&#34;)
-  result.innerHTML = &#34;📜 正在拟定圣旨...&#34;
-  setTimeout(() =&gt; {
-    result.innerHTML = `御赐特权：&lt;br&gt;${promises[Math.floor(Math.random()*promises.length)]}
-    &lt;br&gt;&lt;img src=&#34;https://img.icons8.com/color/96/000000/contract.png&#34;&gt;`
-  }, 1000)
-}
-&lt;/script&gt;
-
-&lt;!-- 土味特效 --&gt;
-&lt;marquee scrollamount=&#34;20&#34; style=&#34;position:relative;z-index:2&#34;&gt;🎉🎂🍰🎈💐💃🕺🎊&lt;/marquee&gt;
+&lt;marquee scrollamount=&#34;30&#34; style=&#34;font-size:60px;color:gold;text-shadow:0 0 20px red&#34;&gt;🎉🎂🍰🎈💐💃🕺🎊 生日快乐 🎉🎂🍰🎈💐💃🕺🎊&lt;/marquee&gt;
 
 &lt;script&gt;
+  // 在页面加载时静音自动播放
+const audio = document.getElementById(&#39;bgm&#39;);
+audio.play().catch(() =&gt; {
+  // 捕获自动播放失败异常
+});
+
+// 在用户首次交互时解除静音（例如点击按钮）
+document.querySelector(&#39;.button&#39;).addEventListener(&#39;click&#39;, () =&gt; {
+  audio.muted = false;
+  audio.play();
+});
 // ====================== 特效系统 ======================
 const canvas = document.getElementById(&#39;fireworks&#39;)
 const ctx = canvas.getContext(&#39;2d&#39;)
@@ -14649,6 +14673,47 @@ window.addEventListener(&#39;resize&#39;, () =&gt; {
   canvas.height = window.innerHeight
 })
 
+// 钞票雨特效
+function createMoneyFall() {
+  for(let i=0; i&lt;50; i++) {
+    const money = document.createElement(&#39;div&#39;);
+    money.style = `position:fixed; 
+      color:gold; 
+      font-size:${24+Math.random()*30}px;
+      left:${Math.random()*100}vw; 
+      top:-30px; 
+      animation:fall ${3+Math.random()*3}s linear;
+      pointer-events:none`;
+    money.innerHTML = Math.random()&gt;0.5?&#34;💰&#34;:&#34;💵&#34;;
+    document.body.appendChild(money);
+    setTimeout(() =&gt; money.remove(), 4000);
+  }
+}
+
+// 键盘彩蛋
+document.addEventListener(&#39;keydown&#39;, (e) =&gt; {
+  if(e.key === &#39;6&#39;) {
+    document.body.style.background = &#34;url(//img.zcool.cn/community/01b3a45e5a8e84a80120a89516d0a5.gif)&#34;;
+    new Audio(&#39;https://downsc.chinaz.net/Files/DownLoad/sound1/202006/13053.mp3&#39;).play();
+    setTimeout(() =&gt; location.reload(), 5000);
+  }
+})
+
+const promises = [
+  &#34;承包365天美食制作&#34;,
+  &#34;无条件陪逛商场特权&#34;,
+  &#34;深夜美食自由通行证&#34;
+]
+
+function showPromise() {
+  const result = document.getElementById(&#34;promiseResult&#34;)
+  result.innerHTML = &#34;📜 正在拟定圣旨...&#34;
+  setTimeout(() =&gt; {
+    result.innerHTML = `御赐特权：&lt;br&gt;${promises[Math.floor(Math.random()*promises.length)]}
+    &lt;br&gt;&lt;img src=&#34;https://img.icons8.com/color/96/000000/contract.png&#34;&gt;`
+  }, 1000)
+}
+
 // ====================== 业务逻辑 ======================
 const dinners = [
   &#34;法式鹅肝宴 + 星空香槟套餐(G+)&#34;,
@@ -14702,6 +14767,14 @@ function pickPrize() {
       prizes[Math.floor(Math.random()*prizes.length)] + 
       &#34;&lt;br&gt;&lt;img src=&#39;https://img.icons8.com/color/96/000000/gift.png&#39;&gt;&#34;
   }, 2000)
+}
+
+// 新增明星祝福
+const stars = [&#34;小林&#34;, &#34;肖战&#34;];
+function showCelebrity() {
+  createFirework(canvas.width/2, canvas.height/2);
+  alert(`${stars[Math.floor(Math.random()*2)]}发来贺电：\n祝菜宝同志福如东海寿比南山！`);
+  new Audio(&#39;http://downsc.chinaz.net/Files/DownLoad/sound1/202007/13184.mp3&#39;).play();
 }
 &lt;/script&gt;
 &lt;/center&gt;
@@ -14711,131 +14784,155 @@ function pickPrize() {
                 <content type="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
-&lt;title&gt;老婆生日终极狂欢夜！&lt;/title&gt;
+&lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+&lt;title&gt;老婆生日终极狂欢夜PLUS版！&lt;/title&gt;
 &lt;style&gt;
-/* 土味美学 */
+/* 新丑风升级版 */
 body {
-  background: linear-gradient(45deg, #ff00ff, #ff1493, #00ffff);
-  font-family: &#39;Comic Sans MS&#39;, cursive;
+  background: linear-gradient(45deg, #ff00ff, #ff1493, #00ffff) fixed;
+  font-family: &#39;华文彩云&#39;, &#39;Comic Sans MS&#39;, cursive;
   overflow: auto;
   margin: 0;
-}
-
-.title {
-  font-size: 48px;
-  color: gold;
-  text-shadow: 3px 3px red;
-  animation: blink 0.5s infinite;
   position: relative;
-  z-index: 2;
 }
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* 黄金按钮 */
-.button {
-  background: linear-gradient(to bottom, #ffd700, #daa520);
-  border: 3px solid #8b4513;
-  padding: 20px 40px;
-  font-size: 24px;
-  border-radius: 50px;
-  cursor: pointer;
-  margin: 20px;
-  transition: transform 0.3s;
-  position: relative;
-  z-index: 2;
-}
-
-.button:hover {
-  transform: scale(1.1);
-  background: linear-gradient(to bottom, #daa520, #ffd700);
-}
-
-/* 盲盒效果 */
-.box {
-  background: rgba(255,255,255,0.9);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px hotpink;
-  margin: 20px;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-#result {
-  font-size: 36px;
-  color: #ff0066;
-  text-shadow: 2px 2px yellow;
-}
-
-/* 全屏特效画布 */
-#fireworks {
+body::after {
+  content: &#34;&#34;;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
   pointer-events: none;
+}
+
+/* 3D浮雕标题 */
+.title {
+  font-size: 68px;
+  color: gold;
+  text-shadow: 
+    0 0 20px #ff00ff,
+    3px 3px 0 #ffd700,
+    -3px -3px 0 #00ffff,
+    0 0 50px red;
+  -webkit-text-stroke: 3px #8b0000;
+  animation: blink 0.5s infinite, swing 3s ease-in-out infinite;
+  transform-origin: top center;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0.5 } }
+@keyframes swing {
+  0%,100% { transform: rotate(-5deg) }
+  50% { transform: rotate(5deg) }
+}
+
+/* 霓虹灯按钮 */
+.button {
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  border: 5px solid #8b4513;
+  padding: 25px 50px;
+  font-size: 36px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 20px;
+  transition: 0.3s;
+  position: relative;
+  animation: neon 1.5s ease-in-out infinite alternate;
+  box-shadow: 0 0 30px hotpink;
+}
+.button:hover {
+  transform: scale(1.2) rotate(5deg);
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+}
+
+@keyframes neon {
+  from { box-shadow: 0 0 30px #ff00ff, 0 0 60px #00ffff; }
+  to { box-shadow: 0 0 60px #00ffff, 0 0 90px #ff00ff; }
+}
+
+/* 动态盲盒 */
+.box {
+  background: repeating-linear-gradient(
+    45deg,
+    #ffd700,
+    #ffd700 10px,
+    #ff1493 10px,
+    #ff1493 20px
+  );
+  padding: 30px;
+  border: 5px dashed #8b0000;
+  border-radius: 50px;
+  margin: 30px;
+  animation: boxRotate 10s linear infinite;
+  position: relative;
+}
+
+@keyframes boxRotate {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+/* 钞票雨特效 */
+@keyframes fall {
+  to { top: 120vh; transform: rotate(360deg); }
 }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
+  &lt;audio id=&#34;bgm&#34; muted loop&gt;
+    &lt;source src=&#34;https://music.163.com/song/media/outer/url?id=1363948882.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
+  &lt;/audio&gt;
+
 &lt;canvas id=&#34;fireworks&#34;&gt;&lt;/canvas&gt;
 &lt;center&gt;
 
-&lt;!-- 土酷标题 --&gt;
-&lt;h1 class=&#34;title&#34;&gt;❤️ 祝菜宝同志生日快乐 ❤️&lt;/h1&gt;
-&lt;h1 class=&#34;title&#34;&gt;这是专属你的土味炫酷抽奖专栏&lt;/h1&gt;
+&lt;!-- 动态玫瑰花 --&gt;
+&lt;img src=&#34;https://img.icons8.com/color/96/000000/rose.png&#34; 
+     style=&#34;position:fixed;top:20px;left:20px;animation:rose 5s linear infinite&#34;&gt;
+&lt;img src=&#34;https://img.icons8.com/color/96/000000/rose.png&#34; 
+     style=&#34;position:fixed;top:20px;right:20px;animation:rose 5s linear infinite reverse&#34;&gt;
+
+&lt;h1 class=&#34;title&#34;&gt;❤️ 菜宝同志万岁万岁万万岁 ❤️&lt;/h1&gt;
+&lt;h1 class=&#34;title&#34;&gt;皇家御赐土味大礼包&lt;/h1&gt;
 
 &lt;!-- 晚餐盲盒 --&gt;
 &lt;div class=&#34;box&#34;&gt;
-  &lt;h2&gt;✨ 神秘晚餐盲盒 ✨&lt;/h2&gt;
-  &lt;button class=&#34;button&#34; onclick=&#34;pickDinner()&#34;&gt;点击抽取今日御膳&lt;/button&gt;
+  &lt;h2 style=&#34;font-size:48px;color:#8b0000&#34;&gt;✨ 御膳房神秘盲盒 ✨&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;pickDinner();createMoneyFall()&#34;&gt;点击抽取今日御膳&lt;/button&gt;
   &lt;div id=&#34;dinnerResult&#34;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- 幸运抽奖 --&gt;
-&lt;div class=&#34;box&#34; style=&#34;background: rgba(0,255,255,0.9);&#34;&gt;
-  &lt;h2&gt;🎁 至尊生日大奖 🎁&lt;/h2&gt;
-  &lt;button class=&#34;button&#34; onclick=&#34;pickPrize()&#34;&gt;点击抽取皇家大礼&lt;/button&gt;
+&lt;!-- 至尊大奖 --&gt;
+&lt;div class=&#34;box&#34; style=&#34;background:repeating-linear-gradient(-45deg,#00ffff,#00ffff 10px,#ff00ff 10px,#ff00ff 20px)&#34;&gt;
+  &lt;h2 style=&#34;font-size:48px;color:#8b0000&#34;&gt;🎁 皇家恩赐大奖 🎁&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;pickPrize();createMoneyFall()&#34;&gt;点击抽取帝王恩典&lt;/button&gt;
   &lt;div id=&#34;prizeResult&#34;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- 在奖品按钮下方添加 --&gt;
-&lt;div class=&#34;box&#34; style=&#34;background:rgba(255,192,203,0.9)&#34;&gt;
-  &lt;h2&gt;💌 甜蜜承诺书&lt;/h2&gt;
-  &lt;button class=&#34;button&#34; onclick=&#34;showPromise()&#34;&gt;点击生成爱情契约&lt;/button&gt;
+&lt;!-- 爱情契约 --&gt;
+&lt;div class=&#34;box&#34; style=&#34;background:repeating-radial-gradient(circle,#ffd700,#ffd700 10px,#ff1493 10px,#ff1493 20px)&#34;&gt;
+  &lt;h2 style=&#34;font-size:48px;color:#8b0000&#34;&gt;💌 钦定爱情圣旨&lt;/h2&gt;
+  &lt;button class=&#34;button&#34; onclick=&#34;showPromise();createMoneyFall();showCelebrity();&#34;&gt;点击生成皇家契约&lt;/button&gt;
   &lt;div id=&#34;promiseResult&#34;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;script&gt;
-// 新增承诺书功能
-const promises = [
-  &#34;承包365天美食制作&#34;,
-  &#34;无条件陪逛商场特权&#34;,
-  &#34;深夜美食自由通行证&#34;
-]
-
-function showPromise() {
-  const result = document.getElementById(&#34;promiseResult&#34;)
-  result.innerHTML = &#34;📜 正在拟定圣旨...&#34;
-  setTimeout(() =&gt; {
-    result.innerHTML = `御赐特权：&lt;br&gt;${promises[Math.floor(Math.random()*promises.length)]}
-    &lt;br&gt;&lt;img src=&#34;https://img.icons8.com/color/96/000000/contract.png&#34;&gt;`
-  }, 1000)
-}
-&lt;/script&gt;
-
-&lt;!-- 土味特效 --&gt;
-&lt;marquee scrollamount=&#34;20&#34; style=&#34;position:relative;z-index:2&#34;&gt;🎉🎂🍰🎈💐💃🕺🎊&lt;/marquee&gt;
+&lt;marquee scrollamount=&#34;30&#34; style=&#34;font-size:60px;color:gold;text-shadow:0 0 20px red&#34;&gt;🎉🎂🍰🎈💐💃🕺🎊 生日快乐 🎉🎂🍰🎈💐💃🕺🎊&lt;/marquee&gt;
 
 &lt;script&gt;
+  // 在页面加载时静音自动播放
+const audio = document.getElementById(&#39;bgm&#39;);
+audio.play().catch(() =&gt; {
+  // 捕获自动播放失败异常
+});
+
+// 在用户首次交互时解除静音（例如点击按钮）
+document.querySelector(&#39;.button&#39;).addEventListener(&#39;click&#39;, () =&gt; {
+  audio.muted = false;
+  audio.play();
+});
 // ====================== 特效系统 ======================
 const canvas = document.getElementById(&#39;fireworks&#39;)
 const ctx = canvas.getContext(&#39;2d&#39;)
@@ -14907,6 +15004,47 @@ window.addEventListener(&#39;resize&#39;, () =&gt; {
   canvas.height = window.innerHeight
 })
 
+// 钞票雨特效
+function createMoneyFall() {
+  for(let i=0; i&lt;50; i++) {
+    const money = document.createElement(&#39;div&#39;);
+    money.style = `position:fixed; 
+      color:gold; 
+      font-size:${24+Math.random()*30}px;
+      left:${Math.random()*100}vw; 
+      top:-30px; 
+      animation:fall ${3+Math.random()*3}s linear;
+      pointer-events:none`;
+    money.innerHTML = Math.random()&gt;0.5?&#34;💰&#34;:&#34;💵&#34;;
+    document.body.appendChild(money);
+    setTimeout(() =&gt; money.remove(), 4000);
+  }
+}
+
+// 键盘彩蛋
+document.addEventListener(&#39;keydown&#39;, (e) =&gt; {
+  if(e.key === &#39;6&#39;) {
+    document.body.style.background = &#34;url(//img.zcool.cn/community/01b3a45e5a8e84a80120a89516d0a5.gif)&#34;;
+    new Audio(&#39;https://downsc.chinaz.net/Files/DownLoad/sound1/202006/13053.mp3&#39;).play();
+    setTimeout(() =&gt; location.reload(), 5000);
+  }
+})
+
+const promises = [
+  &#34;承包365天美食制作&#34;,
+  &#34;无条件陪逛商场特权&#34;,
+  &#34;深夜美食自由通行证&#34;
+]
+
+function showPromise() {
+  const result = document.getElementById(&#34;promiseResult&#34;)
+  result.innerHTML = &#34;📜 正在拟定圣旨...&#34;
+  setTimeout(() =&gt; {
+    result.innerHTML = `御赐特权：&lt;br&gt;${promises[Math.floor(Math.random()*promises.length)]}
+    &lt;br&gt;&lt;img src=&#34;https://img.icons8.com/color/96/000000/contract.png&#34;&gt;`
+  }, 1000)
+}
+
 // ====================== 业务逻辑 ======================
 const dinners = [
   &#34;法式鹅肝宴 + 星空香槟套餐(G+)&#34;,
@@ -14960,6 +15098,14 @@ function pickPrize() {
       prizes[Math.floor(Math.random()*prizes.length)] + 
       &#34;&lt;br&gt;&lt;img src=&#39;https://img.icons8.com/color/96/000000/gift.png&#39;&gt;&#34;
   }, 2000)
+}
+
+// 新增明星祝福
+const stars = [&#34;小林&#34;, &#34;肖战&#34;];
+function showCelebrity() {
+  createFirework(canvas.width/2, canvas.height/2);
+  alert(`${stars[Math.floor(Math.random()*2)]}发来贺电：\n祝菜宝同志福如东海寿比南山！`);
+  new Audio(&#39;http://downsc.chinaz.net/Files/DownLoad/sound1/202007/13184.mp3&#39;).play();
 }
 &lt;/script&gt;
 &lt;/center&gt;
